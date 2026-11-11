@@ -222,3 +222,19 @@ The design uses an original near-black developer-studio visual language, with la
 - The `.github/workflows/deploy.yml` workflow verifies pull requests and deploys pushes to `main` only after the `FIREBASE_PROJECT_ID` repository variable and `FIREBASE_SERVICE_ACCOUNT` repository secret are configured.
 
 This site is independently designed for StarApple Apps LLC. The Unkey reference informed the interaction and editorial direction; no Unkey code, logos, or licensed artwork are copied.
+
+## Original cinematic hero video — StarApple Core Film
+
+The homepage now includes a **real, self-hosted, original silent 6-second loop** under `public/media/starapple-core.mp4`, with `starapple-core-poster.webp` for loading and static fallback. The five-pointed star is inspired by the Philippine caimito, moving through a dark generative stipple field with lavender and botanical accent pixels. This film is independently created for StarApple; no Unkey footage, graphics, or source is included.
+
+The film uses H.264 in MP4 for broad browser support. It automatically loops muted and inline when visible, pauses offscreen or in a background tab, and has an accessible `PLAY FILM / PAUSE FILM` control. Users with reduced-motion or data-saver preferences receive a static poster unless they choose to play. The MP4 and poster are hosted by Firebase alongside the rest of the static website; neither requires a third-party CDN or API key.
+
+To regenerate the motion asset deterministically, install Python 3 and ffmpeg, then run:
+
+```sh
+python -m pip install numpy opencv-python-headless
+python scripts/render_hero.py --out-dir public/media
+npm run check
+```
+
+Change the layout in `src/cinema.css` and the playback management in `src/cinema.js`. Both files are copied into `dist/assets` by the existing build script; `public/media` is copied into `dist/media`. To deploy to your Firebase Hosting instance, ensure the workflow has both `FIREBASE_PROJECT_ID` and `FIREBASE_SERVICE_ACCOUNT` configured. 

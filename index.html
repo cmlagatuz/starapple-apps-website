@@ -15,9 +15,12 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/src/styles.css" />
   <link rel="stylesheet" href="/src/revamp.css" />
+  <link rel="stylesheet" href="/src/cinema.css" />
+  <link rel="preload" as="image" href="/media/starapple-core-poster.webp" />
   <script defer src="/site-config.js"></script>
   <script defer type="module" src="/src/main.js"></script>
   <script defer type="module" src="/src/experience.js"></script>
+  <script defer type="module" src="/src/cinema.js"></script>
   <title>StarApple Apps LLC | Brilliant at the Core</title>
 </head>
 <body>
@@ -55,6 +58,11 @@
 
   <main id="main">
     <section id="hero" class="hero section">
+      <div class="hero-cinema" aria-hidden="true">
+        <video id="hero-film" autoplay muted loop playsinline preload="none" poster="/media/starapple-core-poster.webp" width="960" height="540">
+          <source src="/media/starapple-core.mp4" type="video/mp4" />
+        </video>
+      </div>
       <div class="hero-grid-bg" aria-hidden="true"></div>
       <div class="hero-ambient hero-ambient-purple" aria-hidden="true"></div>
       <div class="hero-ambient hero-ambient-green" aria-hidden="true"></div>
@@ -67,14 +75,14 @@
             <p class="hero-description hero-enter">A sharper idea of what software can be. We design, build, and scale digital products with an exceptional experience on the surface—and powerful engineering at the core.</p>
             <div class="hero-actions hero-enter"><a class="button button-white button-large magnetic" href="#contact">Start a project <span aria-hidden="true">↗</span></a><a class="hero-secondary" href="#lab">Explore our approach <span aria-hidden="true">↘</span></a></div>
           </div>
-          <div class="hero-art" id="hero-art" aria-label="Interactive particle sculpture inspired by the star-shaped core of the Philippine caimito fruit">
-            <canvas id="core-canvas" aria-hidden="true"></canvas>
-            <div class="hero-art-top" aria-hidden="true"><span>SA // CORE ENGINE</span><span>FIG. 001</span></div>
-            <div class="hero-art-hud" aria-hidden="true"><span class="hud-eye">✳</span><span><small>THE STAR WITHIN</small><strong>CREATIVE BY NATURE.</strong><strong>PRECISE BY DESIGN.</strong></span></div>
-            <div class="hero-art-coordinates" aria-hidden="true"><span>05. DESIGN SYSTEM</span><span>● ACTIVE SIGNAL</span></div>
+          <div class="hero-cinema-meta" aria-hidden="true">
+            <span>FIG. 001 — A STELLAR CORE</span>
+            <i></i><strong>CRAFTED FROM COMPLEXITY.</strong>
+            <small>INSPIRED BY THE CAIMITO ✳</small>
           </div>
         </div>
-        <div class="hero-bottom"><span><span class="small-cross">✳</span> BUILT DIFFERENT. BUILT TO LAST.</span><a href="#lab">SCROLL TO DISCOVER <span aria-hidden="true">↓</span></a><span>01 / 05</span></div>
+        <div class="hero-bottom"><span><span class="small-cross">✳</span> BUILT DIFFERENT. BUILT TO LAST.</span><a href="#lab" class="cinema-scroll">SCROLL TO DISCOVER <span aria-hidden="true">↓</span></a>
+          <button id="hero-film-toggle" class="hero-video-toggle" type="button" aria-label="Play hero background video" aria-pressed="false"><span id="hero-film-toggle-icon" class="hero-toggle-icon" aria-hidden="true">▶</span><span id="hero-film-toggle-label">PLAY FILM</span></button><span>01 / 05</span></div>
       </div>
     </section>
 

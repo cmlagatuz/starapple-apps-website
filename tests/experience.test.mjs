@@ -5,7 +5,7 @@ import { readFile } from 'node:fs/promises';
 test('interactive showcase includes the accessible four-discipline tablist', async () => {
   const html = await readFile('index.html', 'utf8');
   assert.match(html, /id="lab"/);
-  assert.match(html, /id="core-canvas"/);
+  assert.match(html, /id="hero-film"/);
   assert.match(html, /id="reading-progress"/);
   assert.match(html, /role="tablist"/);
   assert.equal((html.match(/role="tab"/g) || []).length, 4);
