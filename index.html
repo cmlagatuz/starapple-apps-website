@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#f8f6fb" />
+  <meta name="theme-color" content="#07080b" />
   <meta name="description" content="StarApple Apps LLC builds thoughtful apps, modern web platforms, IT solutions and cloud systems. Rooted in the Philippines. Built for the world." />
   <meta property="og:title" content="StarApple Apps LLC — Brilliant at the core." />
   <meta property="og:description" content="Discover the star within your next digital solution." />
@@ -12,15 +12,18 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/src/styles.css" />
+  <link rel="stylesheet" href="/src/revamp.css" />
   <script defer src="/site-config.js"></script>
   <script defer type="module" src="/src/main.js"></script>
+  <script defer type="module" src="/src/experience.js"></script>
   <title>StarApple Apps LLC | Brilliant at the Core</title>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
   <canvas id="stardust" aria-hidden="true"></canvas>
+  <div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
 
   <div class="intro" id="intro" hidden aria-label="StarApple animated introduction">
     <div class="intro-halo" aria-hidden="true"></div>
@@ -37,7 +40,8 @@
         <span class="nav-brand-text"><strong>starapple<span class="pink-dot">.</span></strong><small>APPS LLC</small></span>
       </a>
       <div class="nav-links" id="nav-links">
-        <a href="#services">Expertise</a>
+        <a href="#services">Solutions</a>
+        <a href="#lab">The process</a>
         <a href="#story">Our core</a>
         <a href="#github">Open source</a>
         <a href="#contact">Let's talk</a>
@@ -51,33 +55,63 @@
 
   <main id="main">
     <section id="hero" class="hero section">
-      <div class="hero-grain" aria-hidden="true"></div>
-      <div class="hero-content wrap">
-        <div class="hero-copy">
-          <div class="eyebrow eyebrow-light hero-enter"><span class="eyebrow-pulse"></span> ROOTED IN THE PHILIPPINES · BUILT FOR THE WORLD</div>
-          <h1 class="hero-enter">Discover the <span class="headline-star">star</span> within your next <em>digital solution.</em></h1>
-          <p class="hero-description hero-enter">Beautiful experiences. Brilliant engineering. We turn ambitious ideas into thoughtful software that works as powerfully as it looks.</p>
-          <div class="hero-actions hero-enter">
-            <a href="#contact" class="button button-purple button-large floating-cta">Let's build something <span aria-hidden="true">↗</span></a>
-            <a href="#services" class="text-link">Explore what we do <span aria-hidden="true">↘</span></a>
+      <div class="hero-grid-bg" aria-hidden="true"></div>
+      <div class="hero-ambient hero-ambient-purple" aria-hidden="true"></div>
+      <div class="hero-ambient hero-ambient-green" aria-hidden="true"></div>
+      <div class="wrap hero-layout">
+        <div class="hero-topline"><span><i class="status-dot"></i> AN INDEPENDENT DIGITAL STUDIO</span><span>EST. IN THE PHILIPPINES <b>↗</b> WORKING WORLDWIDE</span></div>
+        <div class="hero-content">
+          <div class="hero-copy">
+            <div class="hero-eyebrow hero-enter"><span class="small-cross">✳</span> DESIGN-LED ENGINEERING <span class="eyebrow-rule"></span> 001</div>
+            <h1 class="hero-enter">Discover the <span class="hero-gradient">star</span> within your next <span class="hero-emphasis">digital solution.</span></h1>
+            <p class="hero-description hero-enter">A sharper idea of what software can be. We design, build, and scale digital products with an exceptional experience on the surface—and powerful engineering at the core.</p>
+            <div class="hero-actions hero-enter"><a class="button button-white button-large magnetic" href="#contact">Start a project <span aria-hidden="true">↗</span></a><a class="hero-secondary" href="#lab">Explore our approach <span aria-hidden="true">↘</span></a></div>
           </div>
-          <div class="hero-proof hero-enter">
-            <span class="proof-symbol" aria-hidden="true">✳</span>
-            <div><strong>Purpose-built by design.</strong><span>Every detail, from first sketch to final deployment.</span></div>
+          <div class="hero-art" id="hero-art" aria-label="Interactive particle sculpture inspired by the star-shaped core of the Philippine caimito fruit">
+            <canvas id="core-canvas" aria-hidden="true"></canvas>
+            <div class="hero-art-top" aria-hidden="true"><span>SA // CORE ENGINE</span><span>FIG. 001</span></div>
+            <div class="hero-art-hud" aria-hidden="true"><span class="hud-eye">✳</span><span><small>THE STAR WITHIN</small><strong>CREATIVE BY NATURE.</strong><strong>PRECISE BY DESIGN.</strong></span></div>
+            <div class="hero-art-coordinates" aria-hidden="true"><span>05. DESIGN SYSTEM</span><span>● ACTIVE SIGNAL</span></div>
           </div>
         </div>
-        <div class="hero-art hero-enter" aria-label="Illustrated star apple fruit with glowing star-shaped core">
-          <div class="art-orbit art-orbit-one"></div><div class="art-orbit art-orbit-two"></div>
-          <div class="art-speck speck-one"></div><div class="art-speck speck-two"></div><div class="art-speck speck-three"></div>
-          <div class="art-label art-label-top"><span class="art-label-glyph">✦</span> THE STELLAR CORE</div>
-          <div class="hero-fruit" id="hero-fruit" aria-hidden="true"></div>
-          <div class="art-satellite satellite-green"><span>●</span> Human-first design</div>
-          <div class="art-satellite satellite-purple"><span>◇</span> Engineered to scale</div>
-          <div class="art-floor-glow"></div>
-          <span class="art-vertical-label">IDEAS WITH SOMETHING EXTRAORDINARY INSIDE</span>
+        <div class="hero-bottom"><span><span class="small-cross">✳</span> BUILT DIFFERENT. BUILT TO LAST.</span><a href="#lab">SCROLL TO DISCOVER <span aria-hidden="true">↓</span></a><span>01 / 05</span></div>
+      </div>
+    </section>
+
+    <section id="lab" class="lab section" aria-labelledby="lab-title">
+      <div class="wrap">
+        <div class="lab-intro reveal"><div class="eyebrow eyebrow-on-dark"><span class="eyebrow-line"></span> FROM IDEA TO IMPACT</div><h2 id="lab-title">The right solution.<br><em>Down to the details.</em></h2><p>Explore how our disciplines connect. Each perspective strengthens the same thing: the product you're building.</p></div>
+        <div class="lab-shell reveal">
+          <div class="lab-toolbar"><div class="lab-toolbar-left"><span class="lab-command-icon">⌘</span><span>starapple / <strong>workspace</strong></span><span class="lab-path">/ overview</span></div><div class="lab-toolbar-right"><span class="lab-uptime-dot"></span> INTERACTIVE PREVIEW <span class="lab-view-icon">⊞</span></div></div>
+          <div class="lab-tabs" role="tablist" aria-label="Explore our solutions">
+            <button type="button" role="tab" aria-selected="true" aria-controls="lab-panel" tabindex="0" class="lab-tab active" data-scenario="app"><span>01</span> App development</button>
+            <button type="button" role="tab" aria-selected="false" aria-controls="lab-panel" tabindex="-1" class="lab-tab" data-scenario="web"><span>02</span> Web platforms</button>
+            <button type="button" role="tab" aria-selected="false" aria-controls="lab-panel" tabindex="-1" class="lab-tab" data-scenario="cloud"><span>03</span> Cloud & DevOps</button>
+            <button type="button" role="tab" aria-selected="false" aria-controls="lab-panel" tabindex="-1" class="lab-tab" data-scenario="strategy"><span>04</span> IT strategy</button>
+          </div>
+          <div id="lab-panel" class="lab-panel" role="tabpanel" aria-label="App development example">
+            <div class="lab-visual">
+              <div class="lab-visual-header"><span>ARCHITECTURE / <span id="lab-architecture">MOBILE PRODUCT</span></span><span class="lab-visual-indicator"><i></i> CONCEPT VIEW</span></div>
+              <div class="lab-network" aria-hidden="true">
+                <div class="lab-network-path lab-path-one"></div><div class="lab-network-path lab-path-two"></div><div class="lab-network-path lab-path-three"></div>
+                <div class="lab-node lab-node-one"><span>01</span><strong id="lab-node-one">DISCOVERY</strong></div>
+                <div class="lab-node lab-node-two"><span>02</span><strong id="lab-node-two">EXPERIENCE</strong></div>
+                <div class="lab-node lab-node-three"><span>03</span><strong id="lab-node-three">ENGINEERING</strong></div>
+                <div class="lab-node lab-node-four"><span>04</span><strong id="lab-node-four">DELIVERY</strong></div>
+                <span class="lab-network-center">✳</span>
+              </div>
+              <div class="lab-visual-footer"><span>STARAPPLE / SYSTEM BLUEPRINT</span><span>FRAME 001 — 004</span></div>
+            </div>
+            <div class="lab-details"><div class="lab-details-label">CAPABILITY / <span id="lab-cap-number">01</span></div><h3 id="lab-cap-title">Apps that feel effortless.</h3><p id="lab-cap-description">From the first interaction to the hardest edge case, build a product that users want to come back to.</p><div class="lab-code"><div class="lab-code-top"><span><span class="code-dot"></span> preview.config</span><span>JSON</span></div><pre id="lab-code-output">{
+  "platform": "mobile",
+  "priority": "experience",
+  "architecture": "scalable",
+  "status": "ready to build"
+}</pre></div><a class="lab-link" href="#contact">Discuss this solution <span aria-hidden="true">↗</span></a></div>
+          </div>
+          <div class="lab-statusbar"><span>● CONCEPTUAL WORKSPACE · NOT A LIVE DEPLOYMENT</span><span>ENGINEERED WITH INTENTION <span class="lab-star">✳</span></span></div>
         </div>
       </div>
-      <div class="hero-bottom wrap"><span>01 / INTRODUCING STARAPPLE</span><a href="#services">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a></div>
     </section>
 
     <div class="marquee" aria-label="Services and capabilities"><div class="marquee-track" aria-hidden="true"><span>IDEATE <b>✳</b> DESIGN <b>✳</b> DEVELOP <b>✳</b> DEPLOY <b>✳</b> EVOLVE <b>✳</b> IDEATE <b>✳</b> DESIGN <b>✳</b> DEVELOP <b>✳</b> DEPLOY <b>✳</b> EVOLVE <b>✳</b></span></div></div>
@@ -85,8 +119,8 @@
     <section id="services" class="services section">
       <div class="wrap">
         <div class="section-heading reveal">
-          <div><div class="eyebrow"><span class="eyebrow-line"></span> WHAT WE CREATE</div><h2>Big ideas.<br /><em>Beautifully built.</em></h2></div>
-          <p>From the spark of an idea to the systems behind it, we craft software with a little more heart and a lot more intention.</p>
+          <div><div class="eyebrow"><span class="eyebrow-line"></span> WHAT WE CREATE</div><h2>One team.<br /><em>Every digital layer.</em></h2></div>
+          <p>From a single interface to an entire platform. Thoughtful experiences, resilient systems, and the connective tissue between them.</p>
         </div>
         <div class="services-grid">
           <a class="service-card service-card-featured reveal" href="#contact" data-service="Custom App Development">
