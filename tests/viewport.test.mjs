@@ -6,7 +6,9 @@ test('cinematic hero is full-bleed behind content without a video card', async (
   const html=await readFile('index.html','utf8');
   const css=await readFile('src/studio-refresh.css','utf8');
   const hero=html.slice(html.indexOf('<section id="hero"'),html.indexOf('</section>',html.indexOf('<section id="hero"')));
-  assert.ok(hero.indexOf('class="hero-cinema"') < hero.indexOf('class="hero-layout"'));
+  assert.ok(hero.indexOf('class="hero-cinema"') < hero.indexOf('class="wrap hero-layout"'));
+  assert.equal((hero.match(/id="hero-film"/g) || []).length, 1);
+  assert.equal((hero.match(/class="hero-cinema"/g) || []).length, 1);
   assert.match(css,/\.hero-cinema\{position:absolute;inset:0;width:100%;height:100%/);
   assert.ok(hero.includes('https://www.unkey.com/videos/home/hero-av1.mp4'));
 });
