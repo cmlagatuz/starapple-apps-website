@@ -248,11 +248,10 @@ The four service cards are shown in a compact single row on large desktops rathe
 
 On tablets, narrow windows, short viewports and reduced-motion preferences, mandatory snapping is disabled so visitors can scroll naturally and nothing is clipped. The browser's normal wheel, keyboard, touch, and anchor behavior is preserved; no custom wheel interception is used.
 
-## Founder profiles
+## Founders: inline editorial chapter
 
-The **Get to know us** button in the **Our Core** section opens an accessible founders dialog with two profile cards:
+The **Our Core → Get to know us** link now scrolls to a dedicated `#founders` section immediately below the story. It is a separate full-viewport chapter on large screens (eight sections total), with natural document flow on tablets/phones and short displays.
 
-- **Zantetsuken** — Founder (public developer alias)
-- **Ajing** — Co-Founder (public developer alias)
+The professional two-column layout identifies **Zantetsuken — Founder** and **Ajing — Co-Founder**, using only their chosen public developer names. Both images are linked directly from the exact URLs provided by the project owner and fitted with `object-fit:cover`, individual `object-position` crop controls, an editorial dark-gradient overlay, and responsive stacking. Neither image is a verified photograph of either individual; the alt attributes describe them as illustrative artwork.
 
-Real names are intentionally displayed as **To be added**, and each profile has an original, self-hosted vector portrait placeholder—never a fabricated person's photograph. To publish a real name, change the corresponding `<strong>To be added</strong>` inside the founders dialog in `index.html`. To add photos, upload portrait images to `public/media/` and change each founder's `<img src>` path in `index.html`. The build automatically copies these files to `dist/`. The modal uses native `<dialog>` keyboard/focus/Escape support, a close button, and a mobile single-column layout.
+The supplied third-party images are not owned or licensed by this codebase. Before promoting the site commercially, obtain suitable reuse permission or replace them with artwork the company has rights to. Remote image hosts can change or block delivery. To replace an image later, change the corresponding `img src` in `index.html`, then run the existing deploy workflow. No modal JS, legal-name placeholders, or photo-placeholder assets remain.

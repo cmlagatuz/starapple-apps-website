@@ -15,7 +15,7 @@ test('cinematic hero is full-bleed behind content without a video card', async (
 test('major sections snap at desktop viewport and small screens retain natural flow',async()=>{
   const html=await readFile('index.html','utf8');
   const css=await readFile('src/studio-refresh.css','utf8');
-  assert.equal((html.match(/class="[^"]*page-panel"/g)||[]).length,7);
+  assert.equal((html.match(/class="[^"]*page-panel"/g)||[]).length,8);
   assert.match(css,/scroll-snap-type:y mandatory/);
   assert.match(css,/scroll-snap-stop:always/);
   assert.match(css,/@media\(max-height:719px\)/);
