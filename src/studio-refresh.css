@@ -97,7 +97,7 @@
 /* Cinematic one-screen storytelling: native scroll snap, no wheel interception. */
 :root { --view-nav:68px; }
 html{scroll-padding-top:var(--view-nav)}
-.page-panel{position:relative;scroll-margin-top:var(--view-nav)}
+.page-panel{position:relative}
 /* Full-bleed video again: intentionally behind the message, never in a card. */
 .hero{min-height:calc(100svh - var(--view-nav));background:#07070b;isolation:isolate}
 .hero-layout{position:relative;z-index:3;min-height:calc(100svh - var(--view-nav));display:flex;flex-direction:column}
