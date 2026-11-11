@@ -17,9 +17,13 @@ async function submit(formData) {
   const timer = setTimeout(() => controller.abort(), 30000);
   try {
     const response = await fetch(url, { method: 'POST', body: formData, signal: controller.signal });
-    const payload = await response.json().catch(() => ({}));
-    if (!response.ok) throw new Error(payload.error || (response.status === 503 ? 'Submission service is not yet deployed. Ask the site owner to deploy Firebase Functions.' : 'We could not send your request. Please try again.'));
-    if (!payload.reference) throw new Error('Unexpected server response. Please contact the site owner.');
+    const isJson = response.headers.get('content-type')?.includes('application/json');
+    const payload = isJson ? await response.json().catch(() => ({})) : {};
+    if (response.status === 404 || response.status === 502 || response.status === 503 || !isJson)
+      throw new Error('Our contact service is temporarily unavailable. Please try again later.');
+    if (!response.ok) throw new Error(typeof payload.error === 'string' ? payload.error : 'Your request could not be submitted. Please try again later.');
+    if (typeof payload.reference !== 'string' || !/^SAP-[A-Z0-9]{10}$/.test(payload.reference))
+      throw new Error('We could not confirm your request. Please contact us before submitting again.');
     return payload.reference;
   } catch (err) {
     if (err.name === 'AbortError') throw new Error('The request timed out. Please try again.');

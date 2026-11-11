@@ -1,0 +1,38 @@
+name: Deploy StarApple Inquiry Backend
+on:
+  push:
+    branches: [main]
+    paths:
+      - functions/**
+      - firebase.json
+      - .github/workflows/deploy-backend.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy-inquiry-function:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install backend dependencies
+        run: npm ci --prefix functions
+      - name: Verify backend syntax
+        run: node --check functions/index.js
+      - name: Authenticate deploy account
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_STARAPPLEAPPS }}
+      - name: Deploy submitInquiry Cloud Function
+        run: npx --yes firebase-tools@15.35.0 deploy --only functions:submitInquiry --project starappleapps --non-interactive
+      - name: Verify inquiry endpoint is served by function
+        run: |
+          status=$(curl -sS -o /dev/null -w '%{http_code}' https://starappleapps.web.app/api/inquiries)
+          echo "GET /api/inquiries status: $status"
+          test "$status" = "405"

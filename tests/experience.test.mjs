@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 
-test('interactive showcase includes the accessible four-discipline tablist', async () => {
+test('client solution explorer includes four accessible service tabs', async () => {
   const html = await readFile('index.html', 'utf8');
   assert.match(html, /id="lab"/);
   assert.match(html, /id="hero-film"/);
@@ -14,7 +14,7 @@ test('interactive showcase includes the accessible four-discipline tablist', asy
   }
 });
 
-test('interactive animations respect accessibility and keep preview data clearly labeled', async () => {
+test('interactive solutions use real deliverables, remove fake terminal data, and honor motion settings', async () => {
   const script = await readFile('src/experience.js', 'utf8');
   const stylesheet = await readFile('src/revamp.css', 'utf8');
   const html = await readFile('index.html', 'utf8');
@@ -22,5 +22,7 @@ test('interactive animations respect accessibility and keep preview data clearly
   assert.match(script, /ArrowRight/);
   assert.match(script, /IntersectionObserver/);
   assert.match(stylesheet, /prefers-reduced-motion/);
-  assert.match(html, /NOT A LIVE DEPLOYMENT/);
+  assert.match(html, /WHAT WE CAN WORK ON/);
+  assert.doesNotMatch(html, /preview\\.config|Developer pulse|id=\"intro\"/);
+  assert.doesNotMatch(script, /lab-code-output/);
 });

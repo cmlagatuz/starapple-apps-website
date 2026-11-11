@@ -228,3 +228,14 @@ The original static `public/media/starapple-core-poster.webp` remains as a poste
 The website uses fragment links for navigation and currently does not require URL query parameters. Its early head script removes incoming query strings so referral parameters do not carry over into the URL displayed when hovering over internal links. This does not control how third-party apps format their own outbound links before a visitor reaches the site.
 
 Edit visual placement in `src/cinema.css` and playback behavior in `src/cinema.js`. Run `npm run check` to build the `dist/` folder, and merge or push to `main` to deploy automatically via the GitHub Actions workflow.
+
+
+## Client experience refresh and inquiry backend
+
+The website now opens immediately with **no intro overlay**. The hero is a responsive two-column composition that keeps the specified externally hosted Unkey video visible beside the text. The former technical sandbox is a real, client-oriented service explorer with four accessible tabs, concrete deliverables and contextual project inquiry links. The GitHub Developer Pulse display and public-repository API requests have been removed.
+
+Both meeting and quote forms POST multipart data to `/api/inquiries`, served by the Gen 2 Firebase Function `submitInquiry` in region `asia-southeast1`. **Deploying Hosting alone does not deploy this function.** A separate `.github/workflows/deploy-backend.yml` workflow attempts a backend deployment when its workflow file, `functions/**`, or `firebase.json` changes. The deploy credential must have the Firebase/Google Cloud permissions required for Functions; Blaze billing and the relevant APIs must also be enabled. Consult the backend workflow logs to confirm a completed deployment.
+
+You can deploy manually from the repository root using `firebase login`, `npm ci --prefix functions` and `firebase deploy --only functions:submitInquiry --project starappleapps`. Set up the default Cloud Firestore database for inquiry records, and configure Cloud Storage for optional attachments. Restrict production access in `firestore.rules` and `storage.rules`. Do not expose a writeable public database or client-side secret as a form workaround.
+
+**Live verification:** Visit `https://starappleapps.web.app/api/inquiries` directly; the deployed function responds with HTTP 405 for GET. A 404 or HTML page indicates that the Hosting-to-Function route is not available. Then submit a non-sensitive test inquiry through the website and confirm a `SAP-...` reference and a corresponding Firestore document before publishing the form as operational.

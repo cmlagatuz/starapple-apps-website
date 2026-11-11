@@ -1,13 +1,11 @@
 import { fillBrandMarks } from './brand.js';
 import { initMotion } from './motion.js';
-import { initGithub } from './github.js';
 import { initForms } from './forms.js';
 
 document.documentElement.classList.add('has-js');
 fillBrandMarks();
 initMotion();
 initForms();
-initGithub();
 document.getElementById('year').textContent=String(new Date().getFullYear());
 const email=window.STARAPPLE_CONFIG?.contactEmail;
 if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -25,7 +23,7 @@ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
 }));
 const dialog=document.getElementById('legal-dialog');
 const legalContent={
-  privacy:{title:'Privacy information',html:`<p><strong>Website privacy summary — customize and review before public launch.</strong></p><h3>Information collected</h3><p>When you request a meeting or quotation, we collect your name, email, optional organization, the project details you provide, and any attached file. We also process limited technical data to detect abusive submissions.</p><h3>How it is used</h3><p>Submissions are stored in private Firebase Cloud Firestore records. Optional attachments are stored in a private Cloud Storage bucket. The site operator uses this information to respond to your request and plan a potential project. It is not published in the public GitHub showcase.</p><h3>Access and retention</h3><p>Data is accessible to authorized administrators in the connected Firebase project. The operator must establish a deletion and retention schedule before launch. You can ask about access or deletion through the site contact channel.</p><h3>Third-party services</h3><p>The site uses Google Firebase for hosting and submissions, GitHub's public API for developer metrics, and Google Fonts for typography. Service providers may process technical data under their own terms.</p><p><em>This is an implementation starter, not a jurisdiction-specific legal privacy policy. Replace or obtain legal review before accepting production submissions.</em></p>`},
+  privacy:{title:'Privacy information',html:`<p><strong>Website privacy summary — customize and review before public launch.</strong></p><h3>Information collected</h3><p>When you request a meeting or quotation, we collect your name, email, optional organization, the project details you provide, and any attached file. We also process limited technical data to detect abusive submissions.</p><h3>How it is used</h3><p>Submissions are stored in private Firebase Cloud Firestore records. Optional attachments are stored in a private Cloud Storage bucket. The site operator uses this information to respond to your request and plan a potential project. It is not published in the public GitHub showcase.</p><h3>Access and retention</h3><p>Data is accessible to authorized administrators in the connected Firebase project. The operator must establish a deletion and retention schedule before launch. You can ask about access or deletion through the site contact channel.</p><h3>Third-party services</h3><p>The site uses Google Firebase for hosting and submissions, Google Fonts for typography, and a third-party video host for the homepage's cinematic backdrop. Service providers may process technical data under their own terms.</p><p><em>This is an implementation starter, not a jurisdiction-specific legal privacy policy. Replace or obtain legal review before accepting production submissions.</em></p>`},
   terms:{title:'Website terms',html:`<p><strong>Terms draft — review and customize before public launch.</strong></p><h3>Information, not an offer</h3><p>Content on this website describes potential technology services. Sending a meeting or quotation request does not establish a contract, guarantee a price, or reserve a meeting time.</p><h3>Submissions</h3><p>Only submit information and files you are authorized to share. Do not include passwords, payment-card data, medical records, or other unnecessary sensitive information.</p><h3>Intellectual property</h3><p>The site's original visual design and written content are intended for StarApple Apps LLC. GitHub repository content remains subject to the license specified in each repository.</p><p><em>These starter terms require appropriate legal and company-specific review before public use.</em></p>`}
 };
 for(const [selector,section] of [['.privacy-trigger','privacy'],['.terms-trigger','terms']]) {

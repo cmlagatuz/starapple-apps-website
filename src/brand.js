@@ -28,7 +28,7 @@ export function fruitSVG(id = 'fruit', compact = false) {
   </svg>`;
 }
 export function fillBrandMarks() {
-  const nodes = [['nav-brand-mark', true], ['footer-brand-mark', true], ['hero-fruit', false], ['story-fruit', false], ['intro-logo', false]];
+  const nodes = [['nav-brand-mark', true], ['footer-brand-mark', true], ['hero-fruit', false], ['story-fruit', false]];
   for (const [id, compact] of nodes) {
     const el = document.getElementById(id);
     if (el) el.innerHTML = fruitSVG(id, compact);

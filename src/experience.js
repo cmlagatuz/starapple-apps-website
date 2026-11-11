@@ -1,79 +1,87 @@
-/** StarApple interactive design layer: original canvas artwork and product-style walkthrough. */
+/** Client-first interactive solution explorer, designed without fake metrics. */
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const scenarios = {
   app: {
-    number: '01', architecture: 'MOBILE PRODUCT', name: 'Apps that feel effortless.',
-    description: 'From the first interaction to the hardest edge case, build a product people want to come back to.',
-    steps: ['DISCOVERY', 'EXPERIENCE', 'ENGINEERING', 'DELIVERY'],
-    code: { platform: 'mobile', priority: 'experience', architecture: 'scalable', status: 'ready to build' }
+    number:'01', icon:'◈', title:'Make your app idea real.', summary:'A thoughtful digital product that puts your users first.',
+    benefits:['Clear purpose','Great usability','Room to grow'], name:'From first sketch to real product.',
+    description:'We can map the experience, shape a prototype, and build a dependable application with your audience in mind.',
+    deliverables:['Discovery and user journeys','Prototypes and interface design','Development and launch planning'],
+    scope:'Custom App Development', cta:'Discuss an app project'
   },
   web: {
-    number: '02', architecture: 'WEB EXPERIENCE', name: 'Web that moves people.',
-    description: 'Fast, accessible web platforms with considered motion, fluid layouts, and a clear path from attention to action.',
-    steps: ['RESEARCH', 'INTERFACE', 'PLATFORM', 'ITERATION'],
-    code: { platform: 'web', priority: 'performance', experience: 'accessible', delivery: 'continuous' }
+    number:'02', icon:'▣', title:'Make every visit matter.', summary:'A web experience that makes a strong first impression—and helps people take action.',
+    benefits:['Easy to navigate','Made to perform','Designed to convert'], name:'A web presence with a purpose.',
+    description:'From a distinctive brand website to a business platform, we focus on clarity, speed, accessibility, and useful experiences.',
+    deliverables:['Site structure and user experience','Responsive design and development','Performance and launch support'],
+    scope:'Web Platforms', cta:'Discuss a web project'
   },
   cloud: {
-    number: '03', architecture: 'CLOUD PLATFORM', name: 'Infrastructure without friction.',
-    description: 'Practical cloud foundations, automated releases, and observability that help your product grow with confidence.',
-    steps: ['AUDIT', 'ARCHITECTURE', 'AUTOMATION', 'MONITORING'],
-    code: { platform: 'cloud', deployment: 'automated', security: 'by design', scale: 'on demand' }
+    number:'03', icon:'⌘', title:'Build on a stronger foundation.', summary:'Infrastructure and workflows chosen for resilience and sensible growth.',
+    benefits:['Better reliability','Smarter workflows','Easier scaling'], name:'Technology that works behind the scenes.',
+    description:'We help plan practical cloud architecture, deployment workflows, and integrations that make day-to-day operations smoother.',
+    deliverables:['Cloud architecture review','Automation and integrations','Deployment and maintenance planning'],
+    scope:'Cloud Infrastructure', cta:'Discuss cloud solutions'
   },
   strategy: {
-    number: '04', architecture: 'PRODUCT ROADMAP', name: 'Clarity before complexity.',
-    description: 'Make the right decisions early. Align people, priorities, and technology around a useful long-term direction.',
-    steps: ['UNDERSTAND', 'EVALUATE', 'ROADMAP', 'ENABLE'],
-    code: { focus: 'business goals', approach: 'human first', decisions: 'evidence led', outcome: 'clear direction' }
+    number:'04', icon:'◎', title:'Turn complexity into direction.', summary:'A sensible plan built around what matters to your business.',
+    benefits:['Define priorities','Find opportunities','Move with confidence'], name:'Clarity before the first line of code.',
+    description:'We can help evaluate your idea, explore viable options, and prioritize the steps that bring the most value.',
+    deliverables:['Discovery and needs assessment','Technology options and recommendations','Project scope and practical roadmap'],
+    scope:'IT Consulting', cta:'Discuss your next step'
   }
 };
 function initWalkthrough() {
   const tabs = [...document.querySelectorAll('.lab-tab')];
   const panel = document.getElementById('lab-panel');
   if (!panel || !tabs.length) return;
-  let active = 'app';
+  const byId = id => document.getElementById(id);
+  const outcomeHost = byId('lab-outcomes');
+  const deliverableHost = byId('lab-deliverables');
+  const consult = byId('lab-consult');
   function select(name, focus = false) {
     const next = scenarios[name];
     if (!next) return;
-    active = name;
     tabs.forEach(tab => {
       const selected = tab.dataset.scenario === name;
       tab.classList.toggle('active', selected);
       tab.setAttribute('aria-selected', String(selected));
       tab.tabIndex = selected ? 0 : -1;
       if (selected && focus) tab.focus();
+      if (selected) panel.setAttribute('aria-labelledby', tab.id);
     });
     panel.dataset.scenario = name;
-    panel.setAttribute('aria-label', `${name === 'app' ? 'App development' : name === 'web' ? 'Web platforms' : name === 'cloud' ? 'Cloud and DevOps' : 'IT strategy'} example`);
-    const values = {
-      'lab-architecture': next.architecture,
+    for (const [id,value] of Object.entries({
       'lab-cap-number': next.number,
       'lab-cap-title': next.name,
       'lab-cap-description': next.description,
-      'lab-code-output': JSON.stringify(next.code, null, 2)
-    };
-    next.steps.forEach((step, i) => { values[`lab-node-${['one','two','three','four'][i]}`] = step; });
-    for (const [id, value] of Object.entries(values)) {
-      const el = document.getElementById(id);
-      if (el) el.textContent = value;
-    }
+      'lab-outcome-icon': next.icon,
+      'lab-outcome-title': next.title,
+      'lab-outcome-summary': next.summary
+    })) byId(id).textContent = value;
+    outcomeHost.replaceChildren(...next.benefits.map(value => {
+      const span = document.createElement('span');span.textContent=value;return span;
+    }));
+    deliverableHost.replaceChildren(...next.deliverables.map(value => {
+      const item = document.createElement('li');item.textContent=value;return item;
+    }));
+    consult.dataset.service = next.scope;
+    consult.firstChild.textContent = next.cta + ' ';
     if (!reducedMotion.matches) {
       panel.classList.remove('lab-switch');
-      // Restart the tiny visual transition without hiding the form or moving focus.
       void panel.offsetWidth;
       panel.classList.add('lab-switch');
     }
   }
-  tabs.forEach((tab, index) => {
+  tabs.forEach((tab,index) => {
     tab.addEventListener('click', () => select(tab.dataset.scenario));
     tab.addEventListener('keydown', event => {
-      const keys = ['ArrowRight', 'ArrowLeft', 'Home', 'End'];
-      if (!keys.includes(event.key)) return;
+      if (!['ArrowRight','ArrowLeft','Home','End'].includes(event.key)) return;
       event.preventDefault();
-      const nextIndex = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : (index + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+      const nextIndex = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length-1 : (index+(event.key === 'ArrowRight'?1:-1)+tabs.length)%tabs.length;
       select(tabs[nextIndex].dataset.scenario, true);
     });
   });
-  select(active);
+  select('app');
 }
 function initParticleCore() {
   const canvas = document.getElementById('core-canvas');

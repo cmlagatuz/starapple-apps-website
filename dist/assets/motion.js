@@ -1,39 +1,5 @@
 export function initMotion() {
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const intro = document.getElementById('intro');
-  const finishIntro = () => {
-    if (!intro || intro.classList.contains('intro-done')) return;
-    intro.classList.add('intro-done');
-    try { sessionStorage.setItem('starapple-intro-seen', 'yes'); } catch { /* Storage can be blocked. */ }
-    window.setTimeout(() => intro.remove(), 800);
-  };
-  let alreadySeen = false;
-  try { alreadySeen = sessionStorage.getItem('starapple-intro-seen') === 'yes'; } catch { /* Private browsing. */ }
-  if (intro) {
-    document.getElementById('skip-intro')?.addEventListener('click', finishIntro);
-    if (reduced || alreadySeen) finishIntro();
-    else {
-      intro.hidden = false;
-      const wrap = document.getElementById('intro-particles');
-      const colors = ['#f9badd', '#e5d2fc', '#d88fc6', '#8bc4a1', '#f8e2b8'];
-      for (let i = 0; i < 45; i++) {
-        const angle = i * 2.39996;
-        const radius = 180 + (i % 6) * 42;
-        const seed = document.createElement('i');
-        seed.className = 'intro-seed';
-        seed.style.setProperty('--x', `${Math.cos(angle) * radius}px`);
-        seed.style.setProperty('--y', `${Math.sin(angle) * radius}px`);
-        seed.style.setProperty('--tx', `${Math.cos(angle) * 44}px`);
-        seed.style.setProperty('--ty', `${Math.sin(angle) * 44}px`);
-        seed.style.setProperty('--delay', `${(i % 10) * 40}ms`);
-        seed.style.setProperty('--size', `${3 + i % 5}px`);
-        seed.style.setProperty('--color', colors[i % colors.length]);
-        wrap?.appendChild(seed);
-      }
-      window.setTimeout(() => intro.classList.add('intro-open'), 1350);
-      window.setTimeout(finishIntro, 2850);
-    }
-  }
   if (!reduced) {
     const reveals = document.querySelectorAll('.reveal');
     if ('IntersectionObserver' in window) {

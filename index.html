@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="/src/styles.css" />
   <link rel="stylesheet" href="/src/revamp.css" />
   <link rel="stylesheet" href="/src/cinema.css" />
+  <link rel="stylesheet" href="/src/studio-refresh.css" />
   <link rel="preload" as="image" href="/media/starapple-core-poster.webp" />
   <script defer src="/site-config.js"></script>
   <script defer type="module" src="/src/main.js"></script>
@@ -34,14 +35,6 @@
   <canvas id="stardust" aria-hidden="true"></canvas>
   <div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
 
-  <div class="intro" id="intro" hidden aria-label="StarApple animated introduction">
-    <div class="intro-halo" aria-hidden="true"></div>
-    <div class="intro-particles" id="intro-particles" aria-hidden="true"></div>
-    <div id="intro-logo" class="intro-logo" aria-hidden="true"></div>
-    <div class="intro-caption"><span class="intro-caption-top">A BRIGHTER IDEA IS TAKING SHAPE</span><strong>StarApple<span>.</span></strong></div>
-    <button class="intro-skip" type="button" id="skip-intro">Skip intro <span aria-hidden="true">↗</span></button>
-  </div>
-
   <header class="site-header" id="site-header">
     <nav class="nav-container wrap" aria-label="Main navigation">
       <a href="#hero" class="nav-brand" aria-label="StarApple Apps LLC, back to home">
@@ -50,9 +43,8 @@
       </a>
       <div class="nav-links" id="nav-links">
         <a href="#services">Solutions</a>
-        <a href="#lab">The process</a>
+        <a href="#lab">Explore solutions</a>
         <a href="#story">Our core</a>
-        <a href="#github">Open source</a>
         <a href="#contact">Let's talk</a>
       </div>
       <a class="button button-dark nav-cta" href="#contact">Start a project <span aria-hidden="true">↗</span></a>
@@ -64,11 +56,6 @@
 
   <main id="main">
     <section id="hero" class="hero section">
-      <div class="hero-cinema" aria-hidden="true">
-        <video id="hero-film" autoplay muted loop playsinline preload="none" poster="/media/starapple-core-poster.webp" width="960" height="540">
-          <source src="https://www.unkey.com/videos/home/hero-av1.mp4" type="video/mp4" />
-        </video>
-      </div>
       <div class="hero-grid-bg" aria-hidden="true"></div>
       <div class="hero-ambient hero-ambient-purple" aria-hidden="true"></div>
       <div class="hero-ambient hero-ambient-green" aria-hidden="true"></div>
@@ -77,53 +64,61 @@
         <div class="hero-content">
           <div class="hero-copy">
             <div class="hero-eyebrow hero-enter"><span class="small-cross">✳</span> DESIGN-LED ENGINEERING <span class="eyebrow-rule"></span> 001</div>
-            <h1 class="hero-enter">Discover the <span class="hero-gradient">star</span> within your next <span class="hero-emphasis">digital solution.</span></h1>
-            <p class="hero-description hero-enter">A sharper idea of what software can be. We design, build, and scale digital products with an exceptional experience on the surface—and powerful engineering at the core.</p>
+            <h1 class="hero-enter">Your next <span class="hero-gradient">big idea.</span><br><span class="hero-emphasis">Beautifully built.</span></h1>
+            <p class="hero-description hero-enter">We turn ambitious ideas into intuitive apps, standout websites, and reliable digital platforms—designed for people and built to grow.</p>
             <div class="hero-actions hero-enter"><a class="button button-white button-large magnetic" href="#contact">Start a project <span aria-hidden="true">↗</span></a><a class="hero-secondary" href="#lab">Explore our approach <span aria-hidden="true">↘</span></a></div>
           </div>
-          <div class="hero-cinema-meta" aria-hidden="true">
-            <span>FIG. 001 — A STELLAR CORE</span>
-            <i></i><strong>CRAFTED FROM COMPLEXITY.</strong>
-            <small>INSPIRED BY THE CAIMITO ✳</small>
-          </div>
+
+      <div class="hero-cinema" aria-hidden="true">
+        <video id="hero-film" autoplay muted loop playsinline preload="none" poster="/media/starapple-core-poster.webp" width="960" height="540">
+          <source src="https://www.unkey.com/videos/home/hero-av1.mp4" type="video/mp4" />
+        </video>
+      </div>
         </div>
         <div class="hero-bottom"><span><span class="small-cross">✳</span> BUILT DIFFERENT. BUILT TO LAST.</span><a href="#lab" class="cinema-scroll">SCROLL TO DISCOVER <span aria-hidden="true">↓</span></a>
-          <button id="hero-film-toggle" class="hero-video-toggle" type="button" aria-label="Play hero background video" aria-pressed="false"><span id="hero-film-toggle-icon" class="hero-toggle-icon" aria-hidden="true">▶</span><span id="hero-film-toggle-label">PLAY FILM</span></button><span>01 / 05</span></div>
+          <button id="hero-film-toggle" class="hero-video-toggle" type="button" aria-label="Play hero background video" aria-pressed="false"><span id="hero-film-toggle-icon" class="hero-toggle-icon" aria-hidden="true">▶</span><span id="hero-film-toggle-label">PLAY FILM</span></button><span>STARAPPLE / 2026</span></div>
       </div>
     </section>
 
+
     <section id="lab" class="lab section" aria-labelledby="lab-title">
       <div class="wrap">
-        <div class="lab-intro reveal"><div class="eyebrow eyebrow-on-dark"><span class="eyebrow-line"></span> FROM IDEA TO IMPACT</div><h2 id="lab-title">The right solution.<br><em>Down to the details.</em></h2><p>Explore how our disciplines connect. Each perspective strengthens the same thing: the product you're building.</p></div>
+        <div class="lab-intro reveal">
+          <div class="eyebrow eyebrow-on-dark"><span class="eyebrow-line"></span> FIND YOUR FIT</div>
+          <h2 id="lab-title">What can we <em>build together?</em></h2>
+          <p>Choose what you have in mind to explore how we'd shape it into something useful. No jargon, no made-up dashboards.</p>
+        </div>
         <div class="lab-shell reveal">
-          <div class="lab-toolbar"><div class="lab-toolbar-left"><span class="lab-command-icon">⌘</span><span>starapple / <strong>workspace</strong></span><span class="lab-path">/ overview</span></div><div class="lab-toolbar-right"><span class="lab-uptime-dot"></span> INTERACTIVE PREVIEW <span class="lab-view-icon">⊞</span></div></div>
-          <div class="lab-tabs" role="tablist" aria-label="Explore our solutions">
-            <button type="button" role="tab" aria-selected="true" aria-controls="lab-panel" tabindex="0" class="lab-tab active" data-scenario="app"><span>01</span> App development</button>
-            <button type="button" role="tab" aria-selected="false" aria-controls="lab-panel" tabindex="-1" class="lab-tab" data-scenario="web"><span>02</span> Web platforms</button>
-            <button type="button" role="tab" aria-selected="false" aria-controls="lab-panel" tabindex="-1" class="lab-tab" data-scenario="cloud"><span>03</span> Cloud & DevOps</button>
-            <button type="button" role="tab" aria-selected="false" aria-controls="lab-panel" tabindex="-1" class="lab-tab" data-scenario="strategy"><span>04</span> IT strategy</button>
+          <div class="lab-toolbar"><div class="lab-toolbar-left"><span class="lab-command-icon">✳</span><strong>Explore solutions</strong><span class="lab-path">/ pick a direction</span></div><div class="lab-toolbar-right">TAP TO EXPLORE <span class="lab-view-icon">↗</span></div></div>
+          <div class="lab-tabs" role="tablist" aria-label="Choose a digital service">
+            <button type="button" id="lab-tab-app" role="tab" aria-selected="true" aria-controls="lab-panel" tabindex="0" class="lab-tab active" data-scenario="app"><span>01</span> Apps & products</button>
+            <button type="button" id="lab-tab-web" role="tab" aria-selected="false" aria-controls="lab-panel" tabindex="-1" class="lab-tab" data-scenario="web"><span>02</span> Websites & platforms</button>
+            <button type="button" id="lab-tab-cloud" role="tab" aria-selected="false" aria-controls="lab-panel" tabindex="-1" class="lab-tab" data-scenario="cloud"><span>03</span> Cloud & systems</button>
+            <button type="button" id="lab-tab-strategy" role="tab" aria-selected="false" aria-controls="lab-panel" tabindex="-1" class="lab-tab" data-scenario="strategy"><span>04</span> Strategy & advice</button>
           </div>
-          <div id="lab-panel" class="lab-panel" role="tabpanel" aria-label="App development example">
+          <div id="lab-panel" class="lab-panel" role="tabpanel" tabindex="0" aria-labelledby="lab-tab-app">
             <div class="lab-visual">
-              <div class="lab-visual-header"><span>ARCHITECTURE / <span id="lab-architecture">MOBILE PRODUCT</span></span><span class="lab-visual-indicator"><i></i> CONCEPT VIEW</span></div>
-              <div class="lab-network" aria-hidden="true">
-                <div class="lab-network-path lab-path-one"></div><div class="lab-network-path lab-path-two"></div><div class="lab-network-path lab-path-three"></div>
-                <div class="lab-node lab-node-one"><span>01</span><strong id="lab-node-one">DISCOVERY</strong></div>
-                <div class="lab-node lab-node-two"><span>02</span><strong id="lab-node-two">EXPERIENCE</strong></div>
-                <div class="lab-node lab-node-three"><span>03</span><strong id="lab-node-three">ENGINEERING</strong></div>
-                <div class="lab-node lab-node-four"><span>04</span><strong id="lab-node-four">DELIVERY</strong></div>
-                <span class="lab-network-center">✳</span>
+              <div class="studio-preview">
+                <span class="studio-preview-label">THE BIG PICTURE <span aria-hidden="true">✳</span></span>
+                <div class="studio-preview-icon" id="lab-outcome-icon" aria-hidden="true">◈</div>
+                <h3 id="lab-outcome-title">Make your app idea real.</h3>
+                <p id="lab-outcome-summary">A thoughtful digital product that puts your users first.</p>
+                <div class="studio-outcomes" id="lab-outcomes" aria-label="Key project priorities">
+                  <span>Clear purpose</span><span>Great usability</span><span>Room to grow</span>
+                </div>
               </div>
-              <div class="lab-visual-footer"><span>STARAPPLE / SYSTEM BLUEPRINT</span><span>FRAME 001 — 004</span></div>
+              <div class="studio-preview-footer"><span>01 / A BETTER START</span><span>BUILT AROUND YOUR GOALS</span></div>
             </div>
-            <div class="lab-details"><div class="lab-details-label">CAPABILITY / <span id="lab-cap-number">01</span></div><h3 id="lab-cap-title">Apps that feel effortless.</h3><p id="lab-cap-description">From the first interaction to the hardest edge case, build a product that users want to come back to.</p><div class="lab-code"><div class="lab-code-top"><span><span class="code-dot"></span> preview.config</span><span>JSON</span></div><pre id="lab-code-output">{
-  "platform": "mobile",
-  "priority": "experience",
-  "architecture": "scalable",
-  "status": "ready to build"
-}</pre></div><a class="lab-link" href="#contact">Discuss this solution <span aria-hidden="true">↗</span></a></div>
+            <div class="lab-details">
+              <div class="lab-details-label">HOW WE CAN HELP / <span id="lab-cap-number">01</span></div>
+              <h3 id="lab-cap-title">From first sketch to real product.</h3>
+              <p id="lab-cap-description">We can map the experience, shape a prototype, and build a dependable application with your audience in mind.</p>
+              <div class="studio-includes-label">WHAT WE CAN WORK ON</div>
+              <ul class="studio-deliverables" id="lab-deliverables"><li>Discovery and user journeys</li><li>Prototypes and interface design</li><li>Development and launch planning</li></ul>
+              <a class="lab-link" id="lab-consult" data-service="Custom App Development" href="#contact">Discuss an app project <span aria-hidden="true">↗</span></a>
+            </div>
           </div>
-          <div class="lab-statusbar"><span>● CONCEPTUAL WORKSPACE · NOT A LIVE DEPLOYMENT</span><span>ENGINEERED WITH INTENTION <span class="lab-star">✳</span></span></div>
+          <div class="lab-statusbar"><span>✳ EXPLORE POSSIBILITIES · EVERY PROJECT STARTS WITH A CONVERSATION</span><span>STARAPPLE APPS LLC</span></div>
         </div>
       </div>
     </section>
@@ -171,14 +166,7 @@
       </div>
     </section>
 
-    <section id="github" class="github-section section"><div class="wrap">
-      <div class="section-heading reveal"><div><div class="eyebrow"><span class="eyebrow-line"></span> ENGINEERING, OUT IN THE OPEN</div><h2>Built with curiosity.<br /><em>Shared with the world.</em></h2></div><p>Peek under the hood. Our public GitHub activity offers a window into the code, experiments and ideas behind the work.</p></div>
-      <div class="github-panel reveal"><div class="github-panel-header"><div class="github-heading"><span class="github-terminal-icon" aria-hidden="true">&gt;_</span><div><strong>Developer pulse</strong><small>LIVE PUBLIC GITHUB DATA</small></div></div><div class="github-live"><span class="live-indicator"></span><span id="github-status">Connecting to GitHub…</span></div></div>
-        <div class="github-stats"><div class="github-stat"><span>PUBLIC REPOS DISPLAYED</span><strong id="stat-repos">—</strong><small>Up to 100 latest updated</small></div><div class="github-stat"><span>STARS ACROSS THESE REPOS</span><strong id="stat-stars">—</strong><small>Community appreciation</small></div><div class="github-stat"><span>MOST RECENT PUSH</span><strong class="stat-date" id="stat-activity">—</strong><small>Based on repository metadata</small></div></div>
-        <div class="github-bottom"><div><span class="github-code-mark">{ }</span><span id="github-description">Fetching public repository activity…</span></div><a class="text-link github-link" id="github-profile-link" href="https://github.com" target="_blank" rel="noopener noreferrer">View GitHub profile <span aria-hidden="true">↗</span></a></div>
-        <div class="github-repo-list" id="github-repo-list" aria-live="polite"></div>
-      </div><p class="github-disclaimer">Public API data can be delayed or rate-limited. Stats describe the configured public GitHub account, not customer projects or deployment uptime.</p>
-    </div></section>
+
 
     <section id="contact" class="contact-section section"><div class="contact-halo" aria-hidden="true"></div><div class="wrap">
       <div class="contact-heading reveal"><div class="eyebrow eyebrow-on-dark"><span class="eyebrow-line"></span> YOUR NEXT BIG THING STARTS HERE</div><h2>Have a bright idea?<br /><em>Let's make it real.</em></h2><p>Whether you're mapping your next move or ready to ship, there's a good place to start.</p></div>
@@ -210,7 +198,7 @@
     </div></section>
   </main>
 
-  <footer class="footer"><div class="wrap"><div class="footer-top"><div class="footer-identity"><a href="#hero" class="footer-logo"><span id="footer-brand-mark" aria-hidden="true"></span><strong>starapple<span>.</span></strong></a><p>Thoughtful experiences.<br/>Extraordinary at the core.</p><span class="ph-badge"><span>✦</span> PROUDLY ROOTED IN THE PHILIPPINES</span></div><div class="footer-column"><strong>Explore</strong><a href="#services">What we do</a><a href="#story">Our core</a><a href="#github">GitHub activity</a><a href="#contact">Start a project</a></div><div class="footer-column"><strong>Connect</strong><a href="#contact">Book a conversation</a><a href="#contact">Request a quote</a><a href="https://github.com/cmlagatuz" id="footer-github" rel="noopener noreferrer" target="_blank">GitHub ↗</a><a href="#contact" id="footer-email" hidden>Email us ↗</a></div></div><div class="footer-bottom"><span>© <span id="year"></span> StarApple Apps LLC. All rights reserved.</span><div><a href="#privacy" class="privacy-trigger">Privacy</a><a href="#terms" class="terms-trigger">Terms</a><span>CRAFTED WITH PURPOSE ✳</span></div></div></div></footer>
+  <footer class="footer"><div class="wrap"><div class="footer-top"><div class="footer-identity"><a href="#hero" class="footer-logo"><span id="footer-brand-mark" aria-hidden="true"></span><strong>starapple<span>.</span></strong></a><p>Thoughtful experiences.<br/>Extraordinary at the core.</p><span class="ph-badge"><span>✦</span> PROUDLY ROOTED IN THE PHILIPPINES</span></div><div class="footer-column"><strong>Explore</strong><a href="#services">What we do</a><a href="#story">Our core</a><a href="#lab">Our approach</a><a href="#contact">Start a project</a></div><div class="footer-column"><strong>Connect</strong><a href="#contact">Book a conversation</a><a href="#contact">Request a quote</a><a href="#contact" id="footer-email" hidden>Email us ↗</a></div></div><div class="footer-bottom"><span>© <span id="year"></span> StarApple Apps LLC. All rights reserved.</span><div><a href="#privacy" class="privacy-trigger">Privacy</a><a href="#terms" class="terms-trigger">Terms</a><span>CRAFTED WITH PURPOSE ✳</span></div></div></div></footer>
 
   <dialog id="legal-dialog" class="legal-dialog" aria-labelledby="legal-title"><div class="legal-dialog-header"><h2 id="legal-title">Privacy information</h2><button id="legal-close" type="button" aria-label="Close dialog">×</button></div><div id="legal-body" class="legal-dialog-body"></div></dialog>
   <div class="confetti-layer" id="confetti-layer" aria-hidden="true"></div>
