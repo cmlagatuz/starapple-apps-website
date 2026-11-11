@@ -128,7 +128,7 @@ git remote add origin https://github.com/YOUR_USERNAME/starapple-apps-website.gi
 git push -u origin main
 ```
 
-If using an existing repo, adapt `origin` and branch. GitHub may request an approved credential or SSH key; do not use your GitHub account password as a Git credential. The `.gitignore` excludes Firebase function env files, generated builds and private keys.
+If using an existing repo, adapt `origin` and branch. GitHub may request an approved credential or SSH key; do not use your GitHub account password as a Git credential. The `.gitignore` excludes Firebase function environment files and private keys. The current repository also tracks `dist/` for inspection, but CI rebuilds it on each deployment.
 
 ## 6. GitHub Actions CI/CD → Firebase Hosting
 
@@ -136,22 +136,14 @@ If using an existing repo, adapt `origin` and branch. GitHub may request an appr
 - Pull requests targeting `main`: `npm ci` → JS lint/test → build (**no live deployment**).
 - Commits pushed to `main` (including a merged PR): the same checks, then **live Firebase Hosting deployment**.
 
-It uses the official [`FirebaseExtended/action-hosting-deploy@v0`](https://github.com/FirebaseExtended/action-hosting-deploy) action. Configure **two** settings on GitHub:
-
-**A. Repository variable** under `Settings → Secrets and variables → Actions → Variables`:
-
-```text
-FIREBASE_PROJECT_ID = YOUR_FIREBASE_PROJECT_ID
-```
-
-**B. Repository secret** under `Settings → Secrets and variables → Actions → Secrets → New repository secret`:
+It uses the official [`FirebaseExtended/action-hosting-deploy@v0`](https://github.com/FirebaseExtended/action-hosting-deploy) action. The deployment targets the `starappleapps` Firebase project and uses this existing GitHub Actions secret under `Settings → Secrets and variables → Actions → Secrets`:
 
 ```text
 Name:  FIREBASE_SERVICE_ACCOUNT_STARAPPLEAPPS
 Value: {entire contents of your Firebase-deploying service-account JSON file}
 ```
 
-To generate the JSON, open **Google Cloud Console → IAM & Admin → Service Accounts**, select the correct Firebase project, create a **dedicated GitHub deploy service account**, and grant only the roles necessary for your Hosting deployment. The [Firebase action's service account guide](https://github.com/FirebaseExtended/action-hosting-deploy/blob/main/docs/service-account.md) documents **Firebase Hosting Admin**, **Service Usage API Keys Viewer**, and **Cloud Run Viewer** when function rewrites are present, plus **Firebase Authentication Admin** where Auth preview-domain configuration is needed. Prefer the minimum roles your particular deployment needs. From the service account's **Keys** tab, create a JSON key; copy its entire content into `FIREBASE_SERVICE_ACCOUNT`. Then securely delete the local downloaded copy. Never put JSON keys in a Git commit, `.env`, frontend code, GitHub variable, issue, or chat. Rotate a leaked key immediately.
+To generate the JSON, open **Google Cloud Console → IAM & Admin → Service Accounts**, select the correct Firebase project, create a **dedicated GitHub deploy service account**, and grant only the roles necessary for your Hosting deployment. The [Firebase action's service account guide](https://github.com/FirebaseExtended/action-hosting-deploy/blob/main/docs/service-account.md) documents **Firebase Hosting Admin**, **Service Usage API Keys Viewer**, and **Cloud Run Viewer** when function rewrites are present, plus **Firebase Authentication Admin** where Auth preview-domain configuration is needed. Prefer the minimum roles your particular deployment needs. From the service account's **Keys** tab, create a JSON key; copy its entire content into `FIREBASE_SERVICE_ACCOUNT_STARAPPLEAPPS`. Then securely delete the local downloaded copy. Never put JSON keys in a Git commit, `.env`, frontend code, GitHub variable, issue, or chat. Rotate a leaked key immediately.
 
 The first commit can trigger Actions before the secret is created and therefore fail deployment; configure the settings, then select **Re-run jobs** or push another commit. The workflow's built-in GitHub token is **not** the Firebase service account. For future hardening, replace long-lived JSON keys with GitHub OIDC/Workload Identity Federation and review Actions permissions.
 
@@ -218,25 +210,21 @@ The design uses an original near-black developer-studio visual language, with la
 - Edit colors, interaction timing and responsive layouts in `src/revamp.css`.
 - Edit the animated canvas, keyboard-accessible experience tabs, and scroll effects in `src/experience.js`.
 - Edit the landing-page structure in `index.html`. The existing `src/styles.css` continues to supply base components and form styles.
-- Run `npm run check` before committing. It validates source syntax, runs six tests, and rebuilds `dist/`.
+- Run `npm run check` before committing. It validates source syntax, runs automated tests, and rebuilds `dist/`.
 - The animation respects the `prefers-reduced-motion` preference and pauses the particle engine outside the viewport.
 - Use `public/site-config.js` to configure the public GitHub account and contact email.
-- The `.github/workflows/deploy.yml` workflow verifies pull requests and deploys pushes to `main` only after the `FIREBASE_PROJECT_ID` repository variable and `FIREBASE_SERVICE_ACCOUNT` repository secret are configured.
+- The `.github/workflows/deploy.yml` workflow verifies pull requests and deploys pushes to `main` using the configured `FIREBASE_SERVICE_ACCOUNT_STARAPPLEAPPS` repository secret.
 
-This site is independently designed for StarApple Apps LLC. The Unkey reference informed the interaction and editorial direction; no Unkey code, logos, or licensed artwork are copied.
+The StarApple interface and brand design are independently developed. The hero now streams a third-party video directly from Unkey; this clip is not a StarApple-owned original. Public availability of an asset is not permission to reuse it commercially—obtain a valid license or the owner's consent before promoting the site commercially.
 
-## Original cinematic hero video — StarApple Core Film
+## Cinematic hero — externally hosted video
 
-The homepage now includes a **real, self-hosted, original silent 6-second loop** under `public/media/starapple-core.mp4`, with `starapple-core-poster.webp` for loading and static fallback. The five-pointed star is inspired by the Philippine caimito, moving through a dark generative stipple field with lavender and botanical accent pixels. This film is independently created for StarApple; no Unkey footage, graphics, or source is included.
+The homepage uses the exact URL `https://www.unkey.com/videos/home/hero-av1.mp4` as the source for its HTML5 hero film. It is **streamed directly from the third-party host**, not downloaded, copied into this repository, or rehosted by Firebase. The now-unused local MP4 has been removed to keep Hosting output small.
 
-The film uses H.264 in MP4 for broad browser support. It automatically loops muted and inline when visible, pauses offscreen or in a background tab, and has an accessible `PLAY FILM / PAUSE FILM` control. Users with reduced-motion or data-saver preferences receive a static poster unless they choose to play. The MP4 and poster are hosted by Firebase alongside the rest of the static website; neither requires a third-party CDN or API key.
+The hero remains muted, looping and inline when motion is permitted and its section is visible. It pauses offscreen or in a background tab, and the accessible `PLAY FILM / PAUSE FILM` control remains in place. Reduced-motion and data-saving visitors receive a still image unless they enable playback.
 
-To regenerate the motion asset deterministically, install Python 3 and ffmpeg, then run:
+The original static `public/media/starapple-core-poster.webp` remains as a poster/loading/error fallback. The external film is encoded as AV1, so playback depends on browser codec support, third-party network availability, and the host's continued willingness to serve the file. If permission or compatibility is an issue, substitute a licensed and broadly compatible video you control.
 
-```sh
-python -m pip install numpy opencv-python-headless
-python scripts/render_hero.py --out-dir public/media
-npm run check
-```
+The website uses fragment links for navigation and currently does not require URL query parameters. Its early head script removes incoming query strings so referral parameters do not carry over into the URL displayed when hovering over internal links. This does not control how third-party apps format their own outbound links before a visitor reaches the site.
 
-Change the layout in `src/cinema.css` and the playback management in `src/cinema.js`. Both files are copied into `dist/assets` by the existing build script; `public/media` is copied into `dist/media`. To deploy to your Firebase Hosting instance, ensure the workflow has both `FIREBASE_PROJECT_ID` and `FIREBASE_SERVICE_ACCOUNT` configured. 
+Edit visual placement in `src/cinema.css` and playback behavior in `src/cinema.js`. Run `npm run check` to build the `dist/` folder, and merge or push to `main` to deploy automatically via the GitHub Actions workflow.

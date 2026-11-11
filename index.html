@@ -3,6 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>
+    // The site uses fragment navigation, not query strings. Strip incoming referral tags.
+    if (location.search) {
+      history.replaceState(history.state, '', location.pathname + location.hash);
+    }
+  </script>
   <meta name="theme-color" content="#07080b" />
   <meta name="description" content="StarApple Apps LLC builds thoughtful apps, modern web platforms, IT solutions and cloud systems. Rooted in the Philippines. Built for the world." />
   <meta property="og:title" content="StarApple Apps LLC — Brilliant at the core." />
@@ -60,7 +66,7 @@
     <section id="hero" class="hero section">
       <div class="hero-cinema" aria-hidden="true">
         <video id="hero-film" autoplay muted loop playsinline preload="none" poster="/media/starapple-core-poster.webp" width="960" height="540">
-          <source src="/media/starapple-core.mp4" type="video/mp4" />
+          <source src="https://www.unkey.com/videos/home/hero-av1.mp4" type="video/mp4" />
         </video>
       </div>
       <div class="hero-grid-bg" aria-hidden="true"></div>

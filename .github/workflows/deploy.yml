@@ -37,8 +37,10 @@ jobs:
         run: |
           test -f dist/index.html
           test -f dist/assets/main.js
-          test -f dist/media/starapple-core.mp4
+          test -f dist/media/starapple-core-poster.webp
           grep -q 'StarApple Apps LLC' dist/index.html
+          grep -Fq 'https://www.unkey.com/videos/home/hero-av1.mp4' dist/index.html
+          grep -q 'history.replaceState' dist/index.html
           if grep -q 'Firebase Hosting Setup Complete' dist/index.html; then
             echo 'Unexpected default Firebase page in production build' >&2
             exit 1
