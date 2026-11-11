@@ -1,0 +1,7 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Proposal attachments are private; the Admin SDK bypasses these client rules.
+    match /{allPaths=**} { allow read, write: if false; }
+  }
+}

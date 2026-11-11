@@ -1,0 +1,21 @@
+{
+  "name": "starapple-apps-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Animated, accessible single-page website for StarApple Apps LLC",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "lint": "node scripts/check.mjs",
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/serve.mjs --dist",
+    "test": "node --test tests/*.test.mjs",
+    "check": "npm run lint && npm run test && npm run build",
+    "deploy:hosting": "npm run check && firebase deploy --only hosting",
+    "deploy:all": "npm run check && firebase deploy --only functions,firestore,storage,hosting"
+  },
+  "license": "UNLICENSED"
+}

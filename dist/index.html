@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f8f6fb" />
+  <meta name="description" content="StarApple Apps LLC builds thoughtful apps, modern web platforms, IT solutions and cloud systems. Rooted in the Philippines. Built for the world." />
+  <meta property="og:title" content="StarApple Apps LLC — Brilliant at the core." />
+  <meta property="og:description" content="Discover the star within your next digital solution." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/social-card.svg" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <script defer src="/site-config.js"></script>
+  <script defer type="module" src="/assets/main.js"></script>
+  <title>StarApple Apps LLC | Brilliant at the Core</title>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <canvas id="stardust" aria-hidden="true"></canvas>
+
+  <div class="intro" id="intro" hidden aria-label="StarApple animated introduction">
+    <div class="intro-halo" aria-hidden="true"></div>
+    <div class="intro-particles" id="intro-particles" aria-hidden="true"></div>
+    <div id="intro-logo" class="intro-logo" aria-hidden="true"></div>
+    <div class="intro-caption"><span class="intro-caption-top">A BRIGHTER IDEA IS TAKING SHAPE</span><strong>StarApple<span>.</span></strong></div>
+    <button class="intro-skip" type="button" id="skip-intro">Skip intro <span aria-hidden="true">↗</span></button>
+  </div>
+
+  <header class="site-header" id="site-header">
+    <nav class="nav-container wrap" aria-label="Main navigation">
+      <a href="#hero" class="nav-brand" aria-label="StarApple Apps LLC, back to home">
+        <span class="nav-brand-mark" id="nav-brand-mark" aria-hidden="true"></span>
+        <span class="nav-brand-text"><strong>starapple<span class="pink-dot">.</span></strong><small>APPS LLC</small></span>
+      </a>
+      <div class="nav-links" id="nav-links">
+        <a href="#services">Expertise</a>
+        <a href="#story">Our core</a>
+        <a href="#github">Open source</a>
+        <a href="#contact">Let's talk</a>
+      </div>
+      <a class="button button-dark nav-cta" href="#contact">Start a project <span aria-hidden="true">↗</span></a>
+      <button id="nav-toggle" class="nav-toggle" type="button" aria-controls="nav-links" aria-expanded="false" aria-label="Open navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section id="hero" class="hero section">
+      <div class="hero-grain" aria-hidden="true"></div>
+      <div class="hero-content wrap">
+        <div class="hero-copy">
+          <div class="eyebrow eyebrow-light hero-enter"><span class="eyebrow-pulse"></span> ROOTED IN THE PHILIPPINES · BUILT FOR THE WORLD</div>
+          <h1 class="hero-enter">Discover the <span class="headline-star">star</span> within your next <em>digital solution.</em></h1>
+          <p class="hero-description hero-enter">Beautiful experiences. Brilliant engineering. We turn ambitious ideas into thoughtful software that works as powerfully as it looks.</p>
+          <div class="hero-actions hero-enter">
+            <a href="#contact" class="button button-purple button-large floating-cta">Let's build something <span aria-hidden="true">↗</span></a>
+            <a href="#services" class="text-link">Explore what we do <span aria-hidden="true">↘</span></a>
+          </div>
+          <div class="hero-proof hero-enter">
+            <span class="proof-symbol" aria-hidden="true">✳</span>
+            <div><strong>Purpose-built by design.</strong><span>Every detail, from first sketch to final deployment.</span></div>
+          </div>
+        </div>
+        <div class="hero-art hero-enter" aria-label="Illustrated star apple fruit with glowing star-shaped core">
+          <div class="art-orbit art-orbit-one"></div><div class="art-orbit art-orbit-two"></div>
+          <div class="art-speck speck-one"></div><div class="art-speck speck-two"></div><div class="art-speck speck-three"></div>
+          <div class="art-label art-label-top"><span class="art-label-glyph">✦</span> THE STELLAR CORE</div>
+          <div class="hero-fruit" id="hero-fruit" aria-hidden="true"></div>
+          <div class="art-satellite satellite-green"><span>●</span> Human-first design</div>
+          <div class="art-satellite satellite-purple"><span>◇</span> Engineered to scale</div>
+          <div class="art-floor-glow"></div>
+          <span class="art-vertical-label">IDEAS WITH SOMETHING EXTRAORDINARY INSIDE</span>
+        </div>
+      </div>
+      <div class="hero-bottom wrap"><span>01 / INTRODUCING STARAPPLE</span><a href="#services">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a></div>
+    </section>
+
+    <div class="marquee" aria-label="Services and capabilities"><div class="marquee-track" aria-hidden="true"><span>IDEATE <b>✳</b> DESIGN <b>✳</b> DEVELOP <b>✳</b> DEPLOY <b>✳</b> EVOLVE <b>✳</b> IDEATE <b>✳</b> DESIGN <b>✳</b> DEVELOP <b>✳</b> DEPLOY <b>✳</b> EVOLVE <b>✳</b></span></div></div>
+
+    <section id="services" class="services section">
+      <div class="wrap">
+        <div class="section-heading reveal">
+          <div><div class="eyebrow"><span class="eyebrow-line"></span> WHAT WE CREATE</div><h2>Big ideas.<br /><em>Beautifully built.</em></h2></div>
+          <p>From the spark of an idea to the systems behind it, we craft software with a little more heart and a lot more intention.</p>
+        </div>
+        <div class="services-grid">
+          <a class="service-card service-card-featured reveal" href="#contact" data-service="Custom App Development">
+            <div class="service-card-top"><span class="service-number">01 / PRODUCT ENGINEERING</span><span class="service-arrow" aria-hidden="true">↗</span></div>
+            <div class="service-visual app-visual" aria-hidden="true"><div class="mini-phone"><div class="mini-phone-notch"></div><div class="mini-phone-core">✳</div><div class="mini-phone-lines"><i></i><i></i><i></i></div></div><div class="app-ring app-ring-a"></div><div class="app-ring app-ring-b"></div><span class="mini-orb orb-one"></span><span class="mini-orb orb-two"></span></div>
+            <div class="service-card-bottom"><span class="service-icon">✳</span><h3>App development</h3><p>Intuitive mobile and custom applications built to solve real problems, not just check boxes.</p><span class="service-tags">MOBILE APPS <span>·</span> CUSTOM SOFTWARE</span></div>
+          </a>
+          <a class="service-card service-card-web reveal" href="#contact" data-service="Web Platforms">
+            <div class="service-card-top"><span class="service-number">02 / DIGITAL EXPERIENCES</span><span class="service-arrow" aria-hidden="true">↗</span></div>
+            <div class="service-visual web-visual" aria-hidden="true"><div class="browser-card"><div class="browser-top"><i></i><i></i><i></i><b></b></div><div class="browser-body"><div><strong>YOUR NEXT<br/>BIG IDEA.</strong><span></span><span></span></div><div class="browser-planet">✦</div></div></div><div class="web-floating-tag">↗ 100% yours</div></div>
+            <div class="service-card-bottom"><span class="service-icon">⌘</span><h3>Web platforms</h3><p>Fast, compelling websites and scalable platforms designed for how people actually use them.</p><span class="service-tags">WEB APPS <span>·</span> USER EXPERIENCE</span></div>
+          </a>
+          <a class="service-card service-card-consult reveal" href="#contact" data-service="IT Consulting">
+            <div class="service-card-top"><span class="service-number">03 / STRATEGIC THINKING</span><span class="service-arrow" aria-hidden="true">↗</span></div>
+            <div class="service-visual consulting-visual" aria-hidden="true"><div class="consult-node node-center">✦</div><div class="consult-node node-top">✳</div><div class="consult-node node-left">◇</div><div class="consult-node node-right">◎</div><svg class="connect-lines" viewBox="0 0 300 180" fill="none"><path d="M150 90 150 25M150 90 60 145M150 90 240 145" stroke="#96a79e" stroke-width="2" stroke-dasharray="4 7"/></svg></div>
+            <div class="service-card-bottom"><span class="service-icon">◎</span><h3>IT consulting</h3><p>Clear direction for complex technology decisions, backed by practical engineering insight.</p><span class="service-tags">STRATEGY <span>·</span> ARCHITECTURE</span></div>
+          </a>
+          <a class="service-card service-card-cloud reveal" href="#contact" data-service="Cloud Infrastructure">
+            <div class="service-card-top"><span class="service-number">04 / BUILT TO LAST</span><span class="service-arrow" aria-hidden="true">↗</span></div>
+            <div class="service-visual cloud-visual" aria-hidden="true"><div class="cloud-layer layer-back"></div><div class="cloud-layer layer-mid"></div><div class="cloud-layer layer-front"><span>✧</span></div><div class="cloud-spark cloud-spark-a">✦</div><div class="cloud-spark cloud-spark-b">✳</div></div>
+            <div class="service-card-bottom"><span class="service-icon">☁</span><h3>Cloud infrastructure</h3><p>Modern cloud architecture and automation to keep your business resilient and ready for more.</p><span class="service-tags">CLOUD <span>·</span> DEVOPS <span>·</span> DELIVERY</span></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="statement section" aria-label="Our design philosophy"><div class="wrap statement-inner reveal"><div class="statement-spark">✳</div><p>Good software does its job.<br /><em>Exceptional software</em> makes people feel something.</p><span>— THE STARAPPLE APPROACH</span></div></section>
+
+    <section id="story" class="story section">
+      <div class="story-noise" aria-hidden="true"></div>
+      <div class="wrap story-grid">
+        <div class="story-art reveal"><div class="story-orbit-ring story-orbit-ring-a"></div><div class="story-orbit-ring story-orbit-ring-b"></div><div class="story-fruit" id="story-fruit" aria-hidden="true"></div><span class="story-visual-note">NATURE'S DESIGN<br/>BECOMES OUR INSPIRATION</span></div>
+        <div class="story-content reveal"><div class="eyebrow eyebrow-on-dark"><span class="eyebrow-line"></span> OUR CORE / OUR STORY</div><h2>Inspired by nature.<br /><em>Engineered for what's next.</em></h2><p>Slice open a Philippine star apple — the <em>caimito</em> — and something remarkable appears: a star at its very center.</p><p>That's our philosophy. The finest digital experiences aren't just beautiful on the surface. They're built around a strong, intentional core: clean architecture, meaningful functionality, and technology that grows with you.</p><div class="story-pillars"><div><span>✳</span><strong>Thoughtful outside</strong><small>Experiences people love.</small></div><div><span>✦</span><strong>Powerful inside</strong><small>Engineering you can trust.</small></div></div><a class="button button-white" href="#contact">Get to know us <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+
+    <section id="github" class="github-section section"><div class="wrap">
+      <div class="section-heading reveal"><div><div class="eyebrow"><span class="eyebrow-line"></span> ENGINEERING, OUT IN THE OPEN</div><h2>Built with curiosity.<br /><em>Shared with the world.</em></h2></div><p>Peek under the hood. Our public GitHub activity offers a window into the code, experiments and ideas behind the work.</p></div>
+      <div class="github-panel reveal"><div class="github-panel-header"><div class="github-heading"><span class="github-terminal-icon" aria-hidden="true">&gt;_</span><div><strong>Developer pulse</strong><small>LIVE PUBLIC GITHUB DATA</small></div></div><div class="github-live"><span class="live-indicator"></span><span id="github-status">Connecting to GitHub…</span></div></div>
+        <div class="github-stats"><div class="github-stat"><span>PUBLIC REPOS DISPLAYED</span><strong id="stat-repos">—</strong><small>Up to 100 latest updated</small></div><div class="github-stat"><span>STARS ACROSS THESE REPOS</span><strong id="stat-stars">—</strong><small>Community appreciation</small></div><div class="github-stat"><span>MOST RECENT PUSH</span><strong class="stat-date" id="stat-activity">—</strong><small>Based on repository metadata</small></div></div>
+        <div class="github-bottom"><div><span class="github-code-mark">{ }</span><span id="github-description">Fetching public repository activity…</span></div><a class="text-link github-link" id="github-profile-link" href="https://github.com" target="_blank" rel="noopener noreferrer">View GitHub profile <span aria-hidden="true">↗</span></a></div>
+        <div class="github-repo-list" id="github-repo-list" aria-live="polite"></div>
+      </div><p class="github-disclaimer">Public API data can be delayed or rate-limited. Stats describe the configured public GitHub account, not customer projects or deployment uptime.</p>
+    </div></section>
+
+    <section id="contact" class="contact-section section"><div class="contact-halo" aria-hidden="true"></div><div class="wrap">
+      <div class="contact-heading reveal"><div class="eyebrow eyebrow-on-dark"><span class="eyebrow-line"></span> YOUR NEXT BIG THING STARTS HERE</div><h2>Have a bright idea?<br /><em>Let's make it real.</em></h2><p>Whether you're mapping your next move or ready to ship, there's a good place to start.</p></div>
+      <div class="contact-grid">
+        <div class="contact-card meeting-card reveal"><div class="form-head"><div class="form-emoji" aria-hidden="true">◷</div><div class="form-kicker">01 / LET'S CONNECT</div><h3>Book a conversation.</h3><p>Choose a preferred date and time for a discovery call. We'll follow up to confirm.</p></div>
+          <form id="meeting-form" novalidate>
+            <div class="form-field"><label for="meet-name">Your name <span>*</span></label><input id="meet-name" name="name" type="text" autocomplete="name" minlength="2" maxlength="100" required placeholder="What should we call you?" /></div>
+            <div class="form-row"><div class="form-field"><label for="meet-email">Work email <span>*</span></label><input id="meet-email" name="email" type="email" autocomplete="email" maxlength="254" required placeholder="you@company.com" /></div><div class="form-field"><label for="meet-company">Company</label><input id="meet-company" name="company" maxlength="120" placeholder="Optional" /></div></div>
+            <div class="calendar-head"><label class="calendar-label">Your preferred date <span>*</span></label><div class="calendar-controls"><button type="button" id="cal-prev" aria-label="Previous month">‹</button><strong id="cal-month">Month</strong><button type="button" id="cal-next" aria-label="Next month">›</button></div></div>
+            <div class="calendar-weekdays" aria-hidden="true"><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span><span>SUN</span></div><div class="calendar-days" id="calendar-days" role="group" aria-label="Select a preferred meeting date"></div>
+            <label class="calendar-label time-label">Preferred time <span>*</span> <small>Philippine Time (UTC+8)</small></label><div class="time-slots" id="time-slots" role="group" aria-label="Select preferred meeting time"><button type="button" data-time="09:00">9:00 AM</button><button type="button" data-time="11:00">11:00 AM</button><button type="button" data-time="14:00">2:00 PM</button><button type="button" data-time="16:00">4:00 PM</button></div>
+            <div class="form-field"><label for="meet-notes">Anything on your mind?</label><textarea id="meet-notes" name="brief" rows="2" maxlength="2000" placeholder="Tell us what you'd like to discuss…"></textarea></div>
+            <div class="fine-print">These are preferred slots, not live availability. We'll confirm your meeting by email.</div>
+            <div class="hp"><label>Leave this blank<input name="website" tabindex="-1" autocomplete="off" /></label></div>
+            <button class="button button-purple button-block form-submit" type="submit">Request a meeting <span aria-hidden="true">↗</span></button><p class="form-message" id="meeting-message" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+        <div class="contact-card rfq-card reveal"><div class="form-head"><div class="form-emoji form-emoji-pink" aria-hidden="true">✳</div><div class="form-kicker">02 / LET'S BUILD</div><h3>Tell us about your project.</h3><p>Have something bigger in mind? Give us the details and we'll start shaping a proposal.</p></div>
+          <div class="step-header"><span id="step-counter">STEP 01 OF 03</span><div class="step-progress" aria-label="Quotation form progress"><i class="step-progress-fill" id="step-progress-fill"></i></div></div>
+          <form id="rfq-form" novalidate enctype="multipart/form-data">
+            <fieldset class="form-step" data-step="0"><legend class="sr-only">About you</legend><h4>First, let's get acquainted.</h4><div class="form-field"><label for="rfq-name">Your full name <span>*</span></label><input id="rfq-name" name="name" type="text" minlength="2" maxlength="100" autocomplete="name" placeholder="Your name" required /></div><div class="form-field"><label for="rfq-email">Work email <span>*</span></label><input id="rfq-email" name="email" type="email" maxlength="254" autocomplete="email" placeholder="you@company.com" required /></div><div class="form-field"><label for="rfq-company">Company or organization</label><input id="rfq-company" name="company" maxlength="120" autocomplete="organization" placeholder="Company name (optional)" /></div></fieldset>
+            <fieldset class="form-step" data-step="1" hidden><legend class="sr-only">Project details</legend><h4>What are we creating?</h4><div class="form-field"><label for="rfq-scope">Type of project <span>*</span></label><select id="rfq-scope" name="scope" required><option value="">Select an area of expertise</option><option>Custom App Development</option><option>Web Platforms</option><option>IT Consulting</option><option>Cloud Infrastructure</option><option>Something else / Not sure yet</option></select></div><div class="form-field"><label for="rfq-budget">Estimated budget <span>*</span></label><select id="rfq-budget" name="budget" required><option value="">Choose a range (USD)</option><option>Under $5,000</option><option>$5,000–$15,000</option><option>$15,000–$50,000</option><option>$50,000+</option><option>Let's discuss</option></select></div><div class="form-field"><label for="rfq-brief">Your big idea <span>*</span></label><textarea id="rfq-brief" name="brief" minlength="20" maxlength="5000" rows="5" required placeholder="What problem are you solving? What would success look like?"></textarea></div></fieldset>
+            <fieldset class="form-step" data-step="2" hidden><legend class="sr-only">Attachment and review</legend><h4>The finishing touches.</h4><div class="upload-zone"><span class="upload-icon" aria-hidden="true">⇧</span><strong>Add a project brief</strong><p>Optional — PDF, DOC, DOCX, JPG, PNG. Up to 5 MB.</p><input id="rfq-file" type="file" name="attachment" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" aria-label="Upload optional project brief" /><label for="rfq-file" class="upload-select">Choose file</label><span id="upload-filename" class="upload-filename">No file selected</span></div><div class="review-box"><span>REVIEW YOUR REQUEST</span><div id="rfq-review">Your details will appear here.</div></div><label class="check-label"><input id="rfq-consent" type="checkbox" name="consent" required /><span>I agree to be contacted about my request and understand that submitted information will be used to respond to it. <a href="#privacy" class="privacy-trigger">Privacy details</a> <b>*</b></span></label></fieldset>
+            <div class="hp"><label>Leave this blank<input name="website" tabindex="-1" autocomplete="off" /></label></div>
+            <div class="step-actions"><button id="rfq-back" type="button" class="button button-outline" hidden>← Back</button><button id="rfq-next" type="button" class="button button-purple step-next">Continue <span aria-hidden="true">↗</span></button><button id="rfq-submit" type="submit" class="button button-purple step-next" hidden>Send my request <span aria-hidden="true">↗</span></button></div><p class="form-message" id="rfq-message" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </div></section>
+  </main>
+
+  <footer class="footer"><div class="wrap"><div class="footer-top"><div class="footer-identity"><a href="#hero" class="footer-logo"><span id="footer-brand-mark" aria-hidden="true"></span><strong>starapple<span>.</span></strong></a><p>Thoughtful experiences.<br/>Extraordinary at the core.</p><span class="ph-badge"><span>✦</span> PROUDLY ROOTED IN THE PHILIPPINES</span></div><div class="footer-column"><strong>Explore</strong><a href="#services">What we do</a><a href="#story">Our core</a><a href="#github">GitHub activity</a><a href="#contact">Start a project</a></div><div class="footer-column"><strong>Connect</strong><a href="#contact">Book a conversation</a><a href="#contact">Request a quote</a><a href="https://github.com/cmlagatuz" id="footer-github" rel="noopener noreferrer" target="_blank">GitHub ↗</a><a href="#contact" id="footer-email" hidden>Email us ↗</a></div></div><div class="footer-bottom"><span>© <span id="year"></span> StarApple Apps LLC. All rights reserved.</span><div><a href="#privacy" class="privacy-trigger">Privacy</a><a href="#terms" class="terms-trigger">Terms</a><span>CRAFTED WITH PURPOSE ✳</span></div></div></div></footer>
+
+  <dialog id="legal-dialog" class="legal-dialog" aria-labelledby="legal-title"><div class="legal-dialog-header"><h2 id="legal-title">Privacy information</h2><button id="legal-close" type="button" aria-label="Close dialog">×</button></div><div id="legal-body" class="legal-dialog-body"></div></dialog>
+  <div class="confetti-layer" id="confetti-layer" aria-hidden="true"></div>
+</body>
+</html>
