@@ -239,3 +239,11 @@ Both meeting and quote forms POST multipart data to `/api/inquiries`, served by 
 You can deploy manually from the repository root using `firebase login`, `npm ci --prefix functions` and `firebase deploy --only functions:submitInquiry --project starappleapps`. Set up the default Cloud Firestore database for inquiry records, and configure Cloud Storage for optional attachments. Restrict production access in `firestore.rules` and `storage.rules`. Do not expose a writeable public database or client-side secret as a form workaround.
 
 **Live verification:** Visit `https://starappleapps.web.app/api/inquiries` directly; the deployed function responds with HTTP 405 for GET. A 404 or HTML page indicates that the Hosting-to-Function route is not available. Then submit a non-sensitive test inquiry through the website and confirm a `SAP-...` reference and a corresponding Firestore document before publishing the form as operational.
+
+## Full-screen presentation scrolling
+
+The hero background video is full-bleed again (without a border or dedicated video card), with a shorter headline on top and a dark gradient that leaves the right half visible. On sufficiently wide and tall desktop viewports, each major section fills the available screen under the sticky header and uses native CSS scroll snapping to move between deliberate scenes. This includes the overview, interactive solution explorer, services, design statement, story, contact, and closing footer. The small marquee strip is removed to avoid awkward half-section stops.
+
+The four service cards are shown in a compact single row on large desktops rather than two tall rows. Contact forms open in accessible, scrollable dialogs; their original field IDs, validation, and Firebase submission endpoints are retained. The main page remains readable without being forced to navigate through lengthy forms.
+
+On tablets, narrow windows, short viewports and reduced-motion preferences, mandatory snapping is disabled so visitors can scroll naturally and nothing is clipped. The browser's normal wheel, keyboard, touch, and anchor behavior is preserved; no custom wheel interception is used.

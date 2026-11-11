@@ -55,7 +55,12 @@
   </header>
 
   <main id="main">
-    <section id="hero" class="hero section">
+    <section id="hero" class="hero section page-panel">
+      <div class="hero-cinema" aria-hidden="true">
+        <video id="hero-film" autoplay muted loop playsinline preload="none" poster="/media/starapple-core-poster.webp" width="960" height="540">
+          <source src="https://www.unkey.com/videos/home/hero-av1.mp4" type="video/mp4" />
+        </video>
+      </div>
       <div class="hero-grid-bg" aria-hidden="true"></div>
       <div class="hero-ambient hero-ambient-purple" aria-hidden="true"></div>
       <div class="hero-ambient hero-ambient-green" aria-hidden="true"></div>
@@ -81,7 +86,7 @@
     </section>
 
 
-    <section id="lab" class="lab section" aria-labelledby="lab-title">
+    <section id="lab" class="lab section page-panel" aria-labelledby="lab-title">
       <div class="wrap">
         <div class="lab-intro reveal">
           <div class="eyebrow eyebrow-on-dark"><span class="eyebrow-line"></span> FIND YOUR FIT</div>
@@ -123,9 +128,8 @@
       </div>
     </section>
 
-    <div class="marquee" aria-label="Services and capabilities"><div class="marquee-track" aria-hidden="true"><span>IDEATE <b>✳</b> DESIGN <b>✳</b> DEVELOP <b>✳</b> DEPLOY <b>✳</b> EVOLVE <b>✳</b> IDEATE <b>✳</b> DESIGN <b>✳</b> DEVELOP <b>✳</b> DEPLOY <b>✳</b> EVOLVE <b>✳</b></span></div></div>
 
-    <section id="services" class="services section">
+    <section id="services" class="services section page-panel">
       <div class="wrap">
         <div class="section-heading reveal">
           <div><div class="eyebrow"><span class="eyebrow-line"></span> WHAT WE CREATE</div><h2>One team.<br /><em>Every digital layer.</em></h2></div>
@@ -156,9 +160,9 @@
       </div>
     </section>
 
-    <section class="statement section" aria-label="Our design philosophy"><div class="wrap statement-inner reveal"><div class="statement-spark">✳</div><p>Good software does its job.<br /><em>Exceptional software</em> makes people feel something.</p><span>— THE STARAPPLE APPROACH</span></div></section>
+    <section class="statement section page-panel" aria-label="Our design philosophy"><div class="wrap statement-inner reveal"><div class="statement-spark">✳</div><p>Good software does its job.<br /><em>Exceptional software</em> makes people feel something.</p><span>— THE STARAPPLE APPROACH</span></div></section>
 
-    <section id="story" class="story section">
+    <section id="story" class="story section page-panel">
       <div class="story-noise" aria-hidden="true"></div>
       <div class="wrap story-grid">
         <div class="story-art reveal"><div class="story-orbit-ring story-orbit-ring-a"></div><div class="story-orbit-ring story-orbit-ring-b"></div><div class="story-fruit" id="story-fruit" aria-hidden="true"></div><span class="story-visual-note">NATURE'S DESIGN<br/>BECOMES OUR INSPIRATION</span></div>
@@ -168,10 +172,48 @@
 
 
 
-    <section id="contact" class="contact-section section"><div class="contact-halo" aria-hidden="true"></div><div class="wrap">
-      <div class="contact-heading reveal"><div class="eyebrow eyebrow-on-dark"><span class="eyebrow-line"></span> YOUR NEXT BIG THING STARTS HERE</div><h2>Have a bright idea?<br /><em>Let's make it real.</em></h2><p>Whether you're mapping your next move or ready to ship, there's a good place to start.</p></div>
-      <div class="contact-grid">
-        <div class="contact-card meeting-card reveal"><div class="form-head"><div class="form-emoji" aria-hidden="true">◷</div><div class="form-kicker">01 / LET'S CONNECT</div><h3>Book a conversation.</h3><p>Choose a preferred date and time for a discovery call. We'll follow up to confirm.</p></div>
+    <section id="contact" class="contact-section section page-panel" aria-labelledby="contact-title">
+      <div class="contact-halo" aria-hidden="true"></div>
+      <div class="wrap contact-stage">
+        <div class="contact-heading reveal">
+          <div class="eyebrow eyebrow-on-dark"><span class="eyebrow-line"></span> THE NEXT CHAPTER STARTS HERE</div>
+          <h2 id="contact-title">Let's make <em>something real.</em></h2>
+          <p>One conversation can change everything. Tell us what you're planning—we'll help you find a practical place to begin.</p>
+        </div>
+        <div class="contact-grid contact-choices">
+          <article class="contact-choice reveal">
+            <span class="contact-choice-symbol" aria-hidden="true">◷</span>
+            <div class="form-kicker">01 / LET'S CONNECT</div>
+            <h3>Start with a conversation.</h3>
+            <p>Have an idea or a question? Suggest a preferred time for a discovery call.</p>
+            <button type="button" class="button button-dark" data-open-dialog="meeting-dialog">Request a meeting <span aria-hidden="true">↗</span></button>
+            <small>Preferred time only — we'll confirm by email.</small>
+          </article>
+          <article class="contact-choice reveal">
+            <span class="contact-choice-symbol" aria-hidden="true">✳</span>
+            <div class="form-kicker">02 / LET'S BUILD</div>
+            <h3>Tell us what you're building.</h3>
+            <p>Share your goals, project scope and budget so we can start shaping a proposal.</p>
+            <button type="button" class="button button-dark" data-open-dialog="rfq-dialog">Request a proposal <span aria-hidden="true">↗</span></button>
+            <small>Project briefs and attachments are welcome.</small>
+          </article>
+        </div>
+        <div class="contact-footnote">✳ PHILIPPINE ROOTS · WORLDWIDE AMBITION · A BETTER DIGITAL FUTURE</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer section page-panel"><div class="wrap">
+    <div class="footer-closing">
+      <span>THE BRIGHTEST IDEAS START SOMEWHERE</span>
+      <h2>Ready to find your <em>next star?</em></h2>
+      <a class="button button-white" href="#contact">Let's work together <span aria-hidden="true">↗</span></a>
+    </div><div class="footer-top"><div class="footer-identity"><a href="#hero" class="footer-logo"><span id="footer-brand-mark" aria-hidden="true"></span><strong>starapple<span>.</span></strong></a><p>Thoughtful experiences.<br/>Extraordinary at the core.</p><span class="ph-badge"><span>✦</span> PROUDLY ROOTED IN THE PHILIPPINES</span></div><div class="footer-column"><strong>Explore</strong><a href="#services">What we do</a><a href="#story">Our core</a><a href="#lab">Our approach</a><a href="#contact">Start a project</a></div><div class="footer-column"><strong>Connect</strong><a href="#contact">Book a conversation</a><a href="#contact">Request a quote</a><a href="#contact" id="footer-email" hidden>Email us ↗</a></div></div><div class="footer-bottom"><span>© <span id="year"></span> StarApple Apps LLC. All rights reserved.</span><div><a href="#privacy" class="privacy-trigger">Privacy</a><a href="#terms" class="terms-trigger">Terms</a><span>CRAFTED WITH PURPOSE ✳</span></div></div></div></footer>
+
+
+  <dialog id="meeting-dialog" class="inquiry-dialog" aria-labelledby="meeting-dialog-title">
+    <button type="button" class="inquiry-dialog-close" data-close-dialog aria-label="Close meeting request">×</button>
+    <div class="contact-card meeting-card"><div class="form-head"><div class="form-emoji" aria-hidden="true">◷</div><div class="form-kicker">01 / LET'S CONNECT</div><h3 id="meeting-dialog-title">Book a conversation.</h3><p>Choose a preferred date and time for a discovery call. We'll follow up to confirm.</p></div>
           <form id="meeting-form" novalidate>
             <div class="form-field"><label for="meet-name">Your name <span>*</span></label><input id="meet-name" name="name" type="text" autocomplete="name" minlength="2" maxlength="100" required placeholder="What should we call you?" /></div>
             <div class="form-row"><div class="form-field"><label for="meet-email">Work email <span>*</span></label><input id="meet-email" name="email" type="email" autocomplete="email" maxlength="254" required placeholder="you@company.com" /></div><div class="form-field"><label for="meet-company">Company</label><input id="meet-company" name="company" maxlength="120" placeholder="Optional" /></div></div>
@@ -184,7 +226,11 @@
             <button class="button button-purple button-block form-submit" type="submit">Request a meeting <span aria-hidden="true">↗</span></button><p class="form-message" id="meeting-message" role="status" aria-live="polite"></p>
           </form>
         </div>
-        <div class="contact-card rfq-card reveal"><div class="form-head"><div class="form-emoji form-emoji-pink" aria-hidden="true">✳</div><div class="form-kicker">02 / LET'S BUILD</div><h3>Tell us about your project.</h3><p>Have something bigger in mind? Give us the details and we'll start shaping a proposal.</p></div>
+  </dialog>
+
+  <dialog id="rfq-dialog" class="inquiry-dialog" aria-labelledby="rfq-dialog-title">
+    <button type="button" class="inquiry-dialog-close" data-close-dialog aria-label="Close quotation request">×</button>
+    <div class="contact-card rfq-card"><div class="form-head"><div class="form-emoji form-emoji-pink" aria-hidden="true">✳</div><div class="form-kicker">02 / LET'S BUILD</div><h3 id="rfq-dialog-title">Tell us about your project.</h3><p>Have something bigger in mind? Give us the details and we'll start shaping a proposal.</p></div>
           <div class="step-header"><span id="step-counter">STEP 01 OF 03</span><div class="step-progress" aria-label="Quotation form progress"><i class="step-progress-fill" id="step-progress-fill"></i></div></div>
           <form id="rfq-form" novalidate enctype="multipart/form-data">
             <fieldset class="form-step" data-step="0"><legend class="sr-only">About you</legend><h4>First, let's get acquainted.</h4><div class="form-field"><label for="rfq-name">Your full name <span>*</span></label><input id="rfq-name" name="name" type="text" minlength="2" maxlength="100" autocomplete="name" placeholder="Your name" required /></div><div class="form-field"><label for="rfq-email">Work email <span>*</span></label><input id="rfq-email" name="email" type="email" maxlength="254" autocomplete="email" placeholder="you@company.com" required /></div><div class="form-field"><label for="rfq-company">Company or organization</label><input id="rfq-company" name="company" maxlength="120" autocomplete="organization" placeholder="Company name (optional)" /></div></fieldset>
@@ -194,11 +240,7 @@
             <div class="step-actions"><button id="rfq-back" type="button" class="button button-outline" hidden>← Back</button><button id="rfq-next" type="button" class="button button-purple step-next">Continue <span aria-hidden="true">↗</span></button><button id="rfq-submit" type="submit" class="button button-purple step-next" hidden>Send my request <span aria-hidden="true">↗</span></button></div><p class="form-message" id="rfq-message" role="status" aria-live="polite"></p>
           </form>
         </div>
-      </div>
-    </div></section>
-  </main>
-
-  <footer class="footer"><div class="wrap"><div class="footer-top"><div class="footer-identity"><a href="#hero" class="footer-logo"><span id="footer-brand-mark" aria-hidden="true"></span><strong>starapple<span>.</span></strong></a><p>Thoughtful experiences.<br/>Extraordinary at the core.</p><span class="ph-badge"><span>✦</span> PROUDLY ROOTED IN THE PHILIPPINES</span></div><div class="footer-column"><strong>Explore</strong><a href="#services">What we do</a><a href="#story">Our core</a><a href="#lab">Our approach</a><a href="#contact">Start a project</a></div><div class="footer-column"><strong>Connect</strong><a href="#contact">Book a conversation</a><a href="#contact">Request a quote</a><a href="#contact" id="footer-email" hidden>Email us ↗</a></div></div><div class="footer-bottom"><span>© <span id="year"></span> StarApple Apps LLC. All rights reserved.</span><div><a href="#privacy" class="privacy-trigger">Privacy</a><a href="#terms" class="terms-trigger">Terms</a><span>CRAFTED WITH PURPOSE ✳</span></div></div></div></footer>
+  </dialog>
 
   <dialog id="legal-dialog" class="legal-dialog" aria-labelledby="legal-title"><div class="legal-dialog-header"><h2 id="legal-title">Privacy information</h2><button id="legal-close" type="button" aria-label="Close dialog">×</button></div><div id="legal-body" class="legal-dialog-body"></div></dialog>
   <div class="confetti-layer" id="confetti-layer" aria-hidden="true"></div>

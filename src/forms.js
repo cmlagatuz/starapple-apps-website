@@ -74,7 +74,14 @@ export function initForms() {
   }
   next.addEventListener('click', () => {if (validateInputs(steps[step])) {setStep(Math.min(2,step+1));}});
   back.addEventListener('click', () => setStep(Math.max(0,step-1)));
-  document.querySelectorAll('[data-service]').forEach(card => card.addEventListener('click', () => { $('rfq-scope').value=card.dataset.service; }));
+  document.querySelectorAll('[data-service]').forEach(card => card.addEventListener('click', event => {
+    $('rfq-scope').value = card.dataset.service;
+    const dialog = $('rfq-dialog');
+    if (dialog && typeof dialog.showModal === 'function') {
+      event.preventDefault();
+      if (!dialog.open) dialog.showModal();
+    }
+  }));
   const file=$('rfq-file');
   file.addEventListener('change', () => {
     const selected=file.files?.[0];

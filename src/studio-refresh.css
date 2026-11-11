@@ -92,3 +92,159 @@
  .lab-statusbar span:last-child{display:none}
 }
 @media(prefers-reduced-motion:reduce){.lab-switch .studio-preview h3,.lab-switch .studio-outcomes span{animation:none}}
+
+
+/* Cinematic one-screen storytelling: native scroll snap, no wheel interception. */
+:root { --view-nav:68px; }
+html{scroll-padding-top:var(--view-nav)}
+.page-panel{position:relative;scroll-margin-top:var(--view-nav)}
+/* Full-bleed video again: intentionally behind the message, never in a card. */
+.hero{min-height:calc(100svh - var(--view-nav));background:#07070b;isolation:isolate}
+.hero-layout{position:relative;z-index:3;min-height:calc(100svh - var(--view-nav));display:flex;flex-direction:column}
+.hero-cinema{position:absolute;inset:0;width:100%;height:100%;min-height:100%;border:0;border-radius:0;box-shadow:none;background:#07070b url('/media/starapple-core-poster.webp') center/cover no-repeat;overflow:hidden;pointer-events:none;z-index:0}
+.hero-cinema video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:65% 50%;opacity:1;filter:none}
+.hero-cinema::before{z-index:2;opacity:.08}
+.hero-cinema::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,#08080df5 0%,#08080ded 22%,#08080dd3 34%,#08080d90 47%,#08080d32 73%,#08080d10 100%),linear-gradient(180deg,#08080d66 0%,transparent 20%,transparent 73%,#08080db8 100%)}
+.hero-content{display:flex;flex:1;align-items:center;min-height:0;padding:clamp(22px,3svh,42px) 0}
+.hero-copy{position:relative;z-index:3;width:min(100%,525px);max-width:525px;min-width:0;padding:0}
+.hero-eyebrow{margin-bottom:clamp(14px,2.8svh,25px)}
+.hero h1{font-family:var(--display);font-weight:600;font-size:clamp(3rem,4.05vw,4.9rem);line-height:1.065;letter-spacing:-.075em;max-width:530px;margin-bottom:22px}
+.hero-description{font-size:clamp(.91rem,1.06vw,1.01rem);line-height:1.63;max-width:490px}
+.hero-actions{margin-top:23px;gap:16px}
+.hero-bottom{position:relative;z-index:4;min-height:59px;padding:13px 0}
+.hero .hero-ambient{pointer-events:none;z-index:1;opacity:.09}
+.hero .hero-grid-bg{pointer-events:none;z-index:1;opacity:.11}
+@media (min-width:1180px) and (min-height:720px) and (prefers-reduced-motion:no-preference) {
+  html{scroll-snap-type:y mandatory}
+  .page-panel{scroll-snap-align:start;scroll-snap-stop:always}
+}
+/* Every presentation section is designed to fill an available viewport. */
+@media(min-width:1180px) {
+  .lab,.services,.story,.statement,.contact-section,.footer{min-height:calc(100svh - var(--view-nav));display:flex;align-items:center}
+  .lab,.services,.story,.contact-section{padding:clamp(24px,3.6svh,52px) 0}
+  .lab>.wrap,.services>.wrap,.story>.wrap,.contact-section>.wrap,.footer>.wrap{width:min(1280px,calc(100% - 88px))}
+  .lab-intro{margin-bottom:clamp(18px,2.5svh,28px);align-items:center}
+  .lab-intro h2{font-size:clamp(2.6rem,4.1vw,4.7rem)}
+  .lab-intro p{font-size:.88rem}
+  .lab-panel{min-height:clamp(305px,39svh,390px)}
+  .lab-visual{min-height:clamp(305px,39svh,390px);padding:clamp(20px,3svh,36px)}
+  .lab-details{padding:clamp(20px,2.8svh,32px)}
+  .studio-preview-icon{width:56px;height:56px;margin:17px 0}
+  .studio-preview h3{font-size:clamp(1.9rem,2.6vw,3rem)}
+  .lab-details-label{margin-bottom:16px}
+  .studio-deliverables li{padding-top:7px;padding-bottom:7px}
+  .services{min-height:calc(100svh - var(--view-nav));padding:clamp(28px,3.8svh,52px) 0}
+  .services .section-heading{margin-bottom:clamp(18px,2.6svh,31px)}
+  .services .section-heading h2{font-size:clamp(2.7rem,4.1vw,4.6rem)}
+  .services .section-heading p{font-size:.86rem}
+  .services-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
+  .services .service-card{padding:clamp(15px,1.45vw,23px);min-height:clamp(325px,43svh,415px);display:flex;flex-direction:column}
+  .services .service-visual{height:clamp(118px,16svh,190px);flex:0 0 auto;transform:scale(.86);transform-origin:center}
+  .services .service-card-bottom{margin-top:auto}
+  .services .service-card-bottom h3{font-size:clamp(1.45rem,1.85vw,2.1rem)}
+  .services .service-card-bottom p{font-size:.78rem;line-height:1.45;margin-bottom:12px}
+  .services .service-tags{font-size:.52rem}
+  .story{padding:clamp(24px,3.4svh,54px) 0}
+  .story-grid{gap:6%;align-items:center}
+  .story-art{min-height:clamp(345px,62svh,565px)}
+  .story-content h2{font-size:clamp(2.6rem,3.7vw,4.35rem);margin:12px 0 17px}
+  .story-content>p{font-size:.9rem;line-height:1.6;margin-bottom:12px}
+  .story-pillars{margin:15px 0}
+  .statement{padding:30px 0;justify-content:center}
+  .statement-inner{width:min(980px,calc(100% - 110px))}
+  .statement p{font-size:clamp(2.8rem,5.2vw,5.9rem)}
+  .contact-section{padding:clamp(28px,4svh,56px) 0}
+  .contact-heading{margin-bottom:clamp(20px,3svh,38px)}
+  .contact-heading h2{font-size:clamp(2.8rem,4.8vw,5rem);margin:11px 0}
+  .contact-heading p{max-width:600px;margin:0 auto;line-height:1.5}
+  .contact-choices{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .footer{justify-content:center}
+}
+.contact-stage{position:relative}
+.contact-choice{display:flex;flex-direction:column;align-items:flex-start;gap:13px;padding:clamp(22px,3vw,35px);border:1px solid #cfc3d1;background:#fbfafd;border-radius:18px;min-height:270px;color:#241a29}
+.contact-choice:hover{border-color:#9f75bc;box-shadow:0 12px 40px #12051612}
+.contact-choice-symbol{display:grid;place-items:center;width:45px;height:45px;border:1px solid #cba9d3;border-radius:12px;background:#f4eaf7;color:#774798;font-size:1.5rem}
+.contact-choice h3{font:600 clamp(1.4rem,2vw,2.2rem)/1.15 var(--display);letter-spacing:-.05em;margin:0}
+.contact-choice p{font-size:.92rem;line-height:1.55;color:#665b6b;max-width:440px;margin:0}
+.contact-choice .button{margin-top:auto;border-radius:8px;min-height:43px;padding:11px 20px}
+.contact-choice small{font-size:.69rem;color:#736978}
+.contact-footnote{text-align:center;margin-top:24px;font:.61rem var(--mono);color:#7b6f80;letter-spacing:.075em}
+.inquiry-dialog{position:fixed;inset:0;margin:auto;width:min(690px,calc(100vw - 28px));max-width:690px;max-height:min(88dvh,920px);padding:0;border:1px solid #d8ccdc;background:#f9f8f8;color:#211826;border-radius:17px;box-shadow:0 40px 120px #050107a8;overflow-y:auto;overscroll-behavior:contain}
+.inquiry-dialog::backdrop{background:#05040bd9;backdrop-filter:blur(8px)}
+.inquiry-dialog .contact-card{border:0;max-width:none;width:auto;margin:0;box-shadow:none;border-radius:17px;padding:37px}
+.inquiry-dialog-close{position:sticky;top:12px;float:right;margin:12px 14px -47px 0;display:grid;place-items:center;width:37px;height:37px;border:1px solid #c3b8ca;border-radius:50%;font-size:1.5rem;line-height:1;background:#fff;color:#2a2031;z-index:3}
+.inquiry-dialog-close:hover{background:#eee4f6}
+.inquiry-dialog .form-head{padding-right:46px}
+body:has(.inquiry-dialog[open]){overflow:hidden}
+.footer{min-height:calc(100svh - var(--view-nav));display:flex;align-items:center;padding:clamp(24px,3svh,45px) 0}
+.footer>.wrap{width:min(1280px,calc(100% - 88px))}
+.footer-closing{border-bottom:1px solid #ffffff24;text-align:center;padding:0 0 clamp(16px,3svh,40px);margin-bottom:clamp(16px,3svh,40px)}
+.footer-closing span{font:500 .64rem var(--mono);letter-spacing:.12em;color:#bba0d7}
+.footer-closing h2{font-family:var(--display);font-size:clamp(2.7rem,5.1vw,6rem);color:#f8f6fb;margin:13px 0 18px}
+.footer-closing h2 em{font-style:normal;color:#d7b0f4}
+.footer-closing .button{background:#f4eefa;color:#170f1d}
+.footer-top{padding-bottom:clamp(16px,3svh,42px)}
+.footer-bottom{padding-top:clamp(12px,2svh,23px)}
+@media (max-width:1179px) {
+  html{scroll-snap-type:none}
+  .hero-layout{min-height:calc(100svh - var(--view-nav))}
+  .hero-content{display:flex;align-items:center;min-height:0}
+  .hero-copy{max-width:min(540px,75%);padding:0}
+  .hero-cinema{position:absolute;inset:0;width:100%;height:100%;min-height:100%;border-radius:0;border:0}
+  .services-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .services .service-card{min-height:390px}
+  .services .service-visual{height:170px}
+  .lab,.services,.story{padding:clamp(45px,7vw,85px) 0}
+}
+@media(max-width:850px){
+  .hero-content{display:flex;min-height:0;align-items:center;padding:35px 0}
+  .hero-copy{max-width:min(540px,92%);padding:0}
+  .hero h1{font-size:clamp(2.8rem,7.3vw,4.6rem)}
+  .hero-cinema{top:0;object-position:65% 50%}
+  .hero-cinema::after{background:linear-gradient(90deg,#08080de8 0%,#08080dc9 45%,#08080d6c 80%),linear-gradient(180deg,#08080d40,transparent 55%,#08080dbc)}
+  .services-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .services .service-card{min-height:340px}
+  .services .service-visual{height:135px}
+  .contact-choices{grid-template-columns:1fr}
+  .contact-choice{min-height:210px}
+  .footer{min-height:0;padding:55px 0}
+}
+@media(max-width:590px){
+  :root{--view-nav:68px}
+  .hero{min-height:calc(100svh - var(--view-nav))}
+  .hero-layout{min-height:calc(100svh - var(--view-nav))}
+  .hero-topline{height:60px;min-height:60px}
+  .hero-content{align-items:center;min-height:0;padding:22px 0}
+  .hero-copy{width:100%;max-width:100%;padding:0}
+  .hero h1{font-size:clamp(2.55rem,10.2vw,3.75rem);max-width:100%}
+  .hero-description{font-size:.92rem}
+  .hero-cinema{inset:0;top:0;min-height:100%;height:100%;border:0;border-radius:0}
+  .hero-cinema video{object-position:67% center}
+  .hero-cinema::after{background:linear-gradient(180deg,#07070bdf 0%,#07070bd0 28%,#07070b6c 64%,#07070baf 100%)}
+  .hero-bottom{min-height:53px;padding:10px 0;gap:10px}
+  .hero-actions{gap:10px}
+  .hero .button-large{min-height:43px;padding:11px 17px}
+  .services-grid{grid-template-columns:1fr}
+  .services .service-card{min-height:320px}
+  .services .service-visual{height:120px}
+  .services{padding:60px 0}
+  .contact-section{padding:60px 0}
+  .contact-heading h2{font-size:clamp(2.8rem,9.5vw,4.1rem)}
+  .contact-choice{padding:22px}
+  .contact-footnote{line-height:1.5}
+  .inquiry-dialog{width:calc(100vw - 14px);max-height:94dvh}
+  .inquiry-dialog .contact-card{padding:26px 18px}
+  .footer>.wrap{width:calc(100% - 34px)}
+  .footer-closing h2{font-size:clamp(2.6rem,9vw,4.1rem)}
+}
+@media(max-height:719px){
+  html{scroll-snap-type:none}
+  .page-panel{min-height:0}
+  .hero,.hero-layout{min-height:calc(100svh - var(--view-nav))}
+  .lab,.services,.story,.contact-section{padding-block:38px}
+  .footer{min-height:0}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-snap-type:none;scroll-behavior:auto}
+  .page-panel{scroll-snap-stop:normal}
+}
