@@ -41,3 +41,19 @@ test('Both provided images are fitted responsively with independent crop setting
   assert.match(css,/@media\(max-width:850px\)/);
   assert.doesNotMatch(js,/founders-dialog/);
 });
+
+test('Both founders have useful editorial backgrounds without invented personal credentials', async () => {
+  const html=await readFile('index.html','utf8');
+  const css=await readFile('src/studio-refresh.css','utf8');
+  const section=html.slice(html.indexOf('<section id="founders"'),html.indexOf('</section>',html.indexOf('<section id="founders"')));
+  assert.equal((section.match(/class="founder-profile-bio"/g)||[]).length,2);
+  assert.ok(section.includes('THE FOUNDING VISION'));
+  assert.ok(section.includes('THE BUILDING MINDSET'));
+  for(const tag of ['Product vision','Creative direction','Digital experience','Development','Problem-solving','Delivery']) {
+    assert.ok(section.includes(tag),tag);
+  }
+  assert.doesNotMatch(section,/university|degree|years of experience|award-winning|certified|previously worked/i);
+  assert.match(css,/\.founder-profile-bio/);
+  assert.match(css,/\.founder-focus span/);
+  assert.match(css,/height:clamp\(195px,28svh,310px\)/);
+});

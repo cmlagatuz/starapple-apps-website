@@ -255,3 +255,9 @@ The **Our Core → Get to know us** link now scrolls to a dedicated `#founders` 
 The professional two-column layout identifies **Zantetsuken — Founder** and **Ajing — Co-Founder**, using only their chosen public developer names. Both images are linked directly from the exact URLs provided by the project owner and fitted with `object-fit:cover`, individual `object-position` crop controls, an editorial dark-gradient overlay, and responsive stacking. Neither image is a verified photograph of either individual; the alt attributes describe them as illustrative artwork.
 
 The supplied third-party images are not owned or licensed by this codebase. Before promoting the site commercially, obtain suitable reuse permission or replace them with artwork the company has rights to. Remote image hosts can change or block delivery. To replace an image later, change the corresponding `img src` in `index.html`, then run the existing deploy workflow. No modal JS, legal-name placeholders, or photo-placeholder assets remain.
+
+## Founder profile narratives
+
+Both inline founder cards include an **Approach & Focus** overview under the role and name. The copy describes a founding product vision for Zantetsuken and a practical delivery mindset for Ajing, with short service-oriented focus tags. These are editorial descriptions aligned with StarApple's positioning; they do **not** claim verified biographies, previous employers, degrees, years of experience, or personal awards.
+
+The existing remote images and crop positions are preserved. On large screens, portrait height is reduced to accommodate the new descriptions without undermining the full-screen scroll design. On smaller screens the cards stack with natural scrolling. Update biographies in `index.html` once the founders approve more specific factual career details.

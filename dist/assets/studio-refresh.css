@@ -327,3 +327,103 @@ body:has(.inquiry-dialog[open]){overflow:hidden}
 }
 @media(max-height:719px) { .founders-section { min-height:0;padding:40px 0; } }
 @media(prefers-reduced-motion:reduce) { .founder-profile,.founder-profile-image img { animation:none;transition:none; } }
+
+
+/* Founders: concise approach-oriented bios, rather than unverified personal histories. */
+.founder-profile {
+  display:flex;
+  flex-direction:column;
+}
+.founder-profile-image {
+  height:clamp(200px,29svh,320px);
+}
+.founder-profile-details {
+  padding:16px clamp(20px,2.2vw,28px) 12px;
+}
+.founder-position {
+  margin-bottom:4px;
+}
+.founder-profile-details h3 {
+  font-size:clamp(1.75rem,2.2vw,2.45rem);
+}
+.founder-profile-bio {
+  flex:1;
+  border-top:1px solid #ffffff17;
+  margin:0 clamp(20px,2.2vw,28px);
+  padding:14px 0 18px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.founder-bio-label {
+  color:#bfa2db;
+  font:500 .58rem var(--mono);
+  letter-spacing:.14em;
+}
+.founder-profile-bio p {
+  color:#c1bcca;
+  font-size:clamp(.78rem,.86vw,.89rem);
+  line-height:1.5;
+  margin:0;
+  max-width:63ch;
+}
+.founder-focus {
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:auto;
+}
+.founder-focus span {
+  color:#d9c8eb;
+  border:1px solid #ad8bd14a;
+  background:#bd9be712;
+  border-radius:100px;
+  padding:6px 9px;
+  font:500 .59rem var(--mono);
+  letter-spacing:.01em;
+}
+@media(min-width:1180px) {
+  .founders-section {
+    padding:clamp(18px,2.5svh,33px) 0;
+  }
+  .founders-section-heading {
+    margin-bottom:clamp(15px,2svh,24px);
+  }
+  .founder-profile-image {
+    height:clamp(195px,28svh,310px);
+  }
+  .founder-profile-details {
+    padding-top:14px;
+    padding-bottom:10px;
+  }
+  .founder-profile-bio {
+    padding:12px 0 14px;
+    gap:8px;
+  }
+  .founders-section-bottom {
+    margin-top:clamp(13px,2svh,22px);
+  }
+}
+@media(max-width:850px) {
+  .founder-profile-image {
+    height:clamp(250px,48vw,410px);
+  }
+  .founder-profile-bio p {
+    font-size:.88rem;
+  }
+}
+@media(max-width:590px) {
+  .founder-profile-image {
+    height:clamp(225px,61vw,335px);
+  }
+  .founder-profile-bio {
+    margin:0 20px;
+    padding:14px 0 20px;
+  }
+  .founder-focus span {
+    font-size:.56rem;
+  }
+}
+@media(max-height:719px) and (min-width:1180px) {
+  .founder-profile-image { height:215px; }
+}
