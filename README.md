@@ -208,3 +208,17 @@ bash scripts/deploy.sh YOUR_FIREBASE_PROJECT_ID hosting-only
 ```
 
 Both scripts run frontend checks before deploying. Use `hosting-only` / `-HostingOnly` only when the backend has already been deployed. You can also use `npm run deploy:hosting` or `npm run deploy:all` after selecting a default Firebase project with `firebase use --add`.
+
+## Interactive studio redesign (November 2026)
+
+The design uses an original near-black developer-studio visual language, with large typography, an animated caimito-inspired particle sculpture, a scroll reading indicator, responsive service panels, and an accessible four-tab engineering walkthrough. The walkthrough is **illustrative**, not connected to live infrastructure; the public GitHub widget remains the source of externally retrieved activity. The meeting request and multistep quotation submission retain their existing Firebase Cloud Functions and Firestore workflows.
+
+- Edit colors, interaction timing and responsive layouts in `src/revamp.css`.
+- Edit the animated canvas, keyboard-accessible experience tabs, and scroll effects in `src/experience.js`.
+- Edit the landing-page structure in `index.html`. The existing `src/styles.css` continues to supply base components and form styles.
+- Run `npm run check` before committing. It validates source syntax, runs six tests, and rebuilds `dist/`.
+- The animation respects the `prefers-reduced-motion` preference and pauses the particle engine outside the viewport.
+- Use `public/site-config.js` to configure the public GitHub account and contact email.
+- The `.github/workflows/deploy.yml` workflow verifies pull requests and deploys pushes to `main` only after the `FIREBASE_PROJECT_ID` repository variable and `FIREBASE_SERVICE_ACCOUNT` repository secret are configured.
+
+This site is independently designed for StarApple Apps LLC. The Unkey reference informed the interaction and editorial direction; no Unkey code, logos, or licensed artwork are copied.

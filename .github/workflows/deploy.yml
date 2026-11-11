@@ -1,0 +1,41 @@
+name: Verify & Deploy StarApple Hosting
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: starapple-hosting-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint, test and build
+        run: npm run check
+
+      - name: Deploy Firebase Hosting (main only)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && vars.FIREBASE_PROJECT_ID != ''
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          channelId: live
+          projectId: ${{ vars.FIREBASE_PROJECT_ID }}
