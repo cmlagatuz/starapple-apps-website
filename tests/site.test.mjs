@@ -16,6 +16,8 @@ test('SPA has required sections and privacy UI', async () => {
 });
 test('Firebase rewrite sends inquiry traffic to backend before SPA fallback', async () => {
   const config = JSON.parse(await readFile('firebase.json','utf8'));
+  assert.equal(config.hosting.public, 'dist', 'Firebase must serve the compiled website, not public/');
+  assert.equal(config.hosting.site, 'starappleapps');
   assert.equal(config.hosting.rewrites[0].source,'/api/inquiries');
   assert.equal(config.hosting.rewrites[0].function.functionId,'submitInquiry');
   assert.equal(config.hosting.rewrites[1].destination,'/index.html');

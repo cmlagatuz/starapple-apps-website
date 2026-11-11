@@ -105,6 +105,8 @@ npm run check
 firebase deploy --only hosting --project YOUR_FIREBASE_PROJECT_ID
 ```
 
+Important: Hosting serves `dist/`, not `public/`. Do not run `firebase init hosting` again unless you preserve `firebase.json` and avoid generating its example `public/index.html`; otherwise the placeholder can replace the website.
+
 Use the output URL, usually:
 
 ```text
@@ -130,7 +132,7 @@ If using an existing repo, adapt `origin` and branch. GitHub may request an appr
 
 ## 6. GitHub Actions CI/CD → Firebase Hosting
 
-`.github/workflows/deploy.yml` runs on:
+`.github/workflows/deploy.yml` is the only Hosting deploy workflow and runs on:
 - Pull requests targeting `main`: `npm ci` → JS lint/test → build (**no live deployment**).
 - Commits pushed to `main` (including a merged PR): the same checks, then **live Firebase Hosting deployment**.
 
@@ -145,13 +147,13 @@ FIREBASE_PROJECT_ID = YOUR_FIREBASE_PROJECT_ID
 **B. Repository secret** under `Settings → Secrets and variables → Actions → Secrets → New repository secret`:
 
 ```text
-Name:  FIREBASE_SERVICE_ACCOUNT
+Name:  FIREBASE_SERVICE_ACCOUNT_STARAPPLEAPPS
 Value: {entire contents of your Firebase-deploying service-account JSON file}
 ```
 
 To generate the JSON, open **Google Cloud Console → IAM & Admin → Service Accounts**, select the correct Firebase project, create a **dedicated GitHub deploy service account**, and grant only the roles necessary for your Hosting deployment. The [Firebase action's service account guide](https://github.com/FirebaseExtended/action-hosting-deploy/blob/main/docs/service-account.md) documents **Firebase Hosting Admin**, **Service Usage API Keys Viewer**, and **Cloud Run Viewer** when function rewrites are present, plus **Firebase Authentication Admin** where Auth preview-domain configuration is needed. Prefer the minimum roles your particular deployment needs. From the service account's **Keys** tab, create a JSON key; copy its entire content into `FIREBASE_SERVICE_ACCOUNT`. Then securely delete the local downloaded copy. Never put JSON keys in a Git commit, `.env`, frontend code, GitHub variable, issue, or chat. Rotate a leaked key immediately.
 
-The first commit can trigger Actions before the secret/variable are created and therefore fail deployment; configure the settings, then select **Re-run jobs** or push another commit. The workflow's built-in GitHub token is **not** the Firebase service account. For future hardening, replace long-lived JSON keys with GitHub OIDC/Workload Identity Federation and review Actions permissions.
+The first commit can trigger Actions before the secret is created and therefore fail deployment; configure the settings, then select **Re-run jobs** or push another commit. The workflow's built-in GitHub token is **not** the Firebase service account. For future hardening, replace long-lived JSON keys with GitHub OIDC/Workload Identity Federation and review Actions permissions.
 
 **Important:** CI automatically deploys **Hosting only**. When you change `functions/index.js` or Firestore/Storage rules, deploy them manually using step 3. You can later add a separately authorized workflow for backend deployment; don't give the hosting-only CI service account broad admin permissions by default.
 

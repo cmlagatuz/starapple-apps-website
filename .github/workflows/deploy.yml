@@ -5,6 +5,7 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -32,10 +33,23 @@ jobs:
       - name: Lint, test and build
         run: npm run check
 
-      - name: Deploy Firebase Hosting (main only)
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && vars.FIREBASE_PROJECT_ID != ''
+      - name: Verify production build (never deploy Firebase placeholder)
+        run: |
+          test -f dist/index.html
+          test -f dist/assets/main.js
+          test -f dist/media/starapple-core.mp4
+          grep -q 'StarApple Apps LLC' dist/index.html
+          if grep -q 'Firebase Hosting Setup Complete' dist/index.html; then
+            echo 'Unexpected default Firebase page in production build' >&2
+            exit 1
+          fi
+
+      - name: Deploy Firebase Hosting live
+        if: >-
+          (github.event_name == 'push' || github.event_name == 'workflow_dispatch') &&
+          github.ref == 'refs/heads/main'
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_STARAPPLEAPPS }}
           channelId: live
-          projectId: ${{ vars.FIREBASE_PROJECT_ID }}
+          projectId: starappleapps
