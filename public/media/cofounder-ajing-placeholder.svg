@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="title desc">
+  <title id="title">Portrait placeholder</title>
+  <desc id="desc">Abstract silhouette representing a future founder photo.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#273e46"/><stop offset="1" stop-color="#10121d"/></linearGradient>
+    <radialGradient id="light"><stop stop-color="#8cd6c2" stop-opacity=".42"/><stop offset="1" stop-color="#8cd6c2" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="640" height="480" fill="url(#bg)"/>
+  <circle cx="330" cy="186" r="242" fill="url(#light)"/>
+  <g opacity=".13" stroke="#e9d6ff" fill="none">
+    <path d="M0 120h640M0 240h640M0 360h640M160 0v480M320 0v480M480 0v480"/>
+    <circle cx="320" cy="233" r="176"/><circle cx="320" cy="233" r="224"/>
+  </g>
+  <g fill="#d2bfdc" opacity=".37"><circle cx="320" cy="189" r="72"/><path d="M159 444c8-105 70-168 161-168s153 63 161 168Z"/></g>
+  <circle cx="320" cy="189" r="75" fill="none" stroke="#f0ddff" stroke-opacity=".13"/>
+  <path d="M24 26h35M24 26v35M616 26h-35M616 26v35M24 454h35M24 454v-35M616 454h-35M616 454v-35" stroke="#ddc5fa" stroke-opacity=".55" stroke-width="2" fill="none"/>
+</svg>

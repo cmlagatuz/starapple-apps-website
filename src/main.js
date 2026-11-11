@@ -22,7 +22,7 @@ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
   menu.classList.remove('open'); toggle.classList.remove('is-open');toggle.setAttribute('aria-expanded','false');
 }));
 
-const inquiryDialogs = [...document.querySelectorAll('.inquiry-dialog')];
+const inquiryDialogs = [...document.querySelectorAll('.inquiry-dialog, .founders-dialog')];
 document.querySelectorAll('[data-open-dialog]').forEach(trigger => {
   trigger.addEventListener('click', () => {
     const dialog = document.getElementById(trigger.dataset.openDialog);

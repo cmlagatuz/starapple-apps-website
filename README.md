@@ -247,3 +247,12 @@ The hero background video is full-bleed again (without a border or dedicated vid
 The four service cards are shown in a compact single row on large desktops rather than two tall rows. Contact forms open in accessible, scrollable dialogs; their original field IDs, validation, and Firebase submission endpoints are retained. The main page remains readable without being forced to navigate through lengthy forms.
 
 On tablets, narrow windows, short viewports and reduced-motion preferences, mandatory snapping is disabled so visitors can scroll naturally and nothing is clipped. The browser's normal wheel, keyboard, touch, and anchor behavior is preserved; no custom wheel interception is used.
+
+## Founder profiles
+
+The **Get to know us** button in the **Our Core** section opens an accessible founders dialog with two profile cards:
+
+- **Zantetsuken** — Founder (public developer alias)
+- **Ajing** — Co-Founder (public developer alias)
+
+Real names are intentionally displayed as **To be added**, and each profile has an original, self-hosted vector portrait placeholder—never a fabricated person's photograph. To publish a real name, change the corresponding `<strong>To be added</strong>` inside the founders dialog in `index.html`. To add photos, upload portrait images to `public/media/` and change each founder's `<img src>` path in `index.html`. The build automatically copies these files to `dist/`. The modal uses native `<dialog>` keyboard/focus/Escape support, a close button, and a mobile single-column layout.
