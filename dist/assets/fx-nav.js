@@ -1,5 +1,5 @@
 import { goTo } from './fx-transition.js';
-import { env, setUserFx } from './fx-env.js';
+import { env, motionOK, setUserFx } from './fx-env.js';
 
 const ITEMS = [
   ['hero', 'Home'], ['lab', 'Explore'], ['services', 'Solutions'], ['philosophy', 'Philosophy'],
@@ -67,11 +67,11 @@ export function initNav({ gsap } = {}) {
   // Effects switch (persisted). Reloads so every scene starts or stops cleanly.
   const sw = document.createElement('button');
   sw.type = 'button'; sw.className = 'fx-switch';
-  const on = !env.userOff && !env.reduced;
+  const on = motionOK();
   sw.setAttribute('aria-pressed', String(on));
-  sw.setAttribute('aria-label', env.reduced ? 'Motion effects are off because your system requests reduced motion' : 'Toggle motion and 3D effects');
+  const automaticOff = env.reduced || env.lowEnd || env.saveData;\n  sw.setAttribute('aria-label', automaticOff ? 'Effects automatically disabled to protect device performance' : 'Toggle motion and 3D effects');\n  sw.title = automaticOff ? 'FX automatically off: reduced motion, data saving, or limited device resources' : 'Toggle motion and 3D effects';
   sw.innerHTML = `<span aria-hidden="true">✦</span><b>FX</b><em>${on ? 'ON' : 'OFF'}</em>`;
-  sw.disabled = env.reduced;
+  sw.disabled = automaticOff;
   sw.addEventListener('click', () => setUserFx(env.userOff));
   document.body.appendChild(sw);
 }
