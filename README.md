@@ -296,3 +296,11 @@ On page entry, the background cinema video declares `autoplay muted loop playsin
 The FX button uses a stored three-state preference: `auto` (default), `on` (manual opt-in), and `off`. Low-memory/low-CPU/data-saver devices start automatically in OFF, but can turn on **lightweight** GSAP motion using the FX control. Heavy WebGL remains disabled on these devices. The operating system's reduced-motion preference takes precedence and disables FX. The click handler now sends `!on` instead of the previous erroneous value.
 
 The hero headline keeps `Your next big` fixed while the final word cycles across `idea.`, `launch.`, `product.`, `platform.`, and `vision.`. The four main navigation labels, plus the Start a project CTA, perform a brief left-to-right character scramble on click without intercepting fragment navigation. All kinetic text respects reduced-motion preferences.
+
+
+## November 2026 headline, FX default and layout calibration
+
+- The hero keyword now pauses for **2250 ms** rather than 3000 ms, then scrambles in **490 ms** rather than 640 ms (approximately 25% quicker overall).
+- FX is **enabled by default** for every visitor, including less capable devices, while the demanding WebGL scenes are still gated by memory/data-saving capability checks. The OS reduced-motion preference and a deliberate visitor FX OFF choice continue to be honored. The FX storage key is versioned to `starapple-fx-v2` so legacy OFF choices do not suppress the new default after the update.
+- Removed the header's GSAP slide-from-top animation and excluded header/secondary hero links from magnetic transforms to eliminate the displaced Start a project CTA and levitating hero-secondary text. Desktop alignment has explicit dimensions; mobile retains stacked actions.
+- The Connect footer includes the official [StarApple Apps LinkedIn page](https://www.linkedin.com/company/starappleapps/), opening in a new tab with secure `rel` attributes.

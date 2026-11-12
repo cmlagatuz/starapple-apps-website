@@ -34,3 +34,11 @@ test('both original contact forms remain functional in native, scrollable dialog
   assert.match(main,/dialog\.showModal\(\)/);
   assert.match(forms,/submit\(fd\)/);
 });
+
+test('footer Connect includes the official company LinkedIn page', async()=>{
+  const html=await readFile('index.html','utf8');
+  const footer=html.slice(html.indexOf('<footer class="footer'));
+  assert.match(footer,/href="https:\/\/www\.linkedin\.com\/company\/starappleapps\/"/);
+  assert.match(footer,/rel="noopener noreferrer"/);
+  assert.ok(footer.indexOf('<strong>Connect</strong>') < footer.indexOf('>LinkedIn ↗</a>'));
+});

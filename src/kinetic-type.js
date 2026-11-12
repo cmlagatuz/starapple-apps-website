@@ -62,14 +62,14 @@ export function initHeroKeyword() {
   const schedule = () => {
     clearTimeout(timer);
     if (!stopped && visible && !document.hidden)
-      timer = window.setTimeout(cycle, 3000);
+      timer = window.setTimeout(cycle, 2250);
   };
   const cycle = () => {
     if (stopped || !visible || document.hidden || reducedMotion.matches) return;
     index = (index + 1) % WORDS.length;
     const target = WORDS[index];
     el.classList.add('is-cycling');
-    cancel = scrambleText(el, target, 640, () => {
+    cancel = scrambleText(el, target, 490, () => {
       el.classList.remove('is-cycling');
       cancel = null;
       schedule();

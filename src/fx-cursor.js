@@ -68,7 +68,7 @@ export function initCursor() {
 /** Magnetic pull on buttons plus a 3D tilt on service cards, both through individual CSS properties (no transform clash). */
 export function initTactile() {
   if (!env.fine) return;
-  const mags = [...document.querySelectorAll('.button, .hero-secondary, .lab-link, .founder-link, .fx-switch')];
+  const mags = [...document.querySelectorAll('.hero .button, .contact-section .button, .lab-link, .founder-link, .fx-switch')];
   mags.forEach(el => {
     let tx = 0, ty = 0, cx = 0, cy = 0, raf = 0, hot = false;
     const step = () => {

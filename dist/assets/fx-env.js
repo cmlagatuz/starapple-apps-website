@@ -1,6 +1,6 @@
 /** Capability detection and tiny shared state for the FX layer (no dependencies, safe to import anywhere). */
 const mq = q => (typeof matchMedia === 'function' ? matchMedia(q) : { matches: false, addEventListener() {} });
-export const FX_KEY = 'starapple-fx';
+export const FX_KEY = 'starapple-fx-v2';
 
 export const env = {
   reduced: mq('(prefers-reduced-motion: reduce)').matches,
@@ -11,15 +11,15 @@ export const env = {
   lowEnd: (typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 4) ||
     (typeof navigator.hardwareConcurrency === 'number' && navigator.hardwareConcurrency <= 4) ||
     (typeof navigator.deviceMemory !== 'number' && typeof navigator.hardwareConcurrency !== 'number' && mq('(pointer: coarse)').matches),
-  preference: (() => { try { const pref = localStorage.getItem(FX_KEY); return pref === 'on' || pref === 'off' ? pref : 'auto'; } catch { return 'auto'; } })(),
+  preference: (() => { try { const pref = localStorage.getItem(FX_KEY); return pref === 'on' || pref === 'off' ? pref : 'on'; } catch { return 'auto'; } })(),
   get userOff() { return this.preference === 'off'; },
   get userOn() { return this.preference === 'on'; },
   narrow: () => innerWidth <= 800
 };
 
-/** Respect OS accessibility preferences. Auto-disable FX on limited devices,
- * but explicit user opt-in enables lightweight effects without enabling WebGL. */
-export const motionOK = () => !env.reduced && !env.userOff && (env.userOn || (!env.saveData && !env.lowEnd));
+/** Motion defaults on for every visitor. A visitor opt-out and OS reduced-motion
+ * preference are respected; resource-intensive WebGL still has a separate gate. */
+export const motionOK = () => !env.reduced && !env.userOff;
 /** Heavier WebGL scenes remain off on low-end and data-saver devices even when FX is enabled manually. */
 export const glOK = () => motionOK() && !env.saveData && !env.lowEnd && canWebGL();
 

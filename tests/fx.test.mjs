@@ -59,7 +59,9 @@ test('FX toggle permits explicit lightweight opt-in on low-memory devices',async
   const environment = await readFile('src/fx-env.js','utf8');
   const nav = await readFile('src/fx-nav.js','utf8');
   assert.match(environment,/preference: /);
-  assert.match(environment,/env\.userOn \|\| \(!env\.saveData && !env\.lowEnd\)/);
+  assert.match(environment,/FX_KEY = 'starapple-fx-v2'/);
+  assert.match(environment,/pref : 'on'/);
+  assert.match(environment,/motionOK = \(\) => !env\.reduced && !env\.userOff/);
   assert.match(environment,/glOK = \(\) => motionOK\(\) && !env\.saveData && !env\.lowEnd/);
   assert.match(nav,/sw\.disabled = env\.reduced/);
   assert.match(nav,/setUserFx\(!on\)/);
@@ -81,4 +83,23 @@ test('hero word rotation and four header nav links use character reveal without 
   assert.match(kinetic,/i < revealed/);
   assert.match(kinetic,/prefers-reduced-motion: reduce/);
   assert.doesNotMatch(kinetic,/preventDefault\(\)/);
+});
+
+test('headline cycle is faster while preserving nav animations', async()=>{
+  const js=await readFile('src/kinetic-type.js','utf8');
+  assert.match(js,/setTimeout\(cycle, 2250\)/);
+  assert.match(js,/scrambleText\(el, target, 490/);
+  assert.match(js,/initNavScramble/);
+});
+
+test('main header CTA is not magnetically shifted or GSAP-translated', async()=>{
+  const css=await readFile('src/studio-refresh.css','utf8');
+  const scroll=await readFile('src/fx-scroll.js','utf8');
+  const cursor=await readFile('src/fx-cursor.js','utf8');
+  assert.match(css,/\.site-header \.nav-cta \{/);
+  assert.match(css,/translate:0 0/);
+  assert.match(css,/\.hero-actions > \.hero-secondary \{/);
+  assert.match(css,/min-height:54px/);
+  assert.doesNotMatch(scroll,/\.from\('\.site-header \.nav-container > \*'/);
+  assert.doesNotMatch(cursor,/\.button, \.hero-secondary, \.lab-link/);
 });

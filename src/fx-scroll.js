@@ -28,7 +28,7 @@ export function initScroll({ gsap, ScrollTrigger }) {
       .from('.hero-description', { y: 24, autoAlpha: 0, duration: 1 }, 0.75)
       .from('.hero-actions > *', { y: 22, autoAlpha: 0, duration: 0.9, stagger: 0.1 }, 0.9)
       .from('.hero-bottom > *', { y: 14, autoAlpha: 0, duration: 0.8, stagger: 0.1 }, 1.1)
-      .from('.site-header .nav-container > *', { y: -22, autoAlpha: 0, duration: 0.9, stagger: 0.07 }, 0.1);
+      .from('.hero-topline > *', { y: -6, autoAlpha: 0, duration: 0.5, stagger: 0.06, clearProps: 'transform,opacity,visibility' }, 0.1);
     return () => tl.kill();
   });
 

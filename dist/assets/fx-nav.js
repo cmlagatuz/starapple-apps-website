@@ -68,14 +68,13 @@ export function initNav({ gsap } = {}) {
   const sw = document.createElement('button');
   sw.type = 'button'; sw.className = 'fx-switch';
   const on = motionOK();
-  const automaticOff = !env.userOn && !env.userOff && (env.reduced || env.lowEnd || env.saveData);
+  const automaticOff = env.reduced;
   sw.setAttribute('aria-pressed', String(on));
   sw.setAttribute('aria-label', env.reduced ? 'Effects unavailable while system reduced motion is enabled' : on ? 'Turn off visual effects' : 'Turn on visual effects');
   sw.title = env.reduced ? 'Your system has requested reduced motion' :
-    automaticOff ? 'Automatically off for this device — click to enable lightweight effects' :
-    on && (env.lowEnd || env.saveData) ? 'Lightweight effects on; heavy 3D remains disabled' :
+    on && (env.lowEnd || env.saveData) ? 'Visual FX on; demanding 3D scenes are automatically skipped on this device' :
     on ? 'Turn effects off' : 'Turn effects on';
-  sw.innerHTML = `<span aria-hidden="true">✦</span><b>FX</b><em>${on ? 'ON' : 'OFF'}${automaticOff ? ' · AUTO' : ''}</em>`;
+  sw.innerHTML = `<span aria-hidden="true">✦</span><b>FX</b><em>${on ? 'ON' : 'OFF'}</em>`;
   sw.disabled = env.reduced;
   sw.addEventListener('click', () => setUserFx(!on));
   document.body.appendChild(sw);
