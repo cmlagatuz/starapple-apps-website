@@ -1,4 +1,5 @@
 /** Autoplay is decorative; motion control is always available and accessible. */
+import { env } from './fx-env.js';
 const film = document.getElementById('hero-film');
 const control = document.getElementById('hero-film-toggle');
 const label = document.getElementById('hero-film-toggle-label');
@@ -6,7 +7,7 @@ const icon = document.getElementById('hero-film-toggle-icon');
 if (film && control && label && icon) {
   const media = window.matchMedia('(prefers-reduced-motion: reduce)');
   const saveData = Boolean(navigator.connection?.saveData);
-  let motionEnabled = !media.matches && !saveData;
+  let motionEnabled = !media.matches && !saveData && !env.lowEnd;
   let inViewport = true;
   let requestId = 0;
   function setControl(playing) {
