@@ -1,12 +1,14 @@
 import { fillBrandMarks } from './brand.js';
 import { initMotion } from './motion.js';
 import { initForms } from './forms.js';
+import { initClientCarousel } from './client-carousel.js';
 import { initNavScramble, initHeroKeyword } from './kinetic-type.js';
 
 document.documentElement.classList.add('has-js');
 fillBrandMarks();
 initMotion();
 initForms();
+initClientCarousel();
 initNavScramble();
 initHeroKeyword();
 document.getElementById('year').textContent=String(new Date().getFullYear());

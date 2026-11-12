@@ -322,3 +322,10 @@ A new client portfolio chapter sits between Solutions and Philosophy. It uses tw
 ## Founder image/text zigzag for desktop
 
 The founder chapters keep their original three sections and the six existing founder names, pictures, roles, and written biographies. On desktop widths above 900px, the layout now matches the supplied alternating portrait/text rows: person 01's portrait sits left of their profile, person 02's portrait sits to the right, repeated through all six founders. No staggered vertical card layout remains. At 900px or below, the original stacked image-first cards remain. Smaller browser heights can scroll naturally rather than clipping biographies.
+
+
+## Real client carousel showcase (November 2026)
+
+The Client Applications chapter is now an accessible, responsive two-slide carousel for **Armamento Dental Studio** and **Dawney Animal Clinic**. Visitors can use previous/next controls, dots, horizontal touch swipes, and keyboard left/right arrows. The carousel auto-advances while visible, pauses on hover/focus, and disables automatic movement under reduced-motion preferences. The slider does not intercept the site's vertical scroll or fragment navigation.
+
+The Dawney logo is based on the owner-provided image and self-hosted as `public/media/dawney-animal-clinic.webp`. Armamento is shown using an original editable *typographic presentation* in `public/media/armamento-dental-wordmark.svg` because the provided website was not accessible for verifying its official logo. It should not be mistaken for a reproduction of that official logo. Armamento's supplied `https://www.armamentodentalstudio.com/#about` is linked. Dawney has no external site link because none was supplied. No unverified statements about project deliverables or deployment outcomes were added.

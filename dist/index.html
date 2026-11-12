@@ -163,35 +163,59 @@
     <section id="clients" class="clients-section section page-panel" aria-labelledby="clients-title">
       <div class="wrap clients-stage">
         <div class="clients-heading reveal">
-          <div class="eyebrow eyebrow-on-dark"><span class="eyebrow-line"></span> CLIENT APPLICATIONS / SHOWCASE PREVIEW</div>
-          <h2 id="clients-title">Apps made to <em>make an impact.</em></h2>
-          <p>A preview of how deployed client applications will be presented. The two entries below are samples, not claims of completed client work.</p>
+          <div class="eyebrow eyebrow-on-dark"><span class="eyebrow-line"></span> FEATURED CLIENTS / STARAPPLE PORTFOLIO</div>
+          <h2 id="clients-title">Built around <em>real people.</em></h2>
+          <p>Meet two of the businesses in the StarApple client showcase.</p>
         </div>
-        <div class="clients-showcase">
-          <article class="client-project reveal" aria-label="Client application one example">
-            <div class="client-project-top"><span>01 / SAMPLE PORTFOLIO SLOT</span><span class="client-project-state">PLACEHOLDER</span></div>
-            <div class="client-project-mark"><img src="/media/client-placeholder-one.svg" alt="Replaceable illustrative logo for Client Application 01" width="420" height="210" loading="lazy" decoding="async"></div>
-            <div class="client-project-info">
-              <span class="client-project-type">DIGITAL PRODUCT</span>
-              <h3>Client Application 01</h3>
-              <p>Reserved for a launched client application. Replace this entry with the approved product name, client logo, and published project details.</p>
-              <span class="client-project-note">LOGO AND PROJECT DETAILS CAN BE REPLACED</span>
+        <div class="client-carousel" id="client-carousel" role="region" aria-roledescription="carousel" aria-label="Featured client showcase" tabindex="0" data-client-carousel>
+          <div class="client-carousel-viewport">
+            <div class="client-carousel-track" data-client-track aria-live="off">
+              <article class="client-carousel-slide is-active" data-client-slide role="group" aria-roledescription="slide" aria-label="1 of 2: Armamento Dental Studio" aria-hidden="false">
+                <div class="client-carousel-art client-carousel-art-dental">
+                  <span class="client-art-label">CLIENT / 001</span>
+                  <img src="/media/armamento-dental-wordmark.svg" alt="Armamento Dental Studio typographic brand display" width="760" height="420" loading="lazy" decoding="async">
+                  <span class="client-art-subtitle">CEBU · PHILIPPINES</span>
+                </div>
+                <div class="client-carousel-copy">
+                  <span class="client-carousel-kicker">01 / DENTAL CARE</span>
+                  <h3>Armamento <em>Dental Studio.</em></h3>
+                  <p>A patient-focused dental studio in Cebu City, offering comprehensive oral health care. Discover the studio through its website.</p>
+                  <div class="client-carousel-tags"><span>Dental Studio</span><span>Healthcare</span><span>Website</span></div>
+                  <a class="client-carousel-link" href="https://www.armamentodentalstudio.com/#about" target="_blank" rel="noopener noreferrer">Explore client website <span aria-hidden="true">↗</span></a>
+                </div>
+              </article>
+              <article class="client-carousel-slide" data-client-slide role="group" aria-roledescription="slide" aria-label="2 of 2: Dawney Animal Clinic" aria-hidden="true" inert>
+                <div class="client-carousel-art client-carousel-art-dawney">
+                  <span class="client-art-label">CLIENT / 002</span>
+                  <img src="/media/dawney-animal-clinic.webp" alt="Dawney Animal Clinic logo featuring a kangaroo and the Kilted Kangaroo design" width="260" height="260" loading="lazy" decoding="async">
+                  <span class="client-art-subtitle">ANIMAL CARE / CLINIC</span>
+                </div>
+                <div class="client-carousel-copy">
+                  <span class="client-carousel-kicker">02 / VETERINARY CARE</span>
+                  <h3>Dawney <em>Animal Clinic.</em></h3>
+                  <p>Featuring the distinctive Dawney Animal Clinic identity, with its Kilted Kangaroo artwork. A dedicated place for animal care.</p>
+                  <div class="client-carousel-tags"><span>Animal Clinic</span><span>Veterinary Care</span><span>Client</span></div>
+                  <span class="client-carousel-no-link">Featured client</span>
+                </div>
+              </article>
             </div>
-          </article>
-          <article class="client-project reveal" aria-label="Client application two example">
-            <div class="client-project-top"><span>02 / SAMPLE PORTFOLIO SLOT</span><span class="client-project-state">PLACEHOLDER</span></div>
-            <div class="client-project-mark"><img src="/media/client-placeholder-two.svg" alt="Replaceable illustrative logo for Client Application 02" width="420" height="210" loading="lazy" decoding="async"></div>
-            <div class="client-project-info">
-              <span class="client-project-type">BUSINESS APPLICATION</span>
-              <h3>Client Application 02</h3>
-              <p>A second portfolio slot, ready for an approved client logo and a concise description of the application delivered to them.</p>
-              <span class="client-project-note">LOGO AND PROJECT DETAILS CAN BE REPLACED</span>
+          </div>
+          <div class="client-carousel-controls" aria-label="Carousel navigation">
+            <div class="client-carousel-progress"><span data-client-progress style="width:50%"></span></div>
+            <span class="client-carousel-counter" data-client-counter aria-live="polite">01 / 02</span>
+            <div class="client-carousel-dots" role="group" aria-label="Choose a client">
+              <button type="button" data-client-dot="0" aria-label="Show Armamento Dental Studio" aria-pressed="true" class="is-active"></button>
+              <button type="button" data-client-dot="1" aria-label="Show Dawney Animal Clinic" aria-pressed="false"></button>
             </div>
-          </article>
+            <div class="client-carousel-arrows">
+              <button type="button" class="client-carousel-arrow" data-client-prev aria-label="Previous client"><span aria-hidden="true">←</span></button>
+              <button type="button" class="client-carousel-arrow" data-client-next aria-label="Next client"><span aria-hidden="true">→</span></button>
+            </div>
+          </div>
         </div>
         <div class="clients-bottom">
-          <span>STARAPPLE APPS LLC / SELECTED PROJECTS</span>
-          <a href="#contact">Have a project in mind? <span aria-hidden="true">↗</span></a>
+          <span>STARAPPLE APPS LLC / CLIENT SPOTLIGHTS</span>
+          <a href="#contact">Start a project with us <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </section>

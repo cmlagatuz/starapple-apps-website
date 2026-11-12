@@ -43,18 +43,23 @@ test('footer Connect includes the official company LinkedIn page', async()=>{
   assert.ok(footer.indexOf('<strong>Connect</strong>') < footer.indexOf('>LinkedIn ↗</a>'));
 });
 
-test('client apps are honest portfolio examples with two swappable local logo files',async()=>{
+test('featured clients carousel replaces both sample portfolio cards',async()=>{
  const html=await readFile('index.html','utf8');
- const s=html.indexOf('<section id="services"');
- const c=html.indexOf('<section id="clients"');
- const p=html.indexOf('<section class="statement');
- assert.ok(s>=0&&c>s&&p>c);
- assert.match(html,/id="clients" class="clients-section section page-panel"/);
- assert.equal((html.match(/class="client-project reveal"/g)||[]).length,2);
- assert.match(html,/samples, not claims of completed client work/);
- for(const name of ['client-placeholder-one.svg','client-placeholder-two.svg']){
-   assert.ok(html.includes('/media/'+name));
-   const file=await readFile('public/media/'+name,'utf8');
-   assert.match(file,/<svg/);
+ const js=await readFile('src/client-carousel.js','utf8');
+ const c=html.indexOf('<section id="clients"'),p=html.indexOf('<section class="statement',c);
+ const section=html.slice(c,p);
+ assert.match(section,/data-client-carousel/);
+ assert.equal((section.match(/data-client-slide/g)||[]).length,2);
+ assert.match(section,/Armamento Dental Studio/);
+ assert.match(section,/Dawney Animal Clinic/);
+ assert.ok(section.includes('https://www.armamentodentalstudio.com/#about'));
+ assert.match(section,/media\/armamento-dental-wordmark\.svg/);
+ assert.match(section,/media\/dawney-animal-clinic\.webp/);
+ for(const control of ['data-client-prev','data-client-next','data-client-dot="0"','data-client-dot="1"']){
+  assert.ok(section.includes(control),control);
  }
+ assert.doesNotMatch(section,/client-placeholder-one|client-placeholder-two|SAMPLE PORTFOLIO/);
+ assert.match(js,/pointerdown/);
+ assert.match(js,/ArrowRight/);
+ assert.match(js,/prefers-reduced-motion/);
 });
