@@ -7,13 +7,13 @@ export const env = {
   coarse: mq('(pointer: coarse)').matches,
   fine: mq('(hover: hover) and (pointer: fine)').matches,
   saveData: Boolean(navigator.connection?.saveData),
-  lowEnd: (navigator.hardwareConcurrency || 8) <= 2 || (navigator.deviceMemory || 8) <= 2,
+  // Prefer smoothness when memory information is available; fall back to CPU and mobile hints.\n  lowEnd: (typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 4) ||\n    (typeof navigator.hardwareConcurrency === 'number' && navigator.hardwareConcurrency <= 4) ||\n    (typeof navigator.deviceMemory !== 'number' && typeof navigator.hardwareConcurrency !== 'number' && mq('(pointer: coarse)').matches),
   userOff: (() => { try { return localStorage.getItem(FX_KEY) === 'off'; } catch { return false; } })(),
   narrow: () => innerWidth <= 800
 };
 
 /** Motion is allowed only when nobody (OS, user toggle) asked for less. */
-export const motionOK = () => !env.reduced && !env.userOff;
+export const motionOK = () => !env.reduced && !env.userOff && !env.saveData && !env.lowEnd;
 /** Heavier WebGL scenes are skipped on data-saver / low-memory devices. */
 export const glOK = () => motionOK() && !env.saveData && !env.lowEnd && canWebGL();
 
