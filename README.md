@@ -261,3 +261,14 @@ The supplied third-party images are not owned or licensed by this codebase. Befo
 Both inline founder cards include an **Approach & Focus** overview under the role and name. The copy describes a founding product vision for Zantetsuken and a practical delivery mindset for Ajing, with short service-oriented focus tags. These are editorial descriptions aligned with StarApple's positioning; they do **not** claim verified biographies, previous employers, degrees, years of experience, or personal awards.
 
 The existing remote images and crop positions are preserved. On large screens, portrait height is reduced to accommodate the new descriptions without undermining the full-screen scroll design. On smaller screens the cards stack with natural scrolling. Update biographies in `index.html` once the founders approve more specific factual career details.
+
+
+## Interaction layer (FX)
+
+Additive, progressive-enhancement layer in `src/fx*.js` + `src/fx.css`:
+
+- **GSAP + ScrollTrigger** (pinned 3.12.5, lazy from jsDelivr): hero opening sequence, split-word headlines, scrubbed parallax, statement word-lighting, 3D card reveals, founder portrait masks.
+- **three.js** (pinned 0.164.1): hero particle nebula that assembles into the StarApple star and reacts to the pointer; draggable 3D cut-open star apple (story); aurora shader behind contact and footer.
+- **Star-iris page transition** for in-page navigation, section rail, `01 / 08` counter, `[` / `]` keyboard hops, cursor ring + star-dust trail, magnetic buttons, tilting service cards.
+- Respects `prefers-reduced-motion`, data-saver and low-memory devices, and has a persistent **FX on/off** switch. If a CDN or WebGL is unavailable the base site is unchanged.
+- To self-host the libraries (recommended for production, and to add SRI), copy them to `public/vendor/` and change the two URLs in `src/fx-loader.js`.

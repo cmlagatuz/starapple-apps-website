@@ -9,6 +9,16 @@
       history.replaceState(history.state, '', location.pathname + location.hash);
     }
   </script>
+  <script>
+    // FX layer: hide hero copy until the opening sequence can play; failsafe releases it if libraries are slow/blocked.
+    (function () {
+      var d = document.documentElement, off = false;
+      try { off = localStorage.getItem('starapple-fx') === 'off'; } catch (e) {}
+      if (off || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      d.classList.add('fx-pending');
+      setTimeout(function () { d.classList.remove('fx-pending'); }, 2200);
+    })();
+  </script>
   <meta name="theme-color" content="#07080b" />
   <meta name="description" content="StarApple Apps LLC builds thoughtful apps, modern web platforms, IT solutions and cloud systems. Rooted in the Philippines. Built for the world." />
   <meta property="og:title" content="StarApple Apps LLC — Brilliant at the core." />
@@ -16,6 +26,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/social-card.svg" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -23,11 +34,13 @@
   <link rel="stylesheet" href="/src/revamp.css" />
   <link rel="stylesheet" href="/src/cinema.css" />
   <link rel="stylesheet" href="/src/studio-refresh.css" />
+<link rel="stylesheet" href="/src/fx.css" />
   <link rel="preload" as="image" href="/media/starapple-core-poster.webp" />
   <script defer src="/site-config.js"></script>
   <script defer type="module" src="/src/main.js"></script>
   <script defer type="module" src="/src/experience.js"></script>
   <script defer type="module" src="/src/cinema.js"></script>
+<script defer type="module" src="/src/fx.js"></script>
   <title>StarApple Apps LLC | Brilliant at the Core</title>
 </head>
 <body>
