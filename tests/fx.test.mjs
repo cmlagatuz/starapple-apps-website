@@ -23,7 +23,8 @@ test('index wires the FX layer without removing existing assets', async () => {
   const html = await readFile('index.html', 'utf8');
   assert.match(html, /\/src\/fx\.css/);
   assert.match(html, /type="module" src="\/src\/fx\.js"/);
-  assert.match(html, /fx-pending/);
+  const fx = await readFile('src/fx.js', 'utf8');
+  assert.match(fx, /root\.classList\.remove\('fx-pending'\)/);
   assert.match(html, /\/src\/cinema\.js/);
 });
 
