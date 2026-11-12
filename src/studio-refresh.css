@@ -619,3 +619,33 @@ body:has(.inquiry-dialog[open]){overflow:hidden}
 @media (prefers-reduced-motion:reduce) {
   .founders-section .founder-profile { transition:none; }
 }
+
+
+/* Client apps / two intentionally labelled example case-study slots. */
+.clients-section{background:radial-gradient(ellipse at 80% 15%,#3b294c6b,transparent 45%),#0b0c14;color:#f6f1fc;border-block:1px solid #ffffff20;overflow:hidden}
+.clients-stage{width:min(1280px,calc(100% - 88px));position:relative}
+.clients-heading{text-align:center;margin:0 auto clamp(21px,3svh,33px);max-width:820px}
+.clients-heading .eyebrow{justify-content:center}
+.clients-heading h2{font:600 clamp(2.7rem,4.6vw,4.9rem)/1.05 var(--display);letter-spacing:-.064em;color:#faf6ff;margin:12px 0}
+.clients-heading h2 em{color:#d2acf1;font-style:normal}
+.clients-heading p{max-width:650px;color:#b5adbe;line-height:1.6;margin:0 auto;font-size:clamp(.85rem,.99vw,.98rem)}
+.clients-showcase{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,2vw,28px)}
+.client-project{display:flex;flex-direction:column;min-width:0;padding:clamp(18px,2vw,27px);background:linear-gradient(150deg,#1c1a27,#13141d);border:1px solid #ffffff2b;border-radius:15px;box-shadow:0 18px 48px #00000033;transition:border-color .25s,transform .3s}
+.client-project:hover{border-color:#c69dd57e;transform:translateY(-4px)}
+.client-project-top{display:flex;align-items:center;justify-content:space-between;gap:14px;font:500 .59rem var(--mono);letter-spacing:.1em;color:#aaa2b4}
+.client-project-state{font-size:.56rem;color:#d7c4e5;border:1px solid #c6a2dd69;border-radius:30px;padding:6px 10px}
+.client-project-mark{display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse,#342c4388,#0a0a121a 82%);border:1px dashed #b69fc547;border-radius:9px;height:clamp(110px,19svh,188px);margin:clamp(12px,2svh,23px) 0}
+.client-project-mark img{display:block;width:min(78%,330px);max-height:86%;height:auto;object-fit:contain}
+.client-project-info{display:flex;flex-direction:column;flex:1}
+.client-project-type{font:500 .61rem var(--mono);letter-spacing:.13em;color:#c6a2da}
+.client-project-info h3{font:600 clamp(1.52rem,2.05vw,2.35rem)/1.12 var(--display);letter-spacing:-.05em;color:#f8f4ff;margin:8px 0 11px}
+.client-project-info p{color:#b8b1c2;font-size:clamp(.81rem,.91vw,.93rem);line-height:1.55;max-width:58ch;margin:0 0 17px}
+.client-project-note{margin-top:auto;color:#9b87aa;font:500 .55rem var(--mono);letter-spacing:.08em}
+.clients-bottom{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-top:clamp(16px,2svh,29px);font:500 .61rem var(--mono);color:#aaa0b5;letter-spacing:.07em}
+.clients-bottom a{color:#e3c9f1;font:600 .85rem var(--display);letter-spacing:0}
+@media(min-width:1180px){.clients-section{min-height:calc(100svh - var(--view-nav));display:flex;align-items:center;padding:clamp(25px,3.3svh,43px) 0}}
+@media(max-width:1179px){.clients-section{padding:clamp(45px,7vw,82px) 0}.clients-stage{width:calc(100% - 70px)}}
+@media(max-width:850px){.clients-stage{width:calc(100% - 45px)}.clients-showcase{grid-template-columns:1fr}.client-project-mark{height:160px}}
+@media(max-width:590px){.clients-stage{width:calc(100% - 34px)}.clients-heading h2{font-size:clamp(2.4rem,9.2vw,3.7rem)}.client-project-mark{height:140px}.clients-bottom{flex-direction:column;align-items:flex-start;gap:12px}}
+@media(max-height:719px){.clients-section{min-height:0;padding:38px 0}}
+@media(prefers-reduced-motion:reduce){.client-project{transition:none}}

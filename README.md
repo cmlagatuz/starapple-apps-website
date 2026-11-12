@@ -313,3 +313,7 @@ Full GSAP and WebGL effects start whenever the visitor has FX enabled and the br
 Removed the old star-iris navigation overlay and its hash-link click interception. Section links and the FX section rail use normal anchors, preserving the smaller nav-letter scramble. Keyboard panel hops use scrollIntoView.
 
 The six founders follow a desktop diagonal zigzag: left-high, right-low across each of the three two-person chapters. The mobile layout stays in its existing single column, without stagger offsets.
+
+
+## Client application portfolio examples
+A new client portfolio chapter sits between Solutions and Philosophy. It uses two replaceable SVG logo files — `public/media/client-placeholder-one.svg` and `public/media/client-placeholder-two.svg` — alongside placeholder application entries. Both are publicly labelled SAMPLE / PLACEHOLDER; they do not represent actual deployed client work. Edit the project copy in `index.html` and replace logo files when approved client cases exist. The build copies `public/media` into `dist/media`. The navigation rail now includes Client apps. The star particle WebGL scene is removed from the hero; the cinema itself and other WebGL scenes continue unchanged.

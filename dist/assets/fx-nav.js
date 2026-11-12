@@ -2,11 +2,11 @@ import { goTo } from './fx-transition.js';
 import { env, motionOK, setUserFx } from './fx-env.js';
 
 const ITEMS = [
-  ['hero', 'Home'], ['lab', 'Explore'], ['services', 'Solutions'], ['philosophy', 'Philosophy'],
+  ['hero', 'Home'], ['lab', 'Explore'], ['services', 'Solutions'], ['clients', 'Client apps'], ['philosophy', 'Philosophy'],
   ['story', 'Our core'], ['founders', 'Founders'], ['founders-two', 'Our people'], ['founders-three', 'Our team'], ['contact', "Let's talk"], ['footer', 'Say hello']
 ];
 
-/** Right-hand section rail + "03 / 08" counter + staggered mobile menu + a persistent effects switch. */
+/** Right-hand section rail + dynamic chapter counter + staggered mobile menu + a persistent effects switch. */
 export function initNav({ gsap } = {}) {
   const panels = ITEMS.map(([id, name]) => ({ id, name, el: document.getElementById(id) })).filter(p => p.el);
   if (!panels.length) return;

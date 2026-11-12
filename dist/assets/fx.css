@@ -18,7 +18,6 @@
 
 /* ---- WebGL canvases ---- */
 .fx-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
-.fx-hero-canvas{z-index:2}
 .fx-aurora-canvas{z-index:0;opacity:.5;mix-blend-mode:screen}
 .fx-story-canvas{z-index:4}
 .fx-story-canvas.is-draggable{pointer-events:auto;cursor:grab;touch-action:pan-y;outline-offset:-4px}

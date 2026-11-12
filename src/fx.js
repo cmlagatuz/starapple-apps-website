@@ -31,7 +31,6 @@ async function boot() {
   try {
     const THREE = await threeP;
     const scenes = [
-      ['#hero', host => import('./fx-gl-hero.js').then(m => m.initHeroGL(THREE, host))],
       ['#story .story-art', host => import('./fx-gl-story.js').then(m => m.initStoryGL(THREE, host))]
     ];
     scenes.push(['#contact', host => import('./fx-gl-aurora.js').then(m => m.initAuroraGL(THREE, host, { tone: 0 }))]);
