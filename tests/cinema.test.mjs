@@ -27,12 +27,13 @@ test('incoming query strings are removed before fragment links are presented', a
   assert.doesNotMatch(html, /[?&](?:source|utm_source|ref)=/i);
 });
 
-test('motion script honors reduced motion and preserves user controls', async () => {
+test('cinema has manual pause/play control and offscreen/hidden-tab lifecycle', async () => {
   const js = await readFile('src/cinema.js', 'utf8');
-  assert.match(js, /prefers-reduced-motion/);
+  assert.match(js, /userPaused/);
   assert.match(js, /IntersectionObserver/);
   assert.match(js, /aria-pressed/);
   assert.match(js, /visibilitychange/);
+  assert.match(js, /film\.play\(\)/);
 });
 
 test('hero attempts muted autoplay immediately, regardless of FX or low device resources', async () => {
