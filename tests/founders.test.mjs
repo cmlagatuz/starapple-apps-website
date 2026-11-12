@@ -50,17 +50,20 @@ test('FX section rail includes all three founder chapters and syntax is clean',a
  assert.doesNotMatch(env,/\\n\s*(?:lowEnd|\()/);
 });
 
-test('desktop founder zigzag preserves the mobile two-card stack',async()=>{
+
+test('desktop founders alternate image and bio while mobile preserves stacked cards',async()=>{
  const html=await readFile('index.html','utf8');
  const css=await readFile('src/studio-refresh.css','utf8');
- const begin=html.indexOf('<section id="founders"');
+ const start=html.indexOf('<section id="founders"');
  const end=html.indexOf('</section>',html.indexOf('<section id="founders-three"'))+10;
- const names=[...html.slice(begin,end).matchAll(/class="founder-profile founder-profile-([a-z]+) reveal"/g)].map(x=>x[1]);
+ const names=[...html.slice(start,end).matchAll(/class="founder-profile founder-profile-([a-z]+) reveal"/g)].map(x=>x[1]);
  assert.deepEqual(names,['zantetsuken','mel','sam','josh','marbert','ajing']);
- assert.match(css,/@media \(min-width:901px\)/);
- assert.match(css,/\.founders-section \.founder-profile:nth-child\(odd\)/);
- assert.match(css,/\.founders-section \.founder-profile:nth-child\(even\)/);
- assert.match(css,/@media \(max-width:900px\)/);
+ assert.match(css,/@media\(min-width:901px\)/);
+ assert.match(css,/grid-template-areas:"portrait details" "portrait bio"/);
+ assert.match(css,/grid-template-areas:"details portrait" "bio portrait"/);
+ assert.match(css,/grid-area:portrait/);
+ assert.match(css,/grid-area:details/);
+ assert.match(css,/grid-area:bio/);
+ assert.match(css,/@media\(max-width:900px\)/);
  assert.match(css,/\.founders-section \.founder-profile \{ top:auto; \}/);
- assert.match(css,/\.founders-section \.founders-showcase::before \{ display:none; \}/);
 });

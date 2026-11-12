@@ -11,7 +11,7 @@ test('brand symbol has a semantic star-apple SVG', () => {
 });
 test('SPA has required sections and privacy UI', async () => {
   const html = await readFile('index.html','utf8');
-  for (const id of ['hero','services','story','contact','meeting-form','rfq-form','legal-dialog']) assert.ok(html.includes(`id="${id}"`),id);
+  for (const id of ['hero','services','clients','story','contact','meeting-form','rfq-form','legal-dialog']) assert.ok(html.includes(`id="${id}"`),id);
   assert.match(html, /type="file"/);
 });
 test('Firebase rewrite sends inquiry traffic to backend before SPA fallback', async () => {

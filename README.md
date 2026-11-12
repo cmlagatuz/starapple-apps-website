@@ -317,3 +317,8 @@ The six founders follow a desktop diagonal zigzag: left-high, right-low across e
 
 ## Client application portfolio examples
 A new client portfolio chapter sits between Solutions and Philosophy. It uses two replaceable SVG logo files — `public/media/client-placeholder-one.svg` and `public/media/client-placeholder-two.svg` — alongside placeholder application entries. Both are publicly labelled SAMPLE / PLACEHOLDER; they do not represent actual deployed client work. Edit the project copy in `index.html` and replace logo files when approved client cases exist. The build copies `public/media` into `dist/media`. The navigation rail now includes Client apps. The star particle WebGL scene is removed from the hero; the cinema itself and other WebGL scenes continue unchanged.
+
+
+## Founder image/text zigzag for desktop
+
+The founder chapters keep their original three sections and the six existing founder names, pictures, roles, and written biographies. On desktop widths above 900px, the layout now matches the supplied alternating portrait/text rows: person 01's portrait sits left of their profile, person 02's portrait sits to the right, repeated through all six founders. No staggered vertical card layout remains. At 900px or below, the original stacked image-first cards remain. Smaller browser heights can scroll naturally rather than clipping biographies.

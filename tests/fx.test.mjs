@@ -108,7 +108,6 @@ test('full 3D effects do not skip scenes based on device resources',async()=>{
  const env=await readFile('src/fx-env.js','utf8');
  const entry=await readFile('src/fx.js','utf8');
  const kit=await readFile('src/fx-gl-kit.js','utf8');
- const hero=await readFile('src/fx-gl-hero.js','utf8');
  const story=await readFile('src/fx-gl-story.js','utf8');
  assert.match(env,/glOK = \(\) => motionOK\(\) && canWebGL\(\)/);
  assert.doesNotMatch(env,/lowEnd|saveData|deviceMemory|hardwareConcurrency/);
@@ -116,7 +115,7 @@ test('full 3D effects do not skip scenes based on device resources',async()=>{
  assert.match(entry,/initAuroraGL\(THREE, host, \{ tone: 0 \}\)/);
  assert.match(entry,/initAuroraGL\(THREE, host, \{ tone: 1 \}\)/);
  assert.match(kit,/const dprCap = maxDpr/);
- assert.match(hero,/const COUNT = 6200/);
+ assert.doesNotMatch(entry,/fx-gl-hero|initHeroGL/);
  assert.match(story,/const SPARKS = 150/);
 });
 test('link navigation uses no overlay, while keyboard navigation uses scrolling',async()=>{
@@ -129,4 +128,13 @@ test('link navigation uses no overlay, while keyboard navigation uses scrolling'
  assert.match(transition,/history\.pushState/);
  assert.match(transition,/ensureSectionIds/);
  assert.doesNotMatch(css,/\.fx-iris/);
+});
+
+test('hero WebGL star removed, other FX scenes preserved',async()=>{
+ const entry=await readFile('src/fx.js','utf8');
+ const nav=await readFile('src/fx-nav.js','utf8');
+ assert.doesNotMatch(entry,/fx-gl-hero|initHeroGL/);
+ assert.match(entry,/fx-gl-story\.js/);
+ assert.match(entry,/fx-gl-aurora\.js/);
+ assert.match(nav,/\['clients', 'Client apps'\]/);
 });

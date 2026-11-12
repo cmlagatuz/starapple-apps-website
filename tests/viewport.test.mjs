@@ -15,7 +15,7 @@ test('cinematic hero is full-bleed behind content without a video card', async (
 test('major sections snap at desktop viewport and small screens retain natural flow',async()=>{
   const html=await readFile('index.html','utf8');
   const css=await readFile('src/studio-refresh.css','utf8');
-  assert.equal((html.match(/class="[^"]*page-panel"/g)||[]).length,10);
+  assert.equal((html.match(/class="[^"]*page-panel"/g)||[]).length,11);
   assert.match(css,/scroll-snap-type:y mandatory/);
   assert.match(css,/scroll-snap-stop:always/);
   assert.match(css,/@media\(max-height:719px\)/);
@@ -41,4 +41,20 @@ test('footer Connect includes the official company LinkedIn page', async()=>{
   assert.match(footer,/href="https:\/\/www\.linkedin\.com\/company\/starappleapps\/"/);
   assert.match(footer,/rel="noopener noreferrer"/);
   assert.ok(footer.indexOf('<strong>Connect</strong>') < footer.indexOf('>LinkedIn ↗</a>'));
+});
+
+test('client apps are honest portfolio examples with two swappable local logo files',async()=>{
+ const html=await readFile('index.html','utf8');
+ const s=html.indexOf('<section id="services"');
+ const c=html.indexOf('<section id="clients"');
+ const p=html.indexOf('<section class="statement');
+ assert.ok(s>=0&&c>s&&p>c);
+ assert.match(html,/id="clients" class="clients-section section page-panel"/);
+ assert.equal((html.match(/class="client-project reveal"/g)||[]).length,2);
+ assert.match(html,/samples, not claims of completed client work/);
+ for(const name of ['client-placeholder-one.svg','client-placeholder-two.svg']){
+   assert.ok(html.includes('/media/'+name));
+   const file=await readFile('public/media/'+name,'utf8');
+   assert.match(file,/<svg/);
+ }
 });

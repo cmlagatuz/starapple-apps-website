@@ -566,61 +566,6 @@ body:has(.inquiry-dialog[open]){overflow:hidden}
   .site-header .nav-cta { display:none; }
 }
 
-/* Desktop founders: a continuous zigzag from Zantetsuken -> Mel -> Sam -> Josh -> Marbert -> Ajing.
- * Stagger the second card down-right in every chapter, but preserve the mobile stack untouched. */
-@media (min-width:901px) {
-  .founders-section .founders-showcase {
-    position:relative;
-    align-items:center;
-    gap:clamp(28px,4vw,74px);
-  }
-  .founders-section .founders-showcase::before {
-    content:"";
-    position:absolute;
-    z-index:0;
-    left:24%;
-    top:50%;
-    width:52%;
-    height:1px;
-    background:linear-gradient(90deg,transparent,#c89ee781 20%,#dcb4f6a6 50%,#c89ee781 80%,transparent);
-    transform:rotate(7deg);
-    pointer-events:none;
-  }
-  .founders-section .founder-profile {
-    position:relative;
-    z-index:1;
-  }
-  .founders-section .founder-profile:nth-child(odd) {
-    top:calc(-1 * clamp(18px,2.8svh,32px));
-  }
-  .founders-section .founder-profile:nth-child(even) {
-    top:clamp(18px,2.8svh,32px);
-  }
-  .founders-section .founder-profile::before {
-    content:"";
-    position:absolute;
-    top:-11px;
-    left:18px;
-    width:5px;
-    height:5px;
-    border-radius:50%;
-    background:#d3a4ef;
-    box-shadow:0 0 0 5px #9b6fc121;
-  }
-}
-@media (max-width:900px) {
-  .founders-section .founder-profile { top:auto; }
-  .founders-section .founders-showcase::before { display:none; }
-}
-@media (min-width:901px) and (max-height:719px) {
-  .founders-section .founder-profile:nth-child(odd) { top:-10px; }
-  .founders-section .founder-profile:nth-child(even) { top:10px; }
-}
-@media (prefers-reduced-motion:reduce) {
-  .founders-section .founder-profile { transition:none; }
-}
-
-
 /* Client apps / two intentionally labelled example case-study slots. */
 .clients-section{background:radial-gradient(ellipse at 80% 15%,#3b294c6b,transparent 45%),#0b0c14;color:#f6f1fc;border-block:1px solid #ffffff20;overflow:hidden}
 .clients-stage{width:min(1280px,calc(100% - 88px));position:relative}
@@ -649,3 +594,98 @@ body:has(.inquiry-dialog[open]){overflow:hidden}
 @media(max-width:590px){.clients-stage{width:calc(100% - 34px)}.clients-heading h2{font-size:clamp(2.4rem,9.2vw,3.7rem)}.client-project-mark{height:140px}.clients-bottom{flex-direction:column;align-items:flex-start;gap:12px}}
 @media(max-height:719px){.clients-section{min-height:0;padding:38px 0}}
 @media(prefers-reduced-motion:reduce){.client-project{transition:none}}
+
+/* Desktop editorial founders: alternate PHOTO | BIO then BIO | PHOTO.
+ * Existing single-column mobile layout and source order are preserved. */
+@media(min-width:901px) {
+  .founders-section .founders-stage { width:min(1190px,calc(100% - 100px)); }
+  .founders-section .founders-section-heading { margin-bottom:clamp(12px,1.65svh,22px); }
+  .founders-section .founders-section-heading h2 { font-size:clamp(2.5rem,3.7vw,4rem); }
+  .founders-section .founders-showcase {
+    display:flex;
+    flex-direction:column;
+    position:relative;
+    gap:clamp(12px,1.7svh,20px);
+  }
+  .founders-section .founders-showcase::before { content:none; }
+  .founders-section .founder-profile {
+    display:grid;
+    grid-template-columns:minmax(190px,36%) minmax(0,1fr);
+    grid-template-rows:auto 1fr;
+    grid-template-areas:"portrait details" "portrait bio";
+    column-gap:clamp(18px,2.8vw,42px);
+    row-gap:0;
+    align-items:stretch;
+    margin:0;
+    padding:clamp(10px,1.1vw,16px);
+    width:100%;
+    height:clamp(190px,26svh,240px);
+    min-height:0;
+    top:auto;
+    overflow:hidden;
+    background:linear-gradient(125deg,#1b1826,#12131c);
+    border:1px solid #ffffff24;
+    border-radius:12px;
+    box-shadow:0 16px 36px #00000030;
+    transform:none;
+  }
+  .founders-section .founder-profile:nth-child(even) {
+    grid-template-columns:minmax(0,1fr) minmax(190px,36%);
+    grid-template-areas:"details portrait" "bio portrait";
+  }
+  .founders-section .founder-profile::before { content:none; }
+  .founders-section .founder-profile:hover { transform:none;border-color:#b993d575; }
+  .founders-section .founder-profile-image {
+    grid-area:portrait;
+    height:100%;
+    min-height:0;
+    width:100%;
+    aspect-ratio:auto;
+    border:1px solid #ffffff25;
+    border-radius:8px;
+    overflow:hidden;
+  }
+  .founders-section .founder-profile-image img { display:block;width:100%;height:100%;object-fit:cover; }
+  .founders-section .founder-profile-details {
+    grid-area:details;
+    align-self:end;
+    min-height:0;
+    padding:0;
+    margin:0;
+  }
+  .founders-section .founder-profile-details h3 {
+    margin:4px 0 0;
+    font-size:clamp(1.45rem,2vw,2.2rem);
+    line-height:1.1;
+  }
+  .founders-section .founder-profile-symbol {
+    flex:0 0 29px;
+    width:29px;height:29px;
+    font-size:1rem;
+  }
+  .founders-section .founder-profile-bio {
+    grid-area:bio;
+    align-self:start;
+    min-width:0;
+    min-height:0;
+    margin:8px 0 0;
+    padding:9px 0 0;
+    gap:7px;
+    border-top:1px solid #ffffff1c;
+  }
+  .founders-section .founder-profile-bio p {
+    font-size:clamp(.74rem,.81vw,.87rem);
+    line-height:1.45;
+  }
+  .founders-section .founder-focus { gap:6px; }
+  .founders-section .founder-focus span { padding:4px 8px;font-size:.55rem; }
+  .founders-section .founders-section-bottom { margin-top:clamp(10px,1.6svh,19px); }
+}
+@media(min-width:901px) and (max-height:719px){
+  .founders-section .founder-profile { min-height:195px;height:auto; }
+  .founders-section { min-height:0;padding:25px 0; }
+}
+@media(max-width:900px) {
+  /* No changes to the existing mobile/tablet image-above-name cards. */
+  .founders-section .founder-profile { top:auto; }
+}
