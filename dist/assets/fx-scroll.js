@@ -10,7 +10,6 @@ const $$ = (s, r = document) => [...r.querySelectorAll(s)];
  */
 export function initScroll({ gsap, ScrollTrigger }) {
   const mm = gsap.matchMedia();
-  const heroWords = splitWords($('.hero h1'));
   const stmtWords = splitWords($('.statement p'));
   const closing = splitWords($('.footer-closing h2'));
   const founderTitle = splitWords($('#founders-title'));
@@ -18,16 +17,14 @@ export function initScroll({ gsap, ScrollTrigger }) {
   const labTitle = splitWords($('#lab-title'));
 
   const root = document.documentElement;
-  const wasPending = root.classList.contains('fx-pending');
   root.classList.add('fx-on');
 
   /* ---------- opening sequence (not scroll-bound, runs for everyone who allows motion) ---------- */
   mm.add('(prefers-reduced-motion: no-preference)', () => {
-    if (!wasPending) return;
     const tl = gsap.timeline({ defaults: { ease: 'expo.out' }, delay: 0.15 });
     tl.from('.hero-topline > *', { y: -16, autoAlpha: 0, duration: 0.9, stagger: 0.12 }, 0)
       .from('.hero-eyebrow', { y: 20, autoAlpha: 0, duration: 0.9 }, 0.15)
-      .from(heroWords, { yPercent: 118, rotate: 4, duration: 1.2, stagger: 0.07 }, 0.25)
+      .from('.hero h1', { y: 24, duration: 1.0, clearProps: 'transform' }, 0.25)
       .from('.hero-description', { y: 24, autoAlpha: 0, duration: 1 }, 0.75)
       .from('.hero-actions > *', { y: 22, autoAlpha: 0, duration: 0.9, stagger: 0.1 }, 0.9)
       .from('.hero-bottom > *', { y: 14, autoAlpha: 0, duration: 0.8, stagger: 0.1 }, 1.1)
