@@ -3,7 +3,7 @@ import { env, motionOK, setUserFx } from './fx-env.js';
 
 const ITEMS = [
   ['hero', 'Home'], ['lab', 'Explore'], ['services', 'Solutions'], ['philosophy', 'Philosophy'],
-  ['story', 'Our core'], ['founders', 'Founders'], ['contact', "Let's talk"], ['footer', 'Say hello']
+  ['story', 'Our core'], ['founders', 'Founders'], ['founders-two', 'Our people'], ['founders-three', 'Our team'], ['contact', "Let's talk"], ['footer', 'Say hello']
 ];
 
 /** Right-hand section rail + "03 / 08" counter + staggered mobile menu + a persistent effects switch. */
@@ -69,7 +69,9 @@ export function initNav({ gsap } = {}) {
   sw.type = 'button'; sw.className = 'fx-switch';
   const on = motionOK();
   sw.setAttribute('aria-pressed', String(on));
-  const automaticOff = env.reduced || env.lowEnd || env.saveData;\n  sw.setAttribute('aria-label', automaticOff ? 'Effects automatically disabled to protect device performance' : 'Toggle motion and 3D effects');\n  sw.title = automaticOff ? 'FX automatically off: reduced motion, data saving, or limited device resources' : 'Toggle motion and 3D effects';
+  const automaticOff = env.reduced || env.lowEnd || env.saveData;
+  sw.setAttribute('aria-label', automaticOff ? 'Effects automatically disabled to protect device performance' : 'Toggle motion and 3D effects');
+  sw.title = automaticOff ? 'FX automatically off: reduced motion, data saving, or limited device resources' : 'Toggle motion and 3D effects';
   sw.innerHTML = `<span aria-hidden="true">✦</span><b>FX</b><em>${on ? 'ON' : 'OFF'}</em>`;
   sw.disabled = automaticOff;
   sw.addEventListener('click', () => setUserFx(env.userOff));

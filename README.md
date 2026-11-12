@@ -250,7 +250,7 @@ On tablets, narrow windows, short viewports and reduced-motion preferences, mand
 
 ## Founders: inline editorial chapter
 
-The **Our Core → Get to know us** link now scrolls to a dedicated `#founders` section immediately below the story. It is a separate full-viewport chapter on large screens (eight sections total), with natural document flow on tablets/phones and short displays.
+The **Our Core → Get to know us** link now scrolls to a dedicated `#founders` section immediately below the story. It is a separate full-viewport chapter on large screens (ten sections total), with natural document flow on tablets/phones and short displays.
 
 The professional two-column layout identifies **Zantetsuken — Founder** and **Ajing — Co-Founder**, using only their chosen public developer names. Both images are linked directly from the exact URLs provided by the project owner and fitted with `object-fit:cover`, individual `object-position` crop controls, an editorial dark-gradient overlay, and responsive stacking. Neither image is a verified photograph of either individual; the alt attributes describe them as illustrative artwork.
 
@@ -269,6 +269,21 @@ Additive, progressive-enhancement layer in `src/fx*.js` + `src/fx.css`:
 
 - **GSAP + ScrollTrigger** (pinned 3.12.5, lazy from jsDelivr): hero opening sequence, split-word headlines, scrubbed parallax, statement word-lighting, 3D card reveals, founder portrait masks.
 - **three.js** (pinned 0.164.1): hero particle nebula that assembles into the StarApple star and reacts to the pointer; draggable 3D cut-open star apple (story); aurora shader behind contact and footer.
-- **Star-iris page transition** for in-page navigation, section rail, `01 / 08` counter, `[` / `]` keyboard hops, cursor ring + star-dust trail, magnetic buttons, tilting service cards.
+- **Star-iris page transition** for in-page navigation, section rail, `01 / 10` counter, `[` / `]` keyboard hops, cursor ring + star-dust trail, magnetic buttons, tilting service cards.
 - Respects `prefers-reduced-motion`, data-saver and low-memory devices, and has a persistent **FX on/off** switch. If a CDN or WebGL is unavailable the base site is unchanged.
 - To self-host the libraries (recommended for production, and to add SRI), copy them to `public/vendor/` and change the two URLs in `src/fx-loader.js`.
+
+## Extended founding team (six profiles)
+
+Immediately after **Our Core**, the founders now appear across three consecutive desktop-sized gallery chapters, in this exact order:
+
+1. Zantetsuken — Founder
+2. Mel — Co-Founder
+3. Sam — Co-Founder
+4. Josh — Co-Founder
+5. Marbert — Co-Founder
+6. Ajing — Co-Founder
+
+The first and last portraits keep the original owner-provided third-party illustrations. Four new, neutral, abstract SVG portraits live at `public/media/cofounder-*.svg`, copied to `dist/media/` during the build. They are not depictions of real individuals; replace them with approved photos or art when available. The short bios are brand-aligned editorial themes, not claims of verified professional or educational credentials.
+
+Full-screen desktop scrolling now includes ten major chapters. The right-hand FX section rail and its dynamic counter include all three founders chapters. Short and narrow viewports retain native document scrolling. The update also fixes accidentally checked-in literal `\\n` sequences in `src/fx-nav.js` and `src/fx-env.js` that were causing deployment lint errors.

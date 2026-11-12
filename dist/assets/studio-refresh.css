@@ -439,3 +439,29 @@ body:has(.inquiry-dialog[open]){overflow:hidden}
 .site-header .nav-cta{position:static;flex:0 0 auto;align-self:center;display:inline-flex;align-items:center;justify-content:center;gap:18px;margin:0;min-height:42px;line-height:1.2;white-space:nowrap;transform:none}
 @media(max-width:800px){.site-header .nav-container{min-height:72px}.site-header .nav-links{margin-left:0}.site-header .nav-cta{margin-left:auto}.site-header .nav-toggle{flex:0 0 auto}}
 @media(max-width:430px){.site-header .nav-cta{display:none}}
+
+/* Six-person leadership gallery: three complete scroll-snap chapters on large screens. */
+.founders-section + .founders-section{
+  border-top:1px solid #9b7bba32;
+}
+.founders-section:nth-of-type(even){
+  background:radial-gradient(ellipse at 15% 12%,#2b41503a,transparent 45%),#0b0c13;
+}
+.founder-profile-image img[src$=".svg"]{
+  object-fit:cover;
+  object-position:50% 47%;
+  filter:none;
+  transform:none;
+}
+.founder-profile:hover .founder-profile-image img[src$=".svg"]{
+  filter:brightness(1.05);
+  transform:scale(1.025);
+}
+.founders-section .founders-section-bottom a{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+}
+@media(max-width:850px){
+  .founders-section+.founders-section{border-top:1px solid #bd92e83b;}
+}

@@ -48,3 +48,8 @@ test('libraries are version-pinned and loaded lazily', async () => {
 test('all FX sources are flat .js/.css files so the build script can copy them', async () => {
   for (const f of await readdir('src')) assert.match(f, /\.(js|css)$/);
 });
+
+test('navigation accounts for all ten page chapters, including the extended founders team',async()=>{
+ const nav=await readFile('src/fx-nav.js','utf8');
+ for (const name of ['founders-two','founders-three'])assert.ok(nav.includes("'"+name+"'"));
+});

@@ -7,7 +7,10 @@ export const env = {
   coarse: mq('(pointer: coarse)').matches,
   fine: mq('(hover: hover) and (pointer: fine)').matches,
   saveData: Boolean(navigator.connection?.saveData),
-  // Prefer smoothness when memory information is available; fall back to CPU and mobile hints.\n  lowEnd: (typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 4) ||\n    (typeof navigator.hardwareConcurrency === 'number' && navigator.hardwareConcurrency <= 4) ||\n    (typeof navigator.deviceMemory !== 'number' && typeof navigator.hardwareConcurrency !== 'number' && mq('(pointer: coarse)').matches),
+  // Prefer smoothness when memory information is available; fall back to CPU and mobile hints.
+  lowEnd: (typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 4) ||
+    (typeof navigator.hardwareConcurrency === 'number' && navigator.hardwareConcurrency <= 4) ||
+    (typeof navigator.deviceMemory !== 'number' && typeof navigator.hardwareConcurrency !== 'number' && mq('(pointer: coarse)').matches),
   userOff: (() => { try { return localStorage.getItem(FX_KEY) === 'off'; } catch { return false; } })(),
   narrow: () => innerWidth <= 800
 };
