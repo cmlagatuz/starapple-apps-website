@@ -64,7 +64,7 @@
 @media(max-width:1023px){.fx-rail,.fx-counter{display:none}}
 @media(max-width:800px){.fx-switch{display:none}}
 @media(hover:none),(pointer:coarse){.fx-cursor,.fx-dust{display:none}}
-@media(prefers-reduced-motion:reduce){.fx-cursor,.fx-dust,.fx-iris,.fx-canvas{display:none}.nav-links.open a{animation:none}}
+@media(prefers-reduced-motion:reduce){.fx-cursor,.fx-dust,.fx-canvas{display:none}.nav-links.open a{animation:none}}
 
 /* The FX button remains interactive for manual lightweight opt-in on budget devices. */
 .fx-switch:not(:disabled){cursor:pointer}

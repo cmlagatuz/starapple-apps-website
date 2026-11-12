@@ -32,7 +32,7 @@ test('every FX module honours reduced motion / user opt-out and degrades without
   const env = await readFile('src/fx-env.js', 'utf8');
   const entry = await readFile('src/fx.js', 'utf8');
   assert.match(env, /prefers-reduced-motion/);
-  assert.match(env, /saveData/);
+  assert.doesNotMatch(env, /saveData|lowEnd|deviceMemory|hardwareConcurrency/);
   assert.match(entry, /motionOK\(\)/);
   assert.match(entry, /catch \(err\)/);
   const css = await readFile('src/fx.css', 'utf8');
