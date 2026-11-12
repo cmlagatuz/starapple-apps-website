@@ -1,0 +1,77 @@
+/* StarApple FX layer: loaded last. Everything here is additive and inert unless fx.js adds .fx-on / .fx-pending. */
+
+/* ---- opening state (set by an inline head script; removed by fx-scroll.js or after a failsafe timeout) ---- */
+.fx-pending .hero-copy>*,.fx-pending .hero-topline>*,.fx-pending .hero-bottom>*,.fx-pending .site-header .nav-container>*{opacity:0}
+.fx-pending .hero-enter,.fx-on .hero-enter{animation:none}
+
+/* GSAP owns reveals once active: neutralise the older CSS reveal so the two never fight over transform/opacity. */
+.fx-on.has-js .reveal{opacity:1;transform:none;transition:box-shadow .45s var(--ease),background-color .25s,border-color .25s}
+.fx-on.has-js .service-card.fx-settled{transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
+.fx-on.has-js .service-card.fx-settled:hover{transform:translateY(-7px)}
+.services-grid{perspective:1400px}
+.service-card{will-change:rotate}
+
+/* ---- split headline words ---- */
+.fx-w{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .04em .14em;margin:0 -.04em -.14em}
+.fx-wi{display:inline-block}
+.hero-gradient .fx-wi{background:inherit;-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ---- WebGL canvases ---- */
+.fx-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
+.fx-hero-canvas{z-index:2}
+.fx-aurora-canvas{z-index:0;opacity:.5;mix-blend-mode:screen}
+.fx-story-canvas{z-index:4}
+.fx-story-canvas.is-draggable{pointer-events:auto;cursor:grab;touch-action:pan-y;outline-offset:-4px}
+.fx-story-canvas.is-dragging{cursor:grabbing}
+.story-art.fx-gl-on .story-fruit{opacity:0;transition:opacity .6s}
+.contact-section.fx-gl-on>.wrap,.footer.fx-gl-on>.wrap{position:relative;z-index:1}
+.contact-section.fx-gl-on .contact-halo{opacity:.4}
+
+/* ---- star iris page transition ---- */
+.fx-iris{position:fixed;inset:0;z-index:2000;pointer-events:none;visibility:hidden}
+.fx-iris.is-active{visibility:visible;pointer-events:all}
+.fx-iris-fill{display:none;position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,#4e2c60,#24132f 62%,#120b1b);will-change:clip-path,transform}
+.fx-iris-brand{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;justify-items:center;gap:18px}
+.fx-iris-logo{width:84px;height:84px;display:block;filter:drop-shadow(0 0 28px #e267b77e)}
+.fx-iris-logo svg{width:100%;height:100%;animation:fxSpin 3s linear infinite}
+.fx-iris-label{font:500 .72rem var(--mono,'IBM Plex Mono',monospace);letter-spacing:.28em;color:#e6cdf1}
+@keyframes fxSpin{to{transform:rotate(360deg)}}
+
+/* ---- section rail, counter, switch ---- */
+.fx-rail{position:fixed;right:clamp(10px,1.6vw,26px);top:50%;transform:translateY(-50%);z-index:70}
+.fx-rail ol{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.fx-rail a{position:relative;display:flex;align-items:center;justify-content:flex-end;gap:12px;height:26px;min-width:26px;color:#e8dcf2}
+.fx-rail-dot{width:8px;height:8px;border-radius:50%;background:#ffffff55;border:1px solid #ffffff88;transition:transform .35s var(--ease),background .3s,box-shadow .3s;margin-right:7px}
+.fx-rail a:hover .fx-rail-dot,.fx-rail a:focus-visible .fx-rail-dot{transform:scale(1.5);background:#e67bbd}
+.fx-rail a[aria-current] .fx-rail-dot{background:#e67bbd;border-color:#fff;transform:scale(1.35);box-shadow:0 0 0 5px #e67bbd33,0 0 16px #e67bbd}
+.fx-rail-label{font:500 .62rem var(--mono,'IBM Plex Mono',monospace);letter-spacing:.14em;text-transform:uppercase;padding:5px 9px;border-radius:6px;background:#15101dcc;backdrop-filter:blur(8px);opacity:0;transform:translateX(8px);transition:opacity .25s,transform .3s var(--ease);white-space:nowrap;pointer-events:none}
+.fx-rail a:hover .fx-rail-label,.fx-rail a:focus-visible .fx-rail-label{opacity:1;transform:none}
+.fx-counter{position:fixed;left:clamp(14px,2vw,34px);bottom:clamp(14px,2.4vh,28px);z-index:70;display:flex;align-items:center;gap:9px;font:500 .64rem var(--mono,'IBM Plex Mono',monospace);letter-spacing:.14em;color:#f2e8f8;mix-blend-mode:difference;overflow:hidden}
+.fx-counter i{width:26px;height:1px;background:currentColor;opacity:.6}
+.fx-counter b{font-weight:500;opacity:.7;margin-left:6px;text-transform:uppercase}
+.fx-switch{position:fixed;right:clamp(10px,1.6vw,26px);bottom:clamp(14px,2.4vh,28px);z-index:70;display:inline-flex;align-items:center;gap:7px;border:1px solid #ffffff3d;border-radius:99px;background:#14101cb8;backdrop-filter:blur(10px);color:#eadcf6;padding:7px 12px;font:500 .6rem var(--mono,'IBM Plex Mono',monospace);letter-spacing:.12em}
+.fx-switch b{font-weight:600}.fx-switch em{font-style:normal;color:#8bc4a1}
+.fx-switch[aria-pressed="false"] em{color:#d98a9a}.fx-switch:disabled{opacity:.5;cursor:not-allowed}
+
+/* ---- cursor ring + dust ---- */
+.fx-cursor{position:fixed;left:0;top:0;z-index:3000;width:0;height:0;pointer-events:none;opacity:0;transition:opacity .3s}
+.fx-cursor.is-on{opacity:1}
+.fx-cursor::before{content:"";position:absolute;left:-17px;top:-17px;width:34px;height:34px;border-radius:50%;border:1.5px solid #fff;mix-blend-mode:difference;transition:transform .35s var(--ease),background .3s,border-color .3s}
+.fx-cursor.is-link::before{transform:scale(1.9);background:#ffffff1f}
+.fx-cursor.is-down::before{transform:scale(.7)}
+.fx-cursor-label{position:absolute;left:0;top:0;transform:translate(-50%,-50%);font:600 .56rem var(--mono,'IBM Plex Mono',monospace);letter-spacing:.14em;text-transform:uppercase;color:#fff;mix-blend-mode:difference;opacity:0;transition:opacity .2s}
+.fx-cursor.has-label .fx-cursor-label{opacity:1}
+.fx-cursor.has-label::before{transform:scale(2.6)}
+.fx-dust{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:2900}
+
+/* ---- tactile ---- */
+.button,.hero-secondary,.lab-link,.fx-switch{will-change:translate}
+
+/* ---- mobile menu: staggered links ---- */
+@keyframes fxNavIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+.nav-links.open a{animation:fxNavIn .45s var(--ease) both;animation-delay:calc(var(--i,0)*60ms)}
+
+@media(max-width:1023px){.fx-rail,.fx-counter{display:none}}
+@media(max-width:800px){.fx-switch{display:none}}
+@media(hover:none),(pointer:coarse){.fx-cursor,.fx-dust{display:none}}
+@media(prefers-reduced-motion:reduce){.fx-cursor,.fx-dust,.fx-iris,.fx-canvas{display:none}.nav-links.open a{animation:none}}
