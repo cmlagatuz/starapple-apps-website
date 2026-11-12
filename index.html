@@ -9,16 +9,6 @@
       history.replaceState(history.state, '', location.pathname + location.hash);
     }
   </script>
-  <script>
-    // FX layer: hide hero copy until the opening sequence can play; failsafe releases it if libraries are slow/blocked.
-    (function () {
-      var d = document.documentElement, off = false;
-      try { off = localStorage.getItem('starapple-fx') === 'off'; } catch (e) {}
-      if (off || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      d.classList.add('fx-pending');
-      setTimeout(function () { d.classList.remove('fx-pending'); }, 2200);
-    })();
-  </script>
   <meta name="theme-color" content="#07080b" />
   <meta name="description" content="StarApple Apps LLC builds thoughtful apps, modern web platforms, IT solutions and cloud systems. Rooted in the Philippines. Built for the world." />
   <meta property="og:title" content="StarApple Apps LLC — Brilliant at the core." />
@@ -81,7 +71,7 @@
         <div class="hero-topline"><span><i class="status-dot"></i> AN INDEPENDENT DIGITAL STUDIO</span><span>EST. IN THE PHILIPPINES <b>↗</b> WORKING WORLDWIDE</span></div>
         <div class="hero-content">
           <div class="hero-copy">
-            <div class="hero-eyebrow hero-enter"><span class="small-cross">✳</span> DESIGN-LED ENGINEERING <span class="eyebrow-rule"></span> 001</div>
+            <div class="hero-eyebrow hero-enter">DESIGN-LED ENGINEERING <span class="eyebrow-rule"></span> 001</div>
             <h1 class="hero-enter">Your next <span class="hero-gradient">big idea.</span><br><span class="hero-emphasis">Beautifully built.</span></h1>
             <p class="hero-description hero-enter">We turn ambitious ideas into intuitive apps, standout websites, and reliable digital platforms—designed for people and built to grow.</p>
             <div class="hero-actions hero-enter"><a class="button button-white button-large magnetic" href="#contact">Start a project <span aria-hidden="true">↗</span></a><a class="hero-secondary" href="#lab">Explore our approach <span aria-hidden="true">↘</span></a></div>
