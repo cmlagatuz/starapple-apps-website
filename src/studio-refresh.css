@@ -465,3 +465,15 @@ body:has(.inquiry-dialog[open]){overflow:hidden}
 @media(max-width:850px){
   .founders-section+.founders-section{border-top:1px solid #bd92e83b;}
 }
+
+
+/* Cinematic hero language loop and left-to-right navigation character scrambling. */
+.hero-keyword { display:inline-block; white-space:nowrap; color:#d8b4fc; -webkit-text-fill-color:#d8b4fc; }
+.hero-keyword.is-cycling { text-shadow:0 0 24px #c5a0ff5e; }
+#nav-links a.nav-scrambling,.nav-cta.nav-scrambling { text-shadow:0 0 16px #a37ad17a; }
+@media (max-width:590px) {
+  .hero-keyword { max-width:100%; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .hero-keyword,.nav-scrambling { animation:none!important;transition:none!important; }
+}

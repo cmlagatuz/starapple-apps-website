@@ -1,11 +1,14 @@
 import { fillBrandMarks } from './brand.js';
 import { initMotion } from './motion.js';
 import { initForms } from './forms.js';
+import { initNavScramble, initHeroKeyword } from './kinetic-type.js';
 
 document.documentElement.classList.add('has-js');
 fillBrandMarks();
 initMotion();
 initForms();
+initNavScramble();
+initHeroKeyword();
 document.getElementById('year').textContent=String(new Date().getFullYear());
 const email=window.STARAPPLE_CONFIG?.contactEmail;
 if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {

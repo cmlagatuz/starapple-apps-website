@@ -54,3 +54,31 @@ test('navigation accounts for all ten page chapters, including the extended foun
  const nav=await readFile('src/fx-nav.js','utf8');
  for (const name of ['founders-two','founders-three'])assert.ok(nav.includes("'"+name+"'"));
 });
+
+test('FX toggle permits explicit lightweight opt-in on low-memory devices',async()=>{
+  const environment = await readFile('src/fx-env.js','utf8');
+  const nav = await readFile('src/fx-nav.js','utf8');
+  assert.match(environment,/preference: /);
+  assert.match(environment,/env\.userOn \|\| \(!env\.saveData && !env\.lowEnd\)/);
+  assert.match(environment,/glOK = \(\) => motionOK\(\) && !env\.saveData && !env\.lowEnd/);
+  assert.match(nav,/sw\.disabled = env\.reduced/);
+  assert.match(nav,/setUserFx\(!on\)/);
+  assert.doesNotMatch(nav,/sw\.disabled = automaticOff/);
+});
+
+test('hero word rotation and four header nav links use character reveal without breaking navigation',async()=>{
+  const html=await readFile('index.html','utf8');
+  const main=await readFile('src/main.js','utf8');
+  const kinetic=await readFile('src/kinetic-type.js','utf8');
+  assert.match(html,/id="hero-keyword">idea\./);
+  for (const word of ["idea.","launch.","product.","platform.","vision."])
+    assert.ok(kinetic.includes("'"+word+"'"));
+  for (const text of ['Solutions','Explore solutions','Our core',"Let's talk"])
+    assert.ok(html.includes('>'+text+'</a>'));
+  assert.match(main,/initNavScramble\(\)/);
+  assert.match(main,/initHeroKeyword\(\)/);
+  assert.match(kinetic,/requestAnimationFrame/);
+  assert.match(kinetic,/i < revealed/);
+  assert.match(kinetic,/prefers-reduced-motion: reduce/);
+  assert.doesNotMatch(kinetic,/preventDefault\(\)/);
+});

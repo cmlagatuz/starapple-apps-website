@@ -64,16 +64,19 @@ export function initNav({ gsap } = {}) {
   // Staggered mobile menu
   document.querySelectorAll('#nav-links a').forEach((a, i) => a.style.setProperty('--i', i));
 
-  // Effects switch (persisted). Reloads so every scene starts or stops cleanly.
+  // Persisted FX switch: low-resource auto-off can be overridden for lightweight effects.
   const sw = document.createElement('button');
   sw.type = 'button'; sw.className = 'fx-switch';
   const on = motionOK();
+  const automaticOff = !env.userOn && !env.userOff && (env.reduced || env.lowEnd || env.saveData);
   sw.setAttribute('aria-pressed', String(on));
-  const automaticOff = env.reduced || env.lowEnd || env.saveData;
-  sw.setAttribute('aria-label', automaticOff ? 'Effects automatically disabled to protect device performance' : 'Toggle motion and 3D effects');
-  sw.title = automaticOff ? 'FX automatically off: reduced motion, data saving, or limited device resources' : 'Toggle motion and 3D effects';
-  sw.innerHTML = `<span aria-hidden="true">✦</span><b>FX</b><em>${on ? 'ON' : 'OFF'}</em>`;
-  sw.disabled = automaticOff;
-  sw.addEventListener('click', () => setUserFx(env.userOff));
+  sw.setAttribute('aria-label', env.reduced ? 'Effects unavailable while system reduced motion is enabled' : on ? 'Turn off visual effects' : 'Turn on visual effects');
+  sw.title = env.reduced ? 'Your system has requested reduced motion' :
+    automaticOff ? 'Automatically off for this device — click to enable lightweight effects' :
+    on && (env.lowEnd || env.saveData) ? 'Lightweight effects on; heavy 3D remains disabled' :
+    on ? 'Turn effects off' : 'Turn effects on';
+  sw.innerHTML = `<span aria-hidden="true">✦</span><b>FX</b><em>${on ? 'ON' : 'OFF'}${automaticOff ? ' · AUTO' : ''}</em>`;
+  sw.disabled = env.reduced;
+  sw.addEventListener('click', () => setUserFx(!on));
   document.body.appendChild(sw);
 }

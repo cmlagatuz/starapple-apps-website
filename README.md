@@ -287,3 +287,12 @@ Immediately after **Our Core**, the founders now appear across three consecutive
 The first and last portraits keep the original owner-provided third-party illustrations. Four new, neutral, abstract SVG portraits live at `public/media/cofounder-*.svg`, copied to `dist/media/` during the build. They are not depictions of real individuals; replace them with approved photos or art when available. The short bios are brand-aligned editorial themes, not claims of verified professional or educational credentials.
 
 Full-screen desktop scrolling now includes ten major chapters. The right-hand FX section rail and its dynamic counter include all three founders chapters. Short and narrow viewports retain native document scrolling. The update also fixes accidentally checked-in literal `\\n` sequences in `src/fx-nav.js` and `src/fx-env.js` that were causing deployment lint errors.
+
+
+## Cinema autoplay, opt-in FX, and kinetic typography
+
+On page entry, the background cinema video declares `autoplay muted loop playsinline preload="auto"` and the playback controller immediately attempts `video.play()` independently of the FX toggle, power-saving flags and hardware capability detection. It pauses when the hero is offscreen, on a hidden tab, or on explicit user pause; resumes when appropriate, and retains a manual Play button if the browser blocks autoplay. **Third-party source availability, AV1 decoding support, or browser autoplay policy can still prevent playback and cannot be bypassed by site JavaScript.**
+
+The FX button uses a stored three-state preference: `auto` (default), `on` (manual opt-in), and `off`. Low-memory/low-CPU/data-saver devices start automatically in OFF, but can turn on **lightweight** GSAP motion using the FX control. Heavy WebGL remains disabled on these devices. The operating system's reduced-motion preference takes precedence and disables FX. The click handler now sends `!on` instead of the previous erroneous value.
+
+The hero headline keeps `Your next big` fixed while the final word cycles across `idea.`, `launch.`, `product.`, `platform.`, and `vision.`. The four main navigation labels, plus the Start a project CTA, perform a brief left-to-right character scramble on click without intercepting fragment navigation. All kinetic text respects reduced-motion preferences.

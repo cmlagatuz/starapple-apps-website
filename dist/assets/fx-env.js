@@ -11,13 +11,16 @@ export const env = {
   lowEnd: (typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 4) ||
     (typeof navigator.hardwareConcurrency === 'number' && navigator.hardwareConcurrency <= 4) ||
     (typeof navigator.deviceMemory !== 'number' && typeof navigator.hardwareConcurrency !== 'number' && mq('(pointer: coarse)').matches),
-  userOff: (() => { try { return localStorage.getItem(FX_KEY) === 'off'; } catch { return false; } })(),
+  preference: (() => { try { const pref = localStorage.getItem(FX_KEY); return pref === 'on' || pref === 'off' ? pref : 'auto'; } catch { return 'auto'; } })(),
+  get userOff() { return this.preference === 'off'; },
+  get userOn() { return this.preference === 'on'; },
   narrow: () => innerWidth <= 800
 };
 
-/** Motion is allowed only when nobody (OS, user toggle) asked for less. */
-export const motionOK = () => !env.reduced && !env.userOff && !env.saveData && !env.lowEnd;
-/** Heavier WebGL scenes are skipped on data-saver / low-memory devices. */
+/** Respect OS accessibility preferences. Auto-disable FX on limited devices,
+ * but explicit user opt-in enables lightweight effects without enabling WebGL. */
+export const motionOK = () => !env.reduced && !env.userOff && (env.userOn || (!env.saveData && !env.lowEnd));
+/** Heavier WebGL scenes remain off on low-end and data-saver devices even when FX is enabled manually. */
 export const glOK = () => motionOK() && !env.saveData && !env.lowEnd && canWebGL();
 
 let glSupport;

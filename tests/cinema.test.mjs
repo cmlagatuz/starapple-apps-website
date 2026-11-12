@@ -34,3 +34,15 @@ test('motion script honors reduced motion and preserves user controls', async ()
   assert.match(js, /aria-pressed/);
   assert.match(js, /visibilitychange/);
 });
+
+test('hero attempts muted autoplay immediately, regardless of FX or low device resources', async () => {
+  const html = await readFile('index.html', 'utf8');
+  const js = await readFile('src/cinema.js', 'utf8');
+  assert.match(html, /id="hero-film"[^>]*preload="auto"/);
+  assert.match(js, /film\.play\(\)/);
+  assert.match(js, /film\.muted = true/);
+  assert.doesNotMatch(js, /env\.lowEnd|saveData|motionEnabled/);
+  assert.match(js, /userPaused/);
+  assert.match(js, /visibilitychange/);
+  assert.match(js, /pageshow/);
+});

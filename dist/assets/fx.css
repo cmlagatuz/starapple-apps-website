@@ -75,3 +75,8 @@
 @media(max-width:800px){.fx-switch{display:none}}
 @media(hover:none),(pointer:coarse){.fx-cursor,.fx-dust{display:none}}
 @media(prefers-reduced-motion:reduce){.fx-cursor,.fx-dust,.fx-iris,.fx-canvas{display:none}.nav-links.open a{animation:none}}
+
+/* The FX button remains interactive for manual lightweight opt-in on budget devices. */
+.fx-switch:not(:disabled){cursor:pointer}
+.fx-switch:hover:not(:disabled),.fx-switch:focus-visible:not(:disabled){border-color:#d7b0f4;background:#30213eeb}
+.fx-switch em{white-space:nowrap}
