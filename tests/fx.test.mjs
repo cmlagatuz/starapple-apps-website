@@ -55,14 +55,14 @@ test('navigation accounts for all ten page chapters, including the extended foun
  for (const name of ['founders-two','founders-three'])assert.ok(nav.includes("'"+name+"'"));
 });
 
-test('FX toggle permits explicit lightweight opt-in on low-memory devices',async()=>{
+test('FX toggle supports full 3D effects where WebGL is available',async()=>{
   const environment = await readFile('src/fx-env.js','utf8');
   const nav = await readFile('src/fx-nav.js','utf8');
   assert.match(environment,/preference: /);
   assert.match(environment,/FX_KEY = 'starapple-fx-v2'/);
   assert.match(environment,/pref : 'on'/);
   assert.match(environment,/motionOK = \(\) => !env\.reduced && !env\.userOff/);
-  assert.match(environment,/glOK = \(\) => motionOK\(\) && !env\.saveData && !env\.lowEnd/);
+  assert.match(environment,/glOK = \(\) => motionOK\(\) && canWebGL\(\)/);
   assert.match(nav,/sw\.disabled = env\.reduced/);
   assert.match(nav,/setUserFx\(!on\)/);
   assert.doesNotMatch(nav,/sw\.disabled = automaticOff/);
@@ -102,4 +102,31 @@ test('main header CTA is not magnetically shifted or GSAP-translated', async()=>
   assert.match(css,/min-height:54px/);
   assert.doesNotMatch(scroll,/\.from\('\.site-header \.nav-container > \*'/);
   assert.doesNotMatch(cursor,/\.button, \.hero-secondary, \.lab-link/);
+});
+
+test('full 3D effects do not skip scenes based on device resources',async()=>{
+ const env=await readFile('src/fx-env.js','utf8');
+ const entry=await readFile('src/fx.js','utf8');
+ const kit=await readFile('src/fx-gl-kit.js','utf8');
+ const hero=await readFile('src/fx-gl-hero.js','utf8');
+ const story=await readFile('src/fx-gl-story.js','utf8');
+ assert.match(env,/glOK = \(\) => motionOK\(\) && canWebGL\(\)/);
+ assert.doesNotMatch(env,/lowEnd|saveData|deviceMemory|hardwareConcurrency/);
+ assert.doesNotMatch(entry,/if \(!env\.coarse\)/);
+ assert.match(entry,/initAuroraGL\(THREE, host, \{ tone: 0 \}\)/);
+ assert.match(entry,/initAuroraGL\(THREE, host, \{ tone: 1 \}\)/);
+ assert.match(kit,/const dprCap = maxDpr/);
+ assert.match(hero,/const COUNT = 6200/);
+ assert.match(story,/const SPARKS = 150/);
+});
+test('link navigation uses no overlay, while keyboard navigation uses scrolling',async()=>{
+ const entry=await readFile('src/fx.js','utf8');
+ const transition=await readFile('src/fx-transition.js','utf8');
+ const css=await readFile('src/fx.css','utf8');
+ assert.doesNotMatch(entry,/initTransitions/);
+ assert.doesNotMatch(transition,/starClip|fx-iris|preventDefault|gsap\.timeline|overlay/);
+ assert.match(transition,/scrollIntoView/);
+ assert.match(transition,/history\.pushState/);
+ assert.match(transition,/ensureSectionIds/);
+ assert.doesNotMatch(css,/\.fx-iris/);
 });

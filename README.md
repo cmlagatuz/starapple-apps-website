@@ -304,3 +304,12 @@ The hero headline keeps `Your next big` fixed while the final word cycles across
 - FX is **enabled by default** for every visitor, including less capable devices, while the demanding WebGL scenes are still gated by memory/data-saving capability checks. The OS reduced-motion preference and a deliberate visitor FX OFF choice continue to be honored. The FX storage key is versioned to `starapple-fx-v2` so legacy OFF choices do not suppress the new default after the update.
 - Removed the header's GSAP slide-from-top animation and excluded header/secondary hero links from magnetic transforms to eliminate the displaced Start a project CTA and levitating hero-secondary text. Desktop alignment has explicit dimensions; mobile retains stacked actions.
 - The Connect footer includes the official [StarApple Apps LinkedIn page](https://www.linkedin.com/company/starappleapps/), opening in a new tab with secure `rel` attributes.
+
+
+## Full WebGL, native navigation, and founders zigzag
+
+Full GSAP and WebGL effects start whenever the visitor has FX enabled and the browser supports WebGL. No memory, CPU, data-saver or touch-pointer conditions disable or reduce 3D scenes; the 6,200-particle hero, 150-spark story, both aurora backgrounds and configured full rendering resolution are available on all compatible devices. Unsupported WebGL falls back gracefully; reduced-motion and explicit FX off remain respected. This may increase resource use on older phones and laptops.
+
+Removed the old star-iris navigation overlay and its hash-link click interception. Section links and the FX section rail use normal anchors, preserving the smaller nav-letter scramble. Keyboard panel hops use scrollIntoView.
+
+The six founders follow a desktop diagonal zigzag: left-high, right-low across each of the three two-person chapters. The mobile layout stays in its existing single column, without stagger offsets.

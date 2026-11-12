@@ -69,7 +69,7 @@ export function initStoryGL(THREE, host) {
     ring.rotation.set(1.1 + i * 0.5, 0.3, i * 0.9);
     scene.add(ring); return ring;
   });
-  const SPARKS = env.coarse ? 70 : 150, sp = new Float32Array(SPARKS * 3), spSeed = new Float32Array(SPARKS * 3);
+  const SPARKS = 150, sp = new Float32Array(SPARKS * 3), spSeed = new Float32Array(SPARKS * 3);
   for (let i = 0; i < SPARKS; i++) {
     const a = Math.random() * Math.PI * 2, r = 1.7 + Math.random() * 1.5;
     spSeed.set([a, r, (Math.random() - 0.5) * 2.4], i * 3);

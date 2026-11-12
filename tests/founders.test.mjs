@@ -49,3 +49,18 @@ test('FX section rail includes all three founder chapters and syntax is clean',a
  assert.doesNotMatch(nav,/\\n\s+(?:sw\.|const)/);
  assert.doesNotMatch(env,/\\n\s*(?:lowEnd|\()/);
 });
+
+test('desktop founder zigzag preserves the mobile two-card stack',async()=>{
+ const html=await readFile('index.html','utf8');
+ const css=await readFile('src/studio-refresh.css','utf8');
+ const begin=html.indexOf('<section id="founders"');
+ const end=html.indexOf('</section>',html.indexOf('<section id="founders-three"'))+10;
+ const names=[...html.slice(begin,end).matchAll(/class="founder-profile founder-profile-([a-z]+) reveal"/g)].map(x=>x[1]);
+ assert.deepEqual(names,['zantetsuken','mel','sam','josh','marbert','ajing']);
+ assert.match(css,/@media \(min-width:901px\)/);
+ assert.match(css,/\.founders-section \.founder-profile:nth-child\(odd\)/);
+ assert.match(css,/\.founders-section \.founder-profile:nth-child\(even\)/);
+ assert.match(css,/@media \(max-width:900px\)/);
+ assert.match(css,/\.founders-section \.founder-profile \{ top:auto; \}/);
+ assert.match(css,/\.founders-section \.founders-showcase::before \{ display:none; \}/);
+});

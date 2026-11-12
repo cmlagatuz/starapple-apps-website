@@ -1,6 +1,6 @@
-import { env, motionOK, glOK } from './fx-env.js';
+import { motionOK, glOK } from './fx-env.js';
 import { loadGsap, loadThree } from './fx-loader.js';
-import { initTransitions, ensureSectionIds } from './fx-transition.js';
+import { ensureSectionIds } from './fx-transition.js';
 import { initScroll } from './fx-scroll.js';
 import { initNav } from './fx-nav.js';
 import { initTactile } from './fx-cursor.js';
@@ -19,7 +19,6 @@ async function boot() {
   let libs = null;
   try {
     libs = await gsapP;
-    initTransitions(libs.gsap);
     initScroll(libs);
   } catch (err) {
     console.warn('[fx] GSAP layer unavailable, using the base experience.', err);
@@ -35,10 +34,8 @@ async function boot() {
       ['#hero', host => import('./fx-gl-hero.js').then(m => m.initHeroGL(THREE, host))],
       ['#story .story-art', host => import('./fx-gl-story.js').then(m => m.initStoryGL(THREE, host))]
     ];
-    if (!env.coarse) {
-      scenes.push(['#contact', host => import('./fx-gl-aurora.js').then(m => m.initAuroraGL(THREE, host, { tone: 0 }))]);
-      scenes.push(['footer.footer', host => import('./fx-gl-aurora.js').then(m => m.initAuroraGL(THREE, host, { tone: 1 }))]);
-    }
+    scenes.push(['#contact', host => import('./fx-gl-aurora.js').then(m => m.initAuroraGL(THREE, host, { tone: 0 }))]);
+    scenes.push(['footer.footer', host => import('./fx-gl-aurora.js').then(m => m.initAuroraGL(THREE, host, { tone: 1 }))]);
     for (const [selector, make] of scenes) {
       const host = document.querySelector(selector);
       if (!host) continue;

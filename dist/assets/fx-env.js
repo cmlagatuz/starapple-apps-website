@@ -6,11 +6,6 @@ export const env = {
   reduced: mq('(prefers-reduced-motion: reduce)').matches,
   coarse: mq('(pointer: coarse)').matches,
   fine: mq('(hover: hover) and (pointer: fine)').matches,
-  saveData: Boolean(navigator.connection?.saveData),
-  // Prefer smoothness when memory information is available; fall back to CPU and mobile hints.
-  lowEnd: (typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 4) ||
-    (typeof navigator.hardwareConcurrency === 'number' && navigator.hardwareConcurrency <= 4) ||
-    (typeof navigator.deviceMemory !== 'number' && typeof navigator.hardwareConcurrency !== 'number' && mq('(pointer: coarse)').matches),
   preference: (() => { try { const pref = localStorage.getItem(FX_KEY); return pref === 'on' || pref === 'off' ? pref : 'on'; } catch { return 'auto'; } })(),
   get userOff() { return this.preference === 'off'; },
   get userOn() { return this.preference === 'on'; },
@@ -18,10 +13,10 @@ export const env = {
 };
 
 /** Motion defaults on for every visitor. A visitor opt-out and OS reduced-motion
- * preference are respected; resource-intensive WebGL still has a separate gate. */
+ * preference are respected; WebGL capability is checked without device-tier limits. */
 export const motionOK = () => !env.reduced && !env.userOff;
-/** Heavier WebGL scenes remain off on low-end and data-saver devices even when FX is enabled manually. */
-export const glOK = () => motionOK() && !env.saveData && !env.lowEnd && canWebGL();
+/** Full WebGL is available whenever visual FX is on and the browser supports it. */
+export const glOK = () => motionOK() && canWebGL();
 
 let glSupport;
 export function canWebGL() {

@@ -58,7 +58,7 @@ export function initHeroGL(THREE, hero) {
   const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 50);
   camera.position.z = 6;
 
-  const COUNT = env.coarse ? 2400 : 6200;
+  const COUNT = 6200;
   const outer = starVertices(1, 0.4);
   const inner = starVertices(0.5, 0.2, 5, Math.PI / 2 + Math.PI / 5);
   const scatter = new Float32Array(COUNT * 3), target = new Float32Array(COUNT * 3), seed = new Float32Array(COUNT * 4);

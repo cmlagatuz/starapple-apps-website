@@ -11,7 +11,7 @@ export function createStage(THREE, host, { className = '', maxDpr = 1.75, animat
   host.appendChild(canvas);
   const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias, powerPreference: 'high-performance' });
   renderer.setClearColor(0x000000, 0);
-  const dprCap = env.lowEnd ? Math.min(maxDpr, 1.25) : maxDpr;
+  const dprCap = maxDpr;
 
   const stage = { renderer, canvas, width: 1, height: 1, time: 0, dead: false };
   const resizers = new Set();
