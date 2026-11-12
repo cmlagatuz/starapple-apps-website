@@ -3,7 +3,7 @@ import { loadGsap, loadThree } from './fx-loader.js';
 import { initTransitions, ensureSectionIds } from './fx-transition.js';
 import { initScroll } from './fx-scroll.js';
 import { initNav } from './fx-nav.js';
-import { initCursor, initTactile } from './fx-cursor.js';
+import { initTactile } from './fx-cursor.js';
 
 /**
  * Interaction layer entry point. Progressive by design: the site is complete without it, and every stage
@@ -26,7 +26,6 @@ async function boot() {
     root.classList.remove('fx-pending');
   }
   initNav({ gsap: libs?.gsap });
-  initCursor();
   initTactile();
 
   if (!threeP) return;
