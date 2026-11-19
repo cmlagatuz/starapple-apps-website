@@ -60,6 +60,8 @@ test('Three uploaded founder portraits are local WebP images with matching profi
  assert.match(css,/\.founders-section \.founder-profile-zantetsuken \.founder-profile-image img,/);
  assert.match(css,/\.founders-section \.founder-profile-marbert \.founder-profile-image img/);
  assert.match(css,/object-fit:contain/);
+ assert.match(css,/Full-frame Mel headshot/);
+ assert.match(css,/aspect-ratio:1 \/ 1/);
  assert.match(css,/aspect-ratio:1122 \/ 1402/);
  assert.match(css,/@media\(max-width:900px\)/);
 });

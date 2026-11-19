@@ -773,3 +773,28 @@ body:has(.inquiry-dialog[open]){overflow:hidden}
     background:#191a22;
   }
 }
+
+/* Full-frame Mel headshot: preserve square image without crop on all viewports. */
+.founders-section .founder-profile-mel .founder-profile-image img {
+  object-fit:contain;
+  object-position:center;
+  filter:none;
+}
+.founders-section .founder-profile-mel:hover .founder-profile-image img {
+  transform:none;
+  filter:none;
+}
+@media(min-width:901px) {
+  .founders-section .founder-profile-mel .founder-profile-image {
+    aspect-ratio:1 / 1;
+    max-height:510px;
+    background:#111216;
+  }
+}
+@media(max-width:900px) {
+  .founders-section .founder-profile-mel .founder-profile-image {
+    height:auto;
+    aspect-ratio:1 / 1;
+    background:#111216;
+  }
+}
