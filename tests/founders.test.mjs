@@ -27,19 +27,35 @@ test('Exactly six team profiles appear in required order with five co-founders',
  assert.doesNotMatch(content,/real name|developer alias|years of experience|university degree/i);
 });
 
-test('Existing portraits are preserved and four new abstract local portraits exist',async()=>{
+test('Three uploaded founder portraits are local WebP images with matching profile links',async()=>{
  const html=await readFile('index.html','utf8');
  const css=await readFile('src/studio-refresh.css','utf8');
- assert.match(html,/i.pinimg.com\/originals\/f3\/a5\/c7\/f3a5c73abac39b446a579225004a85c2.jpg/);
- assert.match(html,/final-fantasy-lightning-summoning.jpg/);
- for(const key of ['mel','sam','josh','marbert']){
+ for(const [name,filename,links] of [
+   ['Zantetsuken','Zantetsuken.webp',['https://github.com/cmlagatuz','https://cmlagatuz.dev/']],
+   ['Mel','mel.webp',['https://github.com/mel0620','https://rommelcuneta.com/']],
+   ['Marbert','marbert.webp',['https://github.com/marbertplazo']]
+ ]){
+   const card=html.match(new RegExp('<article class="founder-profile founder-profile-'+name.toLowerCase()+' reveal">([\\s\\S]*?)<\\/article>'))?.[1];
+   assert.ok(card,'Founder card not found: '+name);
+   assert.ok(card.includes('/media/'+filename),'image path for '+name);
+   assert.match(card,/class="founder-profile-links"/);
+   for(const url of links)assert.ok(card.includes('href="'+url+'"'),url);
+   assert.equal((card.match(/target="_blank" rel="noopener noreferrer"/g)||[]).length,links.length);
+   const bytes=await readFile('public/media/'+filename);
+   assert.equal(bytes.toString('ascii',0,4),'RIFF');
+   assert.equal(bytes.toString('ascii',8,12),'WEBP');
+   assert.ok(bytes.byteLength>1500);
+ }
+ for(const key of ['sam','josh']){
    assert.ok(html.includes('/media/cofounder-'+key+'.svg'),key);
    const img=await readFile('public/media/cofounder-'+key+'.svg','utf8');
    assert.match(img,/<svg/);
-   assert.match(img,/Abstract portrait illustration/);
  }
+ assert.match(html,/final-fantasy-lightning-summoning.jpg/);
+ assert.equal(html.includes('i.pinimg.com/originals/f3/a5/c7/f3a5c73abac39b446a579225004a85c2.jpg'),false);
  assert.match(css,/\.founder-profile-image img\s*\{/);
  assert.match(css,/object-fit:cover/);
+ assert.match(css,/\.founder-profile-links a:focus-visible/);
 });
 
 test('FX section rail includes all three founder chapters and syntax is clean',async()=>{

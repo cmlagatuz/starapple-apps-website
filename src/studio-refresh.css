@@ -711,3 +711,15 @@ body:has(.inquiry-dialog[open]){overflow:hidden}
   /* No changes to the existing mobile/tablet image-above-name cards. */
   .founders-section .founder-profile { top:auto; }
 }
+
+/* Uploaded founder portraits: readable credits and responsive social/profile links. */
+.founder-profile-zantetsuken .founder-profile-image img { object-position:50% 27%; }
+.founder-profile-mel .founder-profile-image img { object-position:50% 38%; filter:contrast(1.06) brightness(.96); }
+.founder-profile-marbert .founder-profile-image img { object-position:50% 30%; }
+.founder-profile-links { display:flex; flex-wrap:wrap; gap:6px 14px; margin-top:3px; }
+.founder-profile-links a { display:inline-flex; align-items:center; gap:7px; padding:5px 1px; color:#e6c8ff; font:600 .7rem var(--display); text-decoration:underline; text-decoration-color:#cda7eb75; text-underline-offset:4px; transition:color .18s ease,text-decoration-color .18s ease; }
+.founder-profile-links a:hover, .founder-profile-links a:focus-visible { color:#fff; text-decoration-color:#fff; }
+.founder-profile-links a:focus-visible { outline:2px solid #edcbff; outline-offset:4px; border-radius:2px; }
+.founder-profile-links a span { font-size:.88rem; text-decoration:none; }
+@media(min-width:901px) { .founders-section .founder-profile { height:clamp(220px,28svh,265px); } }
+@media(max-width:900px) { .founder-profile-links a { min-height:42px; padding:8px 3px; } }
