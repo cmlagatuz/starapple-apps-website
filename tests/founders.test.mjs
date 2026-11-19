@@ -27,13 +27,13 @@ test('Exactly six team profiles appear in required order with five co-founders',
  assert.doesNotMatch(content,/real name|developer alias|years of experience|university degree/i);
 });
 
-test('Three uploaded founder portraits are local WebP images with matching profile links',async()=>{
+test('Three original founder PNGs are used with matching profile links',async()=>{
  const html=await readFile('index.html','utf8');
  const css=await readFile('src/studio-refresh.css','utf8');
  for(const [name,filename,links] of [
-   ['Zantetsuken','Zantetsuken.webp',['https://github.com/cmlagatuz','https://cmlagatuz.dev/']],
-   ['Mel','mel.webp',['https://github.com/mel0620','https://rommelcuneta.com/']],
-   ['Marbert','marbert.webp',['https://github.com/marbertplazo']]
+   ['Zantetsuken','Zantetsuken.png',['https://github.com/cmlagatuz','https://cmlagatuz.dev/']],
+   ['Mel','mel.png',['https://github.com/mel0620','https://rommelcuneta.com/']],
+   ['Marbert','marbert.png',['https://github.com/marbertplazo']]
  ]){
    const card=html.match(new RegExp('<article class="founder-profile founder-profile-'+name.toLowerCase()+' reveal">([\\s\\S]*?)<\\/article>'))?.[1];
    assert.ok(card,'Founder card not found: '+name);
@@ -42,8 +42,7 @@ test('Three uploaded founder portraits are local WebP images with matching profi
    for(const url of links)assert.ok(card.includes('href="'+url+'"'),url);
    assert.equal((card.match(/target="_blank" rel="noopener noreferrer"/g)||[]).length,links.length);
    const bytes=await readFile('public/media/'+filename);
-   assert.equal(bytes.toString('ascii',0,4),'RIFF');
-   assert.equal(bytes.toString('ascii',8,12),'WEBP');
+   assert.equal(bytes.toString('hex',0,8),'89504e470d0a1a0a');
    assert.ok(bytes.byteLength>1500);
  }
  for(const key of ['sam','josh']){
