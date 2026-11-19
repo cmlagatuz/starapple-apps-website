@@ -723,3 +723,53 @@ body:has(.inquiry-dialog[open]){overflow:hidden}
 .founder-profile-links a span { font-size:.88rem; text-decoration:none; }
 @media(min-width:901px) { .founders-section .founder-profile { height:clamp(220px,28svh,265px); } }
 @media(max-width:900px) { .founder-profile-links a { min-height:42px; padding:8px 3px; } }
+
+/* Full-frame supplied portraits: do not crop or zoom them in desktop zigzag cards. */
+.founders-section .founder-profile-zantetsuken .founder-profile-image img,
+.founders-section .founder-profile-marbert .founder-profile-image img {
+  object-fit:contain;
+  object-position:center;
+  filter:none;
+}
+.founders-section .founder-profile-zantetsuken:hover .founder-profile-image img,
+.founders-section .founder-profile-marbert:hover .founder-profile-image img {
+  transform:none;
+  filter:none;
+}
+@media(min-width:901px) {
+  .founders-section .founder-profile {
+    height:auto;
+    min-height:clamp(425px,42vw,540px);
+    grid-template-rows:auto 1fr;
+    align-items:stretch;
+  }
+  .founders-section .founder-profile-image {
+    height:auto;
+    min-height:0;
+    max-height:510px;
+    aspect-ratio:1122 / 1402;
+    align-self:center;
+    justify-self:center;
+    overflow:hidden;
+    background:#191a22;
+  }
+  .founders-section .founder-profile-zantetsuken .founder-profile-image,
+  .founders-section .founder-profile-marbert .founder-profile-image {
+    width:100%;
+    aspect-ratio:1122 / 1402;
+  }
+  .founders-section .founder-profile-zantetsuken .founder-profile-image img,
+  .founders-section .founder-profile-marbert .founder-profile-image img {
+    width:100%;
+    height:100%;
+    object-fit:contain;
+  }
+}
+@media(max-width:900px) {
+  .founders-section .founder-profile-zantetsuken .founder-profile-image,
+  .founders-section .founder-profile-marbert .founder-profile-image {
+    height:auto;
+    aspect-ratio:1122 / 1402;
+    background:#191a22;
+  }
+}

@@ -56,6 +56,12 @@ test('Three uploaded founder portraits are local WebP images with matching profi
  assert.match(css,/\.founder-profile-image img\s*\{/);
  assert.match(css,/object-fit:cover/);
  assert.match(css,/\.founder-profile-links a:focus-visible/);
+ assert.match(css,/\/\* Full-frame supplied portraits:/);
+ assert.match(css,/\.founders-section \.founder-profile-zantetsuken \.founder-profile-image img,/);
+ assert.match(css,/\.founders-section \.founder-profile-marbert \.founder-profile-image img/);
+ assert.match(css,/object-fit:contain/);
+ assert.match(css,/aspect-ratio:1122 \/ 1402/);
+ assert.match(css,/@media\(max-width:900px\)/);
 });
 
 test('FX section rail includes all three founder chapters and syntax is clean',async()=>{
